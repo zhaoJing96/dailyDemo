@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多维数组确定层级</title>
+</head>
+<body>
+    <script>
+        let arr = [{
+            value: '第一层',
+            children: [{
+                value: '第二层',
+                children: [{
+                    value: '第三层',
+                    children: [{
+                        value: '第四层',
+                        children: [{
+                            value:'第五层',
+                            children:[]
+                        }]
+                    },{
+                        value: '第四层',
+                        children: [{
+                            value:'第五层',
+                            children: [{
+                                value:'第六层',
+                                children:[]
+                            }]
+                        }]
+                    }]
+                },{
+                    id:'第三层',
+                    children: [{
+                        id:'第四层',
+                        children: [{
+                            id:'第五层',
+                            children: [{
+                                id: '第六层',
+                                children:[]
+                            }]
+                        }]
+                    }]
+                },{
+                    id:'第三层',
+                    children: [{
+                        id:'第四层',
+                        children: [{
+                            id:'第五层',
+                            children: [{
+                                id:'第六层',
+                                children:[]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+        }];
+        arr[0].level = 1;
+        let newArr = [...arr]
+        let newarr = findLevel(newArr);
+        function findLevel(Arr) {
+            Arr.forEach(item => {
+                if(item.children && item.children.length > 0){
+                    item.children.forEach(element => {
+                        element.level = item.level + 1;
+                    });
+                    findLevel(item.children)
+                }                
+            });
+            return Arr;
+        }
+        console.log(newarr);
+    </script>
+</body>
+</html>
