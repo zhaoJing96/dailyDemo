@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.assign</title>
+</head>
+
+<body>
+    <script>
+        // Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。
+        // 合并第一个参数会被改变
+        // 目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。
+        let aObj = {
+            a: 1
+        };
+        let bObj = {
+            b: 2
+        }
+        let cObj = {
+            c: 3
+        }
+        let dObj = {
+            d: 4
+        }
+        let eObj = {
+            e: 5
+        }
+        // 合并对象方法
+        // 合并对象会改变目标对象本身
+        let nObj = Object.assign({...aObj}, {...bObj});
+        console.log(nObj);
+        console.log(aObj);
+        console.log(bObj);
+
+        // 合并不改变目标对象本身结构
+        let nObj = Object.assign({...aObj}, {...bObj});
+        console.log(nObj);
+        console.log(aObj);
+        console.log(bObj);
+
+        // // 合并对象不改变自身数据
+        let nObj1 = Object.assign({}, aObj, bObj);
+        console.log(nObj1);
+        console.log(aObj);
+        console.log(bObj);
+
+        // 合并对象，返回新的对象，不改变原有对象
+        let nObj2 = {
+            ...cObj,
+            ...dObj
+        };
+        console.log(nObj2);
+        console.log(cObj);
+        console.log(dObj);
+
+        // 对象添加属性
+        let nObj3 = Object.assign({}, eObj, {
+            f: 6
+        });
+        console.log(nObj3);
+        console.log(eObj);
+    </script>
+</body>
+
+</html>
