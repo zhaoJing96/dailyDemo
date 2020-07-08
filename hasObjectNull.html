@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断对象是否为空</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 项目中经常需要判断对象是否为空
+         */
+        let obj = {};
+        // 对象转成字符串
+        if (JSON.stringify(obj) === '{}') {
+            console.log('是空对象');
+        }
+        // es6 Object.keys
+        if (Object.keys(obj).length === 0) {
+            console.log('是空对象');
+        }
+        // for in 
+        for (let key in obj) {
+            console.log('不是空对象');
+        }
+        console.log('是空对象');
+
+        // Object.getOwnPropertyNames()
+        if (Object.getOwnPropertyNames(obj).length === 0) {
+            console.log('是空对象');
+        }
+    </script>
+</body>
+
+</html>
