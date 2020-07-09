@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Array.reduce((acc, cur, idx, src) => {}, initialValue)
+        // Accumulator (acc) (累计器) 如果传入了initialValue,Accumulator的初始值就是initialValue,没传入就是数组的第一个值
+        // currentValue (cur) (当前值)
+        // currentIndex (idx) (当前索引)如果传入了initialValue,索引从0开始,没传入从1开始
+        // SourceArray (src) (源数组)
+
+        // 二维数组转一维数组
+        let arr = [
+            [1, 2], 3, 4, [5, 6, 7], 8, [9]
+        ]
+        let newArr = arr.reduce((acc, cur) => {
+            return acc.concat(cur)
+        }, []);
+        console.log(newArr);
+
+        // 数组去重
+        let arr1 = [1, 2, 3, 3, 2, 4, 4, 5, 3, 2, 5, 6]
+        let newArr1 = arr1.reduce((acc, cur) => {
+            if (!acc.includes(cur)) {
+                acc.push(cur)
+            }
+            return acc
+        }, [])
+        console.log(newArr1);
+
+        // 数组对象去重
+        let arr2 = [{
+            name: '李明',
+            age: 18
+        }, {
+            name: '王五',
+            age: 18
+        }, {
+            name: '王五',
+            age: 20
+        }, {
+            name: '李四',
+            age: 20
+        }, {
+            name: '赵六',
+            age: 22
+        }, {
+            name: '张三',
+            age: 22
+        }];
+        let obj = {};
+        let newArr2 = arr2.reduce((acc, cur) => {
+            if (!obj[cur['name']]) {
+                obj[cur['name']] = cur['name'];
+                acc.push(cur['name']);
+            }
+            return acc;
+        }, []);
+        console.log(newArr2);
+    </script>
+</body>
+
+</html>
