@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图表缩放，拖拽问题</title>
+</head>
+<style>
+    .box {
+        width: 100%;
+        height: 600px;
+        border: 1px solid #e5e5e5;
+    }
+</style>
+
+<body>
+    <!-- 图表缩放，拖拽 -->
+    <!-- 地图缩放不能全部缩放指定最大显示范围 -->
+    <div class="box" id='myChart'></div>
+    <script crossorigin="anonymous" integrity="sha384-S8KxbKBp9r6kPbM3+2n8fFV+5y572FLD7+A39mF0lb410iPTIfZC6hKxEpRS87NO"
+        src="https://lib.baomitu.com/echarts/4.6.0/echarts-en.common.js">
+        window.echarts = echarts;
+    </script>
+    <script>
+        let myEchart = window.echarts.init(document.getElementById('myChart'));
+        // 柱状图配置
+        let barOption = {
+            tooltip: {
+                trigger: 'axis',
+                // formatter(params) {
+                //     let res = params[0].name + '<br/>' +
+                //         '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
+                //         params[0].color.colorStops[0].color + '"></span>' + " " + params[0].seriesName + '：' +
+                //         params[0].data + '次</br>' +
+                //         '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' +
+                //         params[1].color.colorStops[0].color + '"></span>' + " " + params[1].seriesName + '：' +
+                //         params[1].data + '次</br>';
+                //     return res;
+                // },
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                x: 'center',
+                bottom: '4%',
+                itemGap: 72,
+                itemWidth: 12,
+                itemHeight: 8,
+                data: ['唱歌', '跳舞']
+            },
+            grid: {
+                top: '15%',
+                left: '3%',
+                right: '4%',
+                bottom: '12%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                axisLabel: {
+                    color: '#999999',
+                    fontWeight: 400,
+                    fontSize: 12,
+                    margin: 10
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#999999'
+                    }
+                },
+                axisTick: {
+                    show: false
+                }, //刻度
+                scale: true,
+                splitLine: {
+                    show: false
+                },
+                data: ['名称1', '名称2', '名称3', '名称4', '名称5', '名称6', '名称7', '名称8', '名称9', '名称10']
+            }],
+            yAxis: [{
+                type: 'value',
+                // y 轴线
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: '#999999'
+                    }
+                }, //轴线
+                axisTick: {
+                    show: false
+                }, //刻度
+                splitLine: {
+                    lineStyle: {
+                        color: '#ECECEC'
+                    }
+                },
+                minInterval: 1 // 设置最小刻度，防止小数坐标轴
+            }],
+            dataZoom: [{
+                show: false,
+                type: 'inside',
+                realtime: true,
+                maxValueSpan: 7, // 缩放最大显示值，其余拖拽
+                // minValueSpan: 1, // 缩放最小显示值，其余拖拽
+                // zoomLock: true //不能缩放只能拖拽
+            }],
+            barMaxWidth: 20, //柱条最大宽度
+            series: [{
+                    name: '唱歌',
+                    type: 'bar',
+                    barGap: 0,
+                    itemStyle: {
+                        color: new window.echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [{
+                                    offset: 0,
+                                    color: '#FF4859'
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#FF9193'
+                                }
+                            ]
+                        )
+                    },
+                    data: [10, 5, 3, 7, 6, 5, 4, 9, 1, 6]
+                },
+                {
+                    name: '跳舞',
+                    type: 'bar',
+                    itemStyle: {
+                        color: new window.echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [{
+                                    offset: 0,
+                                    color: '#FE9C47'
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#FFD800'
+                                }
+                            ]
+                        )
+                    },
+                    data: [8, 6, 5, 2, 1, 8, 9, 10, 2, 3]
+                }
+            ]
+        };
+        myEchart.setOption(barOption, true);
+
+        // 点击事件
+        myEchart.on('click', function (params) {
+            console.log(params)
+        })
+    </script>
+</body>
+
+</html>
