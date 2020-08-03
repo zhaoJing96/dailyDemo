@@ -14,3 +14,6 @@ objectAssign.html：Object.assign()使用demo
 bibaoDemo.html：闭包demo
 
 echartZoom.html：echart图表缩放，拖拽，最大最小限制
+
+firstThree.html: three.js
+
