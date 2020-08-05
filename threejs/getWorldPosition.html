@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>层级、组的概念</title>
+    <title>获取世界坐标</title>
 </head>
 <style>
     body {
@@ -19,8 +19,8 @@
 </style>
 
 <body>
-    <script src="http://www.yanhuangxueyuan.com/3D/example/three.js"></script>
-    <script src="http://www.yanhuangxueyuan.com/threejs/examples/js/controls/OrbitControls.js"></script>
+    <script src="./node/three.js"></script>
+    <script src="./node/OrbitControls.js"></script>
     <script>
         // 创建一个场景
         let scene = new THREE.Scene();
@@ -44,7 +44,7 @@
         mesh.getWorldPosition(worldPosition);
         console.log('世界坐标', worldPosition);
 
-        
+
         // 相机
         let width = window.innerWidth; // 窗体宽度
         let height = window.innerHeight; // 窗体高度
