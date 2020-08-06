@@ -17,25 +17,35 @@
         height: 100%
     }
 </style>
+
 <body>
     <script src="./node/three.js"></script>
     <script src="./node/OrbitControls.js"></script>
     <script>
         // 创建一个场景
         let scene = new THREE.Scene();
-        let geometry = new THREE.PlaneGeometry(100, 100);
-        // let geometry = new THREE.BoxGeometry(100, 100, 100);
-        // let geometry = new THREE.SphereGeometry(100, 100, 100);
+        let geometry = new THREE.PlaneGeometry(100, 100); // 平面
+        // let geometry = new THREE.BoxGeometry(100, 100, 100); // 立方体
+        // let geometry = new THREE.SphereGeometry(100, 100, 100); // 球体
+        // let geometry = new THREE.CylinderGeometry(60, 60, 25, 25); //圆柱
         // TextureLoader创建一个纹理加载器对象，可以加载图片作为几何体纹理
         let textureLoader = new THREE.TextureLoader();
-        let texture = textureLoader.load('./images/img1.png');
+        let texture = textureLoader.load('./images/img2.png');
+        // RepeatWrapping，纹理将简单地重复到无穷大。 MirroredRepeatWrapping， 纹理将重复到无穷大，在每次重复时将进行镜像。
+        texture.wrapS = THREE.RepeatWrapping; //水平方向如何包裹
+        texture.wrapT = THREE.RepeatWrapping; // 垂直方向如何包裹
+        // uv两个方向纹理重复数量、看板中重复数量
+        texture.repeat.set(3, 3);
+        // 设置偏移 纹理在单次重复时，从一开始将分别在U、V方向上偏移多少。 这个值的范围通常在0.0之间1.0
+        texture.offset = new THREE.Vector2(0, 0)
+
         let material = new THREE.MeshLambertMaterial({
             // color: 0xfff000, // 设置颜色可改变图片白色部分颜色
             // 设置颜色纹理贴图：Texture对象作为材质map属性的属性值
             map: texture //设置颜色贴图属性值
         });
         let mesh = new THREE.Mesh(geometry, material);
-        // scene.add(mesh);
+        scene.add(mesh);
 
         // 图片加载器
         let imageLoader = new THREE.ImageLoader();
@@ -45,10 +55,12 @@
         // 下次使用纹理时触发更新
         texture1.needsUpdate = true;
         let metarial1 = new THREE.MeshLambertMaterial({
-            map:texture1
+            map: texture1
         });
-        let mesh1 = new THREE.Mesh(geometry,metarial1);
-        scene.add(mesh1);
+        let mesh1 = new THREE.Mesh(geometry, metarial1);
+        // scene.add(mesh1);
+        
+
         // 添加环形光
         let ambient = new THREE.AmbientLight(0xffffff);
         scene.add(ambient);
@@ -64,13 +76,13 @@
 
         let renderer = new THREE.WebGLRenderer();
         renderer.setSize(width, height);
-        renderer.setClearColor(0x000000, 1) //设置背景颜色
+        renderer.setClearColor(0xffffff, 1) //设置背景颜色
         document.body.appendChild(renderer.domElement);
         // renderer.render(scene, camera); // 渲染到场景中
         // 渲染到HTML文档中
         function renderFn() {
             renderer.render(scene, camera); // 渲染到场景中
-            requestAnimationFrame(renderFn)
+            requestAnimationFrame(renderFn);
         }
         renderFn()
     </script>
