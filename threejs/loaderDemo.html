@@ -39,15 +39,35 @@
         ];
         let cubeTexture = cubeTextureLoader.load(urls);
         // 利用环境贴图设置场景背景
-        scene.background = cubeTexture;        
+        scene.background = cubeTexture;
 
         // 导入GlTF模型
         let gltfLoader = new THREE.GLTFLoader();
         gltfLoader.setPath('./images/BanGongLou/');
         gltfLoader.load('BanGongLou.gltf', (gltf) => {
-            console.log(gltf);
             scene.add(gltf.scene);
         });
+        // 下雨效果
+        let rainTextureLoader = new THREE.TextureLoader();
+        let rainTexture = rainTextureLoader.load('./images/rain.png');
+        let rainGroup = new THREE.Group();
+        for (let i = 0; i < 400; i++) {
+            let rainSpriteMaterial = new THREE.SpriteMaterial({
+                map: rainTexture
+            });
+            var sprite = new THREE.Sprite(rainSpriteMaterial);
+            // 控制精灵大小
+            sprite.scale.set(1, 2, 1);
+            let k1 = Math.random(10) - 0.5;
+            let k2 = Math.random(10) - 0.5;
+            let k3 = Math.random(10) - 0.5;
+            // 设置精灵模型位置，在整个空间上上随机分布
+            sprite.position.set(100 * k1, 100 * k3, 100 * k2);
+            rainGroup.add(sprite);
+        }
+        // scene.add(rainGroup);
+
+
 
         // 添加光源
         let light = new THREE.AmbientLight(0xffffff);
@@ -74,6 +94,12 @@
         document.body.appendChild(renderer.domElement);
         // 渲染
         function renderFn() {
+            // rainGroup.children.forEach(sprite => {
+            //     sprite.position.y -= 1;
+            //     if (sprite.position.y < 0) {
+            //         sprite.position.y = 300;
+            //     }
+            // });
             // 用相机渲染一个场景
             renderer.render(scene, camera);
             requestAnimationFrame(renderFn);
