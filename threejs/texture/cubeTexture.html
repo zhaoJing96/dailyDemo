@@ -31,9 +31,15 @@
 
         // 环境贴图图片路径
         cubeTextureLoader.setPath('../images/skybox/');
-        let cubeTexture = cubeTextureLoader.load(['远山_BK.jpg', '远山_DN.jpg', '远山_FR.jpg', '远山_LF.jpg', '远山_RT.jpg',
-            '远山_UP.jpg'
-        ]);
+        let urls = [
+            '远山_RT.jpg', // 右x
+            '远山_LF.jpg', // 左x
+            '远山_UP.jpg', // 上y
+            '远山_DN.jpg', // 下y
+            '远山_BK.jpg', // 后z
+            '远山_FR.jpg' // 前z
+        ];
+        let cubeTexture = cubeTextureLoader.load(urls);
         let material = new THREE.MeshLambertMaterial({
             envMap: cubeTexture // 环境贴图
         });
