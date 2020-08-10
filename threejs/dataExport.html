@@ -31,11 +31,12 @@
         let geometryExport = new THREE.BoxGeometry(100, 100, 100);
         console.log(geometryExport);
         console.log(geometryExport.toJSON());
-        console.log(JSON.stringify(geometryExport));
+        console.log(JSON.stringify(geometryExport.toJSON()));
         /**
          * 解析几何体数据
          */
-        let geometryLoader = new THREE.BufferGeometryLoader();
+        let geometryLoader = new THREE.FileLoader();
+        // let geometryLoader = new THREE.BufferGeometryLoader();
         let geometryObj = geometryLoader.load('./jsonFile/geometry.json', (obj) => {
             console.log(obj);
         });
@@ -43,28 +44,35 @@
         /**
          * 导出材质信息
          */
-        // let materialExport = new THREE.MeshLambertMaterial({
-        //     color: 0xffffff
-        // });
-        // console.log(materialExport.toJSON());
-        // console.log(JSON.stringify(materialExport.toJSON()));
+        let materialExport = new THREE.MeshLambertMaterial({
+            color: 0xffffff
+        });
+        console.log(materialExport.toJSON());
+        console.log(JSON.stringify(materialExport.toJSON()));
 
         /**
          * 解析材质数据
          */
-        // let materialLoader = new THREE.FileLoader();
-        // materialLoader.load('./jsonFile/material.json', (ele) => {
-        //     console.log(ele);
-        //     let obj = JSON.parse(ele);
-        //     // 根据type的值判断调用threejs的哪一个API
-        //     let materialOBj = new typeAPI[obj.type]();
-        //     // 从obj.color中提取颜色
-        //     // 16711935对应颜色0xFF00FF  255对应颜色0x0000FF
-        //     materialOBj.color.r = (obj.color >> 16 & 255) / 255; //获取颜色值R部分
-        //     materialOBj.color.g = (obj.color >> 8 & 255) / 255; //获取颜色值G部分
-        //     materialOBj.color.b = (obj.color & 255) / 255; //获取颜色值B部分
-        //     console.log(materialOBj);
-        // });
+        // 绑定所有材质、用于判断导入是哪一种材质
+        var typeAPI = {
+            MeshLambertMaterial: THREE.MeshLambertMaterial,
+            MeshBasicMaterial: THREE.MeshBasicMaterial,
+            MeshPhongMaterial: THREE.MeshPhongMaterial,
+            PointsMaterial: THREE.PointsMaterial,
+        }
+        let materialLoader = new THREE.FileLoader();
+        materialLoader.load('./jsonFile/material.json', (ele) => {
+            console.log(ele);
+            let obj = JSON.parse(ele);
+            // 根据type的值判断调用threejs的哪一个API
+            let materialOBj = new typeAPI[obj.type]();
+            // 从obj.color中提取颜色
+            // 16711935对应颜色0xFF00FF  255对应颜色0x0000FF
+            materialOBj.color.r = (obj.color >> 16 & 255) / 255; //获取颜色值R部分
+            materialOBj.color.g = (obj.color >> 8 & 255) / 255; //获取颜色值G部分
+            materialOBj.color.b = (obj.color & 255) / 255; //获取颜色值B部分
+            console.log(materialOBj);
+        });
 
 
 
