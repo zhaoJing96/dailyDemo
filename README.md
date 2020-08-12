@@ -19,7 +19,7 @@ echartZoom.html：echart图表缩放，拖拽，最大最小限制
 ### threejs文件: 
 three.js Demo
 
-##### GLTFLoader.html:导出GLTF模型
+##### GLTFLoader.html:导入GLTF模型
 实现原理：GLTFLoader
 
 ##### eventGetPoint.html：点击事件回去点坐标
@@ -46,3 +46,5 @@ Line/LineLoop：绘制线
 Shape：使用路径以及可选的孔洞来定义一个二维形状平面。
 ShapeBufferGeometry/ShapeGeometry：从一个或多个路径形状中创建一个单面多边形几何体。
 
+##### drawCircle.html：在立方体上绘制圆形
+实现原理：点坐标确定圆心，通过鼠标移动确认半径(圆心和边缘点坐标距离)，通过CircleGeometry绘制圆
