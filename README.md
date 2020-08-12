@@ -19,6 +19,9 @@ echartZoom.html：echart图表缩放，拖拽，最大最小限制
 ### threejs文件: 
 three.js Demo
 
+##### GLTFLoader.html:导出GLTF模型
+实现原理：GLTFLoader
+
 ##### eventGetPoint.html：点击事件回去点坐标
 实现原理：通过监听鼠标点击获取与射线相交的对象数组
 主要采用技术：Raycaster：这个类用于进行raycasting（光线投射）。 光线投射用于进行鼠标拾取（在三维空间中计算出鼠标移过了什么物体）。
