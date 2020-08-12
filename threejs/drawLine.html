@@ -105,11 +105,8 @@
                 }
             }
         });
-
-
         var pointsArray = [];
         window.addEventListener('mousedown', function (event) {
-            console.log(event);
             /* 获取相机发出的射线与 Plane 相交点*/
             var intersects = getIntersects(event);
             /* 鼠标左键按下时，创建点和线段 */
@@ -133,7 +130,6 @@
                     linewidth: 10
                 });
                 if (pointsArray.length >= 2) {
-
                     lineGeometry.vertices.push(pointsArray[0].geometry.vertices[0], pointsArray[1].geometry
                         .vertices[0]);
 
