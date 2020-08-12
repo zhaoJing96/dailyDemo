@@ -61,6 +61,10 @@
         mesh.userData.name = 'plane';
         scene.add(mesh); //网格模型添加到场景中
 
+        // 添加轴线
+        var axisHelper = new THREE.AxisHelper(250);
+        scene.add(axisHelper);
+
         /**
          * 光源设置
          */
@@ -249,7 +253,7 @@
                 opacity: 0.5
             });
             let shapeMesh = new THREE.Mesh(shapeGeometry, shapeMaterial);
-            
+
             // 绘制边框
             let points = shape.getPoints();
             let bufferGeometry = new THREE.BufferGeometry();
