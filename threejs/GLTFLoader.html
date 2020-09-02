@@ -28,14 +28,14 @@
 
         // 创建一个环境、使用环境贴图
         let cubeTextureLoader = new THREE.CubeTextureLoader();
-        cubeTextureLoader.setPath('./images/skybox/');
+        cubeTextureLoader.setPath('./images/sky/');
         let urls = [
-            '远山_RT.jpg', // 右x
-            '远山_LF.jpg', // 左x
-            '远山_UP.jpg', // 上y
-            '远山_DN.jpg', // 下y
-            '远山_BK.jpg', // 后z
-            '远山_FR.jpg' // 前z
+            'Sky_DayX1.png',
+            'Sky_DayX2.png',
+            'Sky_DayY1.png',
+            'Sky_DayY2.png',
+            'Sky_DayZ1.png',
+            'Sky_DayZ2.png'
         ];
         let cubeTexture = cubeTextureLoader.load(urls);
         // 利用环境贴图设置场景背景
