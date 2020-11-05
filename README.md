@@ -16,6 +16,12 @@ bibaoDemo.html：闭包demo
 
 echartZoom.html：echart图表缩放，拖拽，最大最小限制
 
+arrBuildTree.html：一维数组转tree格式数组
+
+
+
+
+
 ### threejs文件: 
 three.js Demo
 
