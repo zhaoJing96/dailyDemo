@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            id: 1,
+            children: {
+                name: '小明'
+            }
+        }
+        // 拷贝简单数据类型
+        // 简单的数据类型，由于保存的是值，因此只需要返回这个值就行，不存在相互影响的问题。
+        function deepBasicDataClone(target) {
+            return target;
+        }
+
+        // 拷贝简单对象,不存在Array,Function,Date等子类型的数据。
+        // 不知道对象得层级采用递归方式一项项赋值
+        function deepBasicObjClone(target) {
+            if (target instanceof Object) {
+                // 创建一个新的对象
+                let dist = {};
+                for (let key in target) {
+                    // 递归获取到每一个值
+                    dist[key] = deepclone(target[key]);
+                }
+                return dist;
+            } else {
+                return target;
+            }
+        }
+    </script>
+</body>
+
+</html>
