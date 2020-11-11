@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Openlayer 地图事件监听</title>
+    <title>Openlayer 地图事件监听 动态改变图形</title>
     <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
 </head>
 <style>
@@ -20,6 +20,7 @@
 </style>
 
 <body>
+    <!-- 通过地图监听事件动态改变图形 -->
     <div id='map'></div>
     <!-- 引入openlayers -->
     <script src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
@@ -68,7 +69,19 @@
             });
             // 所点击对象
             if (feature) {
-
+                // 获取对象原有样式
+                let style = feature.getStyle().getImage();
+                // 设置对象新样式
+                let newStyle = new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 30,
+                        stroke: style.getStroke(),
+                        fill: new ol.style.Fill({
+                            color: 'red'
+                        })
+                    })
+                });
+                feature.setStyle(newStyle);
             }
         });
     </script>
