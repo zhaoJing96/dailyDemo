@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>openlayers 绘图</title>
+    <title>openlayers 绘制基础点线面</title>
     <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
 </head>
 <style>
@@ -60,117 +60,24 @@
 
         // 绘制点
         let drawPoint = new ol.interaction.Draw({
-            type: 'Point',
-            source: layer.getSource(),
-            style: new ol.style.Style({
-                image: new ol.style.Icon({
-                    src: './image/icon_gps_red.png',
-                    anchor: [0.5, 1]
-                })
-            })
+            type: 'Point', // Point（单点）、MultiPoint（多点）
+            source: layer.getSource()
         });
         map.addInteraction(drawPoint);
 
-        // 绘制点
-        let drawPoint1 = new ol.interaction.Draw({
-            type: 'MultiPoint',
-            source: layer.getSource()
-        });
-        // map.addInteraction(drawPoint1);
-
         // 绘制线
         let drawLine = new ol.interaction.Draw({
-            type: 'LineString',
+            type: 'LineString', // LineString、MultiLineString
             source: layer.getSource()
         });
         // map.addInteraction(drawLine);
-
-        // 通过LineString类型+maxPonits:2绘制四边形
-        let drawShape = new ol.interaction.Draw({
-            type: 'LineString',
-            source: layer.getSource(),
-            // style: new ol.style.Style({ // 绘制元素样式、不设置采用统一Vector图层样式
-            //     fill: new ol.style.Fill({
-            //         color: 'rgba(255, 255, 255, 0.2)'
-            //     }),
-            //     stroke: new ol.style.Stroke({
-            //         color: '#ffcc33',
-            //         width: 2
-            //     }),
-            //     image: new ol.style.Circle({
-            //         radius: 7,
-            //         fill: new ol.style.Fill({
-            //             color: '#ffcc33'
-            //         })
-            //     })
-            // }),
-            maxPoints: 2,
-            geometryFunction: function (coordinates, geometry) {
-                if (!geometry) {
-                    geometry = new ol.geom.Polygon([]);
-                }
-                let start = coordinates[0];
-                let end = coordinates[1];
-                geometry.setCoordinates([
-                    [
-                        start,
-                        [start[0], end[1]],
-                        end,
-                        [end[0], start[1]],
-                        start
-                    ]
-                ]);
-                return geometry;
-            }
-        });
-        // map.addInteraction(drawShape);
 
         // 绘制圆
         let drawCircle = new ol.interaction.Draw({
             type: 'Circle',
             source: layer.getSource()
         });
-        // map.addInteraction(drawCircle);
-
-        // 绘制规则多边形,类型为Circle,通过geometryFunction方法openlayer自带createRegularPolygon绘制传参为顶点个数
-        let drawSquare = new ol.interaction.Draw({
-            type: 'Circle',
-            source: layer.getSource(),
-            geometryFunction: new ol.interaction.Draw.createRegularPolygon(4)
-        });
-        // map.addInteraction(drawSquare);
-
-        // 绘制矩形,类型为Circle,通过geometryFunction方法openlayer自带createBox绘制矩形
-        let drawRectangle = new ol.interaction.Draw({
-            type: 'Circle',
-            source: layer.getSource(),
-            geometryFunction: new ol.interaction.Draw.createBox()
-        });
-        // map.addInteraction(drawRectangle);
-
-        // 绘制不规则多边形
-        let drawPolygon = new ol.interaction.Draw({
-            type: 'Polygon', // 勾绘的要素包含的geometry类型
-            source: layer.getSource(), // 矢量图层vector的矢量数据集source
-            style: new ol.style.Style({ // 指定勾绘要素的样式
-                fill: new ol.style.Fill({
-                    color: 'rgba(255, 255, 255, 0.2)'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#ffcc33',
-                    width: 2
-                }),
-                image: new ol.style.Circle({
-                    radius: 7,
-                    fill: new ol.style.Fill({
-                        color: '#ffcc33'
-                    })
-                })
-            }),
-            maxPoints: 5, // 绘制单个要素（面和线）最多的点数限制
-            minPoints: 3 // 绘制单个要素（面和线）最少的点数限制 绘制面最小出现双击两次依然绘制成功
-        });
-        // map.addInteraction(drawPolygon);
+        map.addInteraction(drawCircle);
     </script>
 </body>
 
