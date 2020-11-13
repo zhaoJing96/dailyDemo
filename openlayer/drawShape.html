@@ -58,6 +58,26 @@
             target: 'map'
         });
 
+        // 绘制点
+        let drawPoint = new ol.interaction.Draw({
+            type: 'Point',
+            source: layer.getSource(),
+            style: new ol.style.Style({
+                image: new ol.style.Icon({
+                    src: './image/icon_gps_red.png',
+                    anchor: [0.5, 1]
+                })
+            })
+        });
+        map.addInteraction(drawPoint);
+
+        // 绘制点
+        let drawPoint1 = new ol.interaction.Draw({
+            type: 'MultiPoint',
+            source: layer.getSource()
+        });
+        // map.addInteraction(drawPoint1);
+
         // 绘制线
         let drawLine = new ol.interaction.Draw({
             type: 'LineString',
@@ -103,14 +123,14 @@
                 return geometry;
             }
         });
-        map.addInteraction(drawShape);
+        // map.addInteraction(drawShape);
 
         // 绘制圆
-        let drawPonit = new ol.interaction.Draw({
+        let drawCircle = new ol.interaction.Draw({
             type: 'Circle',
             source: layer.getSource()
         });
-        // map.addInteraction(drawPonit);
+        // map.addInteraction(drawCircle);
 
         // 绘制规则多边形,类型为Circle,通过geometryFunction方法openlayer自带createRegularPolygon绘制传参为顶点个数
         let drawSquare = new ol.interaction.Draw({
