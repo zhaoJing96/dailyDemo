@@ -23,3 +23,5 @@ drawRectangle.html：绘制规则矩形，通过ol.interaction.Draw绘制type:Ci
 drawShapeUseLine.html：通过type:LineString + maxPoints:2 绘制规则矩形
 
 drawPolygon.html：通过type:Polygon绘制不规则多边形
+
+mapControl.html：地图控件
