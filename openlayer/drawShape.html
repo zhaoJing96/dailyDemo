@@ -24,6 +24,10 @@
     <!-- 引入openlayers -->
     <script src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
     <script>
+        /**
+        * 使用new ol.interaction.Draw 绘制图形，可设置freehand属性为true开启手绘模式（随意绘制曲线或者直线）
+        */
+
         // 实例化一个矢量图层作为绘制图层
         let layer = new ol.layer.Vector({
             source: new ol.source.Vector(),
@@ -63,14 +67,15 @@
             type: 'Point', // Point（单点）、MultiPoint（多点）
             source: layer.getSource()
         });
-        map.addInteraction(drawPoint);
+        // map.addInteraction(drawPoint);
 
         // 绘制线
         let drawLine = new ol.interaction.Draw({
             type: 'LineString', // LineString、MultiLineString
-            source: layer.getSource()
+            source: layer.getSource(),
+            freehand: true // 手绘模式
         });
-        // map.addInteraction(drawLine);
+        map.addInteraction(drawLine);
 
         // 绘制圆
         let drawCircle = new ol.interaction.Draw({
