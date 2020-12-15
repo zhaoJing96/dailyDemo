@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换圆形缩放</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .container {
+        width: 640px;
+        height: 480px;
+        background: url(./image/img1.png);
+        background-size: 100% 100%;
+        -webkit-transition: 1.5s all ease-in-out;
+        transition: 1.5s all ease-in-out;
+    }
+
+    .clip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 640px;
+        height: 480px;
+        background: url(./image/img2.png);
+        background-size: 100% 100%;
+        transform: scale(0);
+        transform-origin: center;
+        border-radius: 50%;
+        -webkit-transition: 1.5s all ease-in-out;
+        transition: 1.5s all ease-in-out;
+    }
+
+    .visible {
+        transform: scale(1);
+        border-radius: 0;
+        -webkit-transition: 1.5s all ease-in-out;
+        transition: 1.5s all ease-in-out;
+    }
+    
+</style>
+
+<body>
+    <div class="container" id="container">
+        <div class="clip"></div>
+    </div>
+    <div style="height: 1000px;"></div>
+    <script>
+        window.addEventListener('scroll', (e) => {
+            let box1 = document.getElementsByClassName('clip')[0];
+            if (box1.classList.contains('visible')) {
+                box1.classList.remove('visible')
+            } else {
+                box1.classList.add('visible')
+            }
+        })
+    </script>
+</body>
+
+</html>

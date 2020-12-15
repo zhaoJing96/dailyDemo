@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .test {
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid red;
+      background: url(./image/img1.png);
+      background-size: 100% 100%;
+      transform: scale(0);
+      transform-origin: center;
+      transition: all 1s;
+    }
+
+    .show {
+      transform: scale(1);
+      transition: all 1s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test">
+  </div>
+  <button onclick="show()">
+    click</button>
+</body>
+<script>
+  var t1 = document.getElementsByClassName('test')[0];
+
+  function show() {
+    if (t1.classList.contains('show')) {
+      t1.classList.remove('show')
+    } else {
+      t1.classList.add('show')
+
+    }
+  }
+</script>
+
+</html>
