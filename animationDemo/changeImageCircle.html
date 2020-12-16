@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片切换圆形缩放</title>
+    <title>图片切换圆形缩放正对于两张图</title>
 </head>
 <style>
     body {
@@ -48,27 +48,16 @@
     <div class="container" id="container">
         <div class="clip"></div>
     </div>
-    <div style="height: 1000px;"></div>
+    <div style="height: 1000px;">通过css3 clip-path，div嵌套方式实现两种图切换，可视区域改变</div>
     <script>
         window.addEventListener('scroll', (e) => {
-            let scrollTop = getScrollTop();
             let box1 = document.getElementsByClassName('clip')[0];
             if (box1.classList.contains('visible')) {
                 box1.classList.remove('visible')
             } else {
                 box1.classList.add('visible')
             }
-        })
-
-        function getScrollTop() {
-            let scrollTop = 0;
-            if (document.documentElement && document.documentElement.scrollTop) {
-                scrollTop = document.documentElement.scrollTop;
-            } else if (document.body) {
-                scrollTop = document.body.scrollTop;
-            }
-            return scrollTop;
-        }
+        });
     </script>
 </body>
 

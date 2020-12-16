@@ -17,7 +17,7 @@
         height: 400vh;
     }
 
-    .clip {
+    .sticky {
         position: sticky;
         top: 0;
         width: 100%;
@@ -25,7 +25,7 @@
         overflow: hidden;
     }
 
-    .div1 {
+    .box {
         width: 100%;
         height: 100vh;
         background: url(./image/banner.jpg);
@@ -37,30 +37,31 @@
 
 <body>
     <div class="container">
-        <div class="clip">
-            <div class="div1"></div>
+        <div class="sticky">
+            <div class="box"></div>
         </div>
     </div>
     <div style="position:relative; height: 1000px;">实现屏幕滚动，视觉效果仅内容变化</div>
     <script>
         window.addEventListener('scroll', (e) => {
-            let scrollTop = getScrollTop();
-            let box1 = document.getElementsByClassName('div1')[0];
+            let scrollTop = getScrollTop(); // 滚动高度
+            let box = document.getElementsByClassName('box')[0];
             if (scrollTop >= 1000 && scrollTop < 2000) {
-                box1.style.background = 'url(./image/banner2.jpg) no-repeat';
-                box1.style.backgroundSize = '100% 100%';
+                box.style.background = 'url(./image/banner2.jpg) no-repeat';
+                box.style.backgroundSize = '100% 100%';
             } else if (scrollTop >= 2000 && scrollTop < 3000) {
-                box1.style.background = 'url(./image/img1.png) no-repeat';
-                box1.style.backgroundSize = '100% 100%';
+                box.style.background = 'url(./image/img1.png) no-repeat';
+                box.style.backgroundSize = '100% 100%';
             } else if (scrollTop >= 3000) {
-                box1.style.background = 'url(./image/img2.png) no-repeat';
-                box1.style.backgroundSize = '100% 100%';
+                box.style.background = 'url(./image/img2.png) no-repeat';
+                box.style.backgroundSize = '100% 100%';
             } else if (scrollTop >= 0 && scrollTop < 1000) {
-                box1.style.background = 'url(./image/banner.jpg) no-repeat';
-                box1.style.backgroundSize = '100% 100%';
+                box.style.background = 'url(./image/banner.jpg) no-repeat';
+                box.style.backgroundSize = '100% 100%';
             }
-        })
+        });
 
+        // 获取屏幕高度
         function getScrollTop() {
             let scrollTop = 0;
             if (document.documentElement && document.documentElement.scrollTop) {
