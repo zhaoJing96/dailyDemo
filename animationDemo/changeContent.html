@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容叠加动效、类似于手风琴样式</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 第一部分内容 */
+    .content {
+        position: relative;
+        z-index: 2;
+        background-color: #f5f5f5;
+        font-size: 0;
+    }
+
+    /* 第二部分内容、在第一个部分内容下面 */
+    .ui_wrapper_box {
+        position: relative;
+        margin-top: -100vh;
+        z-index: 1;
+        height: 200vh;
+    }
+
+    .ui_sticky_box {
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .sticky_content {
+        width: 100%;
+        height: 100%;
+        font-size: 0;
+        background-color: #ffffff;
+    }
+    .sticky_content img{
+        width: 100%;
+        height: 100%;  
+    }
+    /* 第三部分内容 */
+    .content3 {
+        height: 2000px;
+        background-color: #333;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <img src="./image/banner.jpg" alt="">
+        </div>
+        <!-- 实现内容在第一部门内容下 -->
+        <div class="ui_wrapper_box">
+            <div class="ui_sticky_box">
+                <div class="sticky_content">
+                    <img src="./image/banner2.jpg" alt="">
+                    <img src="./image/grayImg.jpg" alt="">
+                    <p>这个是啥子内容内容不知道</p>
+                </div>
+            </div>
+        </div>
+        <div class="content3">
+            使用sticky定位实现内容覆盖在另一内容下，注固定顶部内容需写3层div
+        </div>
+    </div>
+</body>
+
+</html>
