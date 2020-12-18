@@ -17,6 +17,22 @@
         height: 100%;
     }
 
+
+    .wrapper {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 5;
+    }
+
+    .box {
+        width: 100%;
+        height: 100%;
+        height: 100vh;
+        background-color: #333333;
+    }
+
+
     .empty_box {
         width: 100%;
         height: 100vh;
@@ -25,9 +41,10 @@
     }
 
     .sticky_wrapper {
+        position: relative;
         width: 100%;
         height: 100%;
-        margin: 0 auto;
+        z-index: 4;
     }
 
     .sticky_box {
@@ -38,6 +55,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 2;
     }
 
     .content {
@@ -88,18 +106,26 @@
         width: 903px;
         height: 677px;
     }
+
+    .wrapper2{
+        position: relative;
+        margin-top: 200vh;
+    }
 </style>
 
 <body>
     <div class="container">
-        <!-- <div class="empty_box"></div> -->
+        <!-- 顶部内容 -->
+        <div class="wrapper">
+            <div class="box"></div>
+        </div>
         <div class="sticky_wrapper">
             <div class="sticky_box">
                 <div class="content">
                     <div class="scroll_box">
-                        <div class="empty_box"></div>
-                        <div class="empty_box"></div>
-                        <div class="empty_box"></div>
+                        <div class="empty_box" style="background-color: rosybrown;"></div>
+                        <div class="empty_box" style="background-color: yellowgreen;"></div>
+                        <div class="empty_box" style="background-color: burlywood;"></div>
                     </div>
                     <div class="banner_box">
                         <div class="border_box"></div>
@@ -111,9 +137,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+        </div>
+        <div class="sticky_wrapper wrapper2">
+            <div class="sticky_box">
+                <div class="box" style="background-color: blueviolet;"></div>
+            </div>
+            
         </div>
     </div>
     <script>
