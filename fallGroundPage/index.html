@@ -1,147 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>落地页</title>
-    <link rel="stylesheet/less" type="text/css" href="./style/index.less" />
+	<meta charset="utf-8" />
+	<title>落地页</title>
+	<link rel="stylesheet/less" type="text/css" href="./css/index_zx.less" />
+	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
+	<style>
+
+	</style>
 </head>
 
 <body>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
-    <div class="ui_container">
-        <div style="height: 150vh;"></div>
-        <!-- 产品介绍 -->
-        <div class="ui_product_box">
-            <!-- sos -->
-            <div class="ui_product_content ui_sos_box">
-                <div class="introduce sos_introduce">
-                    <h1 class="productTitle">是安全帽，更是守护者</h1>
-                    <p class="productTxt">SOS一键呼救，快一秒拯救生命<br>危险区域电子围栏、安全帽脱落、坠落跌倒自动报警...<br>更全能的守护者，规避每一次意外</p>
-                </div>
-                <video class="video sosVideo" src="./image/sos.mp4" autoplay='autoplay' muted='muted'></video>
-            </div>
-            <!-- 心率 -->
-            <div class="ui_product_content ui_heartRate_box">
-                <div class="introduce heartRate_introduce">
-                    <h1 class="productTitle">你的健康，它能感应</h1>
-                    <p class="productTxt">支持心电图检测，轻抬双手按住两侧心型按钮，一分钟<br>检查身体，降低高空作业风险，内置心率、体温等实时<br>传感器，健康情况了然于心</p><br>
-                </div>
-                <video class="video heartRateVideo" src="./image/sos.mp4" autoplay='autoplay' muted='muted'></video>
-            </div>
-            <!-- 芯片 -->
-            <div class="ui_product_content ui_chip_box">
-                <div class="introduce chip_introduce">
-                    <h1 class="productTitle">用芯片，探索智慧海洋</h1>
-                    <p class="productTxt">重金研发高科技集成芯片，体积更轻盈，功能更集成。通过将人员行为数据化，<br>联动管理后台高效打造智慧工地</p>
-                </div>
-                <video class="video chipVideo" src="./image/sos.mp4" autoplay='autoplay' muted='muted'></video>
-            </div>
-            <!-- 高精度定位 -->
-            <div class="ui_product_content ui_location_box">
-                <div class="introduce location_introduce">
-                    <h1 class="productTitle">20cm高精度定位，重新<br>定义智能考勤</h1>
-                    <p class="productTxt">
-                        UWB技术最有利的优势是误差极小，建造者智能安全<br>帽使用了全新研发的UWB+GPS定位算法，将智能考勤<br>控制在分米级，打破行业定位误差5-20m的常规</p>
-                </div>
-                <video class="video locationVideo" src="./image/sos.mp4" autoplay='autoplay' muted='muted'></video>
-            </div>
-            <!-- 电量 -->
-            <div class="ui_product_content ui_battery_box">
-                <div class="introduce battery_introduce">
-                    <h1 class="productTitle">放肆用，超强电量告别焦虑</h1>
-                    <p class="productTxt">
-                        你的手机能撑多久？建造者智能安全帽可以续航6天。在考虑长续航的做法上，<br>采用低功耗通信模组+电池管理系统设计出的电池，轻巧、安全、可拆卸，更破<br>解了行业普遍续航4-6小时的困境，连一众老年机都甘拜下风
-                    </p>
-                    <p class="productTxt battery_time">可续航6天，约<span class="time">144</span>小时</p>
-                </div>
-                <video class="video batteryVideo" src="./image/sos.mp4" autoplay='autoplay' muted='muted'></video>
-            </div>
-        </div>
-    </div>
+	<header>
+		<nav></nav>
+	</header>
+	<div id="animationOne" class="animationOne_zx">
+		<div id="containerOne">
+			<div id="words">
+				<span class="title">建造者智能安全帽</span>
+				<span class="dec">出色，必定与众不同</span>
+			</div>
+			<img src="./img/cat.png" id="imgDOM" />
+			<video src="./video/cat.mp4" id="videoDOM" muted="muted"></video>
+		</div>
+	</div>
+	<div id="animationTwo" class="animationTwo_zx">
+		<div id="wordsOne">Hello.</div>
+	</div>
+	<div class="ui_product_box">
+		<!-- sos -->
+		<div class="ui_product_content ui_sos_box">
+			<div class="introduce sos_introduce">
+				<h1 class="productTitle">是安全帽，更是守护者</h1>
+				<p class="productTxt">SOS一键呼救，快一秒拯救生命<br>危险区域电子围栏、安全帽脱落、坠落跌倒自动报警...<br>更全能的守护者，规避每一次意外</p>
+			</div>
+			<video class="video sosVideo" src="./video/sos.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+		<!-- 心率 -->
+		<div class="ui_product_content ui_heartRate_box">
+			<div class="introduce heartRate_introduce">
+				<h1 class="productTitle">你的健康，它能感应</h1>
+				<p class="productTxt">支持心电图检测，轻抬双手按住两侧心型按钮，一分钟<br>检查身体，降低高空作业风险，内置心率、体温等实时<br>传感器，健康情况了然于心</p><br>
+			</div>
+			<video class="video heartRateVideo" src="./video/sos.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+		<!-- 芯片 -->
+		<div class="ui_product_content ui_chip_box">
+			<div class="introduce chip_introduce">
+				<h1 class="productTitle">用芯片，探索智慧海洋</h1>
+				<p class="productTxt">重金研发高科技集成芯片，体积更轻盈，功能更集成。通过将人员行为数据化，<br>联动管理后台高效打造智慧工地</p>
+			</div>
+			<video class="video chipVideo" src="./video/sos.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+		<!-- 高精度定位 -->
+		<div class="ui_product_content ui_location_box">
+			<div class="introduce location_introduce">
+				<h1 class="productTitle">20cm高精度定位，重新<br>定义智能考勤</h1>
+				<p class="productTxt">
+					UWB技术最有利的优势是误差极小，建造者智能安全<br>帽使用了全新研发的UWB+GPS定位算法，将智能考勤<br>控制在分米级，打破行业定位误差5-20m的常规</p>
+			</div>
+			<video class="video locationVideo" src="./video/sos.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+		<!-- 电量 -->
+		<div class="ui_product_content ui_battery_box">
+			<div class="introduce battery_introduce">
+				<h1 class="productTitle">放肆用，超强电量告别焦虑</h1>
+				<p class="productTxt">
+					你的手机能撑多久？建造者智能安全帽可以续航6天。在考虑长续航的做法上，<br>采用低功耗通信模组+电池管理系统设计出的电池，轻巧、安全、可拆卸，更破<br>解了行业普遍续航4-6小时的困境，连一众老年机都甘拜下风
+				</p>
+				<p class="productTime battery_time">可续航6天，约<span class="time">144</span>小时</p>
+			</div>
+			<video class="video batteryVideo" src="./video/sos.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+	</div>
+	<!-- <div id="simpleBg"></div> -->
+	<!-- <div class="test"></div> -->
+	<div class="ui_footer_box">
+		<div class="ui_footer_centent">
+			<ul>
+				<li>
+					<p>产品</p>
+					<p>建筑内参</p>
+					<p>天天云志</p>
+					<p>智能安全帽</p>
+					<p>智安汇</p>
+				</li>
+				<li>
+					<p>应用场景</p>
+					<p>工地</p>
+					<p>铁路</p>
+					<p>高空</p>
+					<p>管道</p>
+				</li>
+				<li>
+					<p>技术支持</p>
+					<p>常见问题</p>
+					<p>问题反馈</p>
+					<p>联系我们</p>
+				</li>
+				<li>
+					<p>关于我们</p>
+					<p>在招职位</p>
+					<p>合作渠道</p>
+				</li>
+				<li>
+					<p>建造者</p>
+				</li>
+			</ul>
+			<div class="copyright">成都大汇智安科技有限公司 ©2019-2024 蜀ICP备19018089号-1</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" defer="defer">
+		//全局
+		$(() => {
+			setTimeout(() => {
 
-    <script>
-        let productContent = document.getElementsByClassName('ui_product_content'); // 获取产品介绍DOM
-        let productTitle = document.getElementsByClassName('productTitle'); // 获取sos标题DOM 
-        let productTxt = document.getElementsByClassName('productTxt'); // 获取产品介绍文案DOM
-        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
-        let intoOpa = 0; // 进入可视区域文案透明度初始值
-        let leaveOpa = 1; // 离开可视区域文案透明度初始值
-        // 改变内容透明度
-        function setEleOpacity(productcontentDom, i) {
-            let topHei = productcontentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-            if (topHei > 0 && topHei <= winHeight) {
-                // 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
-                intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
-                if (intoOpa > 1) {
-                    intoOpa = 1;
-                }
-                productcontentDom.style.opacity = intoOpa;
-            } else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
-                // 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
-                leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 2).toFixed(2);
-                productcontentDom.style.opacity = Math.abs(leaveOpa);
-            }
-        }
-        // 设置元素位移
-        function setEleTransform(titleDom, txtDom) {
-            let titleTopHei = titleDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-            // 设置标题移动
-            if (titleTopHei <= winHeight / 1.5) {
-                let titlehei = (winHeight / 1.5 - titleTopHei) * (128 / winHeight);
-                console.log(titlehei);
-                if (titlehei > 128) {
-                    titlehei = 128;
-                } else if (titlehei < 0) {
-                    titlehei = 0;
-                }
-                titleDom.style.transform = 'translateY(-' + titlehei + 'px)';
-                txtDom.style.transform = 'translateY(-' + titlehei + 'px)';
+				visibleWidth = $('#containerOne')[0].clientWidth;
+				visibleHeight = $('#containerOne')[0].clientHeight;
 
-            } else if (titleTopHei < winHeight && titleTopHei >= winHeight / 1.5) {
-                titleDom.style.transform = 'translateY(0px)';
-                txtDom.style.transform = 'translateY(0px)';
-            }
-        }
-        // 监听滚动事件、改变产品介绍DOM样式
-        window.addEventListener('scroll', (e) => {
-            // // 设置透明度
-            for (let i = 0; i < productContent.length; i++) {
-                const item = productContent[i];
-                setEleOpacity(item);
+				//动画一
+				animationOneHeight = $('#animationOne')[0].clientHeight;
+				heightDistanceOne = animationOneHeight - visibleHeight;
 
-            }
-            // // 设置位移
-            for (let j = 0; j < productTitle.length; j++) {
-                const item = productTitle[j]; // 标题DOM
-                const titItem = productTxt[j]; // 内容DOM
-                item.style.transform = 'translateY(0px)';
-                titItem.style.transform = 'translateY(0px)';
-                setEleTransform(item, titItem)
-            }
-            // 设置透明度
-            // for (let i = 0; i < productContent.length; i++) {
-            //     const dom = productContent[i];
-            //     let titleTopHei = dom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-            //     if (titleTopHei <= winHeight && titleTopHei > 0) {
-            //         // setEleOpacity(dom,titleTopHei);
-            //         setTranslateY(dom, titleTopHei);
-            //     }
-            // }
+				//动画二
+				animationTwoWordsHeight = animationTwoWordsDOM[0].clientHeight;
 
-        });
 
-        function setTranslateY(dom, topHei) {
-            let hei = 160 - (winHeight - topHei) / winHeight * 160;
-            console.log(winHeight - topHei);
-            let opa = (160 - hei) / 160 / 2;
-            dom.getElementsByClassName('productTitle')[0].style.transform = 'translateY(' + hei * 2 + 'px)';
-            dom.getElementsByClassName('productTitle')[0].style.opacity = opa;
-            dom.getElementsByClassName('productTxt')[0].style.transform = 'translateY(' + hei * 2 + 'px)';
-            dom.getElementsByClassName('productTxt')[0].style.opacity = opa;
-        }
-    </script>
+				scrollTop = getScrollTop();
+				animationOne();
+				animationTwo();
+			}, 0)
+		});
+		window.addEventListener('scroll', (e) => {
+			scrollTop = getScrollTop();
+			animationOne();
+			animationTwo();
+			animationThree();
+		});
+
+		//赵靖
+		let productContent = document.getElementsByClassName('ui_product_content'); // 获取产品介绍DOM
+		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+		let intoOpa = 0; // 进入可视区域文案透明度初始值
+		let leaveOpa = 1; // 离开可视区域文案透明度初始值
+		// 改变内容透明度
+		function setEleOpacity(productcontentDom) {
+			let topHei = productcontentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+			if (topHei > 0 && topHei <= winHeight) {
+				// 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
+				intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
+				if (intoOpa > 1) {
+					intoOpa = 1;
+				}
+				productcontentDom.style.opacity = intoOpa;
+			} else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
+				// 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
+				leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 1.5).toFixed(2);
+				productcontentDom.style.opacity = Math.abs(leaveOpa);
+			}
+		}
+		// 文字动效 - 移动
+		function setTransFormY(type, titleDom, txtDom, timeDom) {
+			if (type === 'add') {
+				if (!titleDom.classList.contains('tyo_animate')) {
+					titleDom.classList.add('tyo_animate');
+				}
+				if (!txtDom.classList.contains('tyo_animate')) {
+					txtDom.classList.add('tyo_animate');
+				}
+				if (timeDom && !timeDom.classList.contains('tyo_animate')) {
+					timeDom.classList.add('tyo_animate');
+				}
+			} else if (type === 'remove') {
+				if (titleDom.classList.contains('tyo_animate')) {
+					titleDom.classList.remove('tyo_animate');
+				}
+				if (txtDom.classList.contains('tyo_animate')) {
+					txtDom.classList.remove('tyo_animate');
+				}
+				if (timeDom && timeDom.classList.contains('tyo_animate')) {
+					timeDom.classList.remove('tyo_animate');
+				}
+			}
+		}
+		//产品介绍
+		function animationThree(){
+			// 设置透明度、文字移动
+			for (let i = 0; i < productContent.length; i++) {
+				const item = productContent[i];
+				let topHei = item.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+				let productTitle = item.getElementsByClassName('productTitle')[0]; // 获取标题文字节点
+				let productTxt = item.getElementsByClassName('productTxt')[0]; // 获取介绍文字节点
+				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
+				// 判断在产品介绍进入屏幕可视范围之内执行
+				if (topHei <= winHeight && topHei > 0) {
+					setEleOpacity(item);
+				}
+				// 设置文字移动
+				let titleTopHei = productTitle.getBoundingClientRect().top // 获取文字距离顶部高度
+				if (titleTopHei <= winHeight && titleTopHei > 0) {
+					setTransFormY('add', productTitle, productTxt, productTime);
+				} else if (titleTopHei > winHeight) {
+					setTransFormY('remove', productTitle, productTxt, productTime);
+				}
+			}
+		}
+
+		//周鑫
+		let scrollTop = null;
+		let visibleWidth, visibleHeight;
+
+		//动画一
+		let imgDOM = $("#imgDOM");
+		let wordsDOM = $("#words");
+		let videoDOM = $('#videoDOM');
+		let animationOneStatus = true;
+		let animationOneHeight, heightDistanceOne;
+
+		//动画二
+		let animationTwoWordsDOM = $('#wordsOne');
+		let animationTwoStatusOne = true;
+		let animationTwoStatusTwo = true;
+		let animationTwoTop, animationTwoWordsHeight;
+
+		//动画一
+		function animationOne() {
+			if (scrollTop >= 0 && scrollTop <= heightDistanceOne * 0.7) {
+				if (!animationOneStatus) {
+					return;
+				}
+				imgDOM[0].style.transform = 'translate(-50%,-50%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne * 100) + ')';
+				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) + 'vh)';
+				// wordsDOM[0].style.color = rgb(255,255,255);
+				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ')';
+			}
+			else {
+				if (!animationOneStatus) {
+					return;
+				}
+				animationOneStatus = false;
+				imgDOM[0].style.transform = 'translate(-50%,-50%) scale(1)';
+				wordsDOM[0].style.transform = 'translate(-50%,-39vh)';
+				wordsDOM[0].style.color = 'rgb(0,0,0)';
+				setTimeout(() => {
+					videoDOM[0].style.opacity = 1;
+					videoDOM[0].play();
+				}, 800);
+			}
+		}
+
+		//动画二
+		function animationTwo() {
+			animationTwoTop = animationTwoWordsDOM[0].getBoundingClientRect().top;
+			// if(animationTwoTop<=visibleHeight){
+			// 	if(Math.abs(animationTwoTop-visibleHeight)>animationTwoWordsHeight){
+			// 		animationTwoWordsDOM[0].style.opacity = 1;
+			// 	}
+			// 	else {
+			// 		animationTwoWordsDOM[0].style.opacity = 0.01*(Math.abs(animationTwoTop-visibleHeight)/animationTwoWordsHeight)*100;
+			// 	}
+			// }
+			// else {
+			// 	animationTwoWordsDOM[0].style.opacity = 0;
+			// }
+			if (animationTwoTop >= 0 && animationTwoTop <= visibleHeight) {
+
+				if ((animationTwoTop / visibleHeight) <= 0.9 && (animationTwoTop / visibleHeight) >= 0.6) {
+					if (!animationTwoStatusTwo) {
+						return;
+					}
+					animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%)';
+				}
+
+				if (animationTwoTop / visibleHeight < 0.5) {
+					if (!animationTwoStatusOne) {
+						return;
+					}
+					animationTwoStatusOne = false;
+					animationTwoStatusTwo = false;
+					let num = 0;
+					let interval = null;
+					interval = setInterval(() => {
+						num += 2;
+						if (num < 300) {
+							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 - num) + '%, #F7B500 ' + (300 - num) + '%)';
+						}
+						else if (num >= 300 && num <= 700) {
+							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' + (700 - num) + '%)';
+						}
+						else {
+							clearInterval(interval);
+							animationTwoStatusTwo = true;
+						}
+					}, 10);
+				}
+			}
+		}
+
+		//获取滚动条高度
+		function getScrollTop() {
+			let scrollTop = 0;
+			if (document.documentElement && document.documentElement.scrollTop) {
+				scrollTop = document.documentElement.scrollTop;
+			} else if (document.body) {
+				scrollTop = document.body.scrollTop;
+			}
+			return scrollTop;
+		}
+	</script>
 </body>
 
 </html>

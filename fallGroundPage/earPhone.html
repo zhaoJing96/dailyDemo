@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落地页-耳机介绍</title>
+    <link rel="stylesheet/less" type="text/css" href="./css/index.less" />
+</head>
+
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
+    <div class="ui_container">
+        <div class="ui_ear_box">
+            <div class="introduce">
+                <h1 class="title">按它，接听世界的声音</h1>
+                <p class="txt">一键群组对话和全新留言回听，不错过重要语音，外置<br>可调节软胶耳机，透气安全又适耳，清晰分辨环境音，<br>防患于未然</p>
+            </div>
+            <img src="./img/earImg.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        let productContent = document.getElementsByClassName('ui_ear_box'); // 获取产品介绍DOM
+        let productTitle = document.getElementsByClassName('title'); // 获取sos标题DOM 
+        let productTxt = document.getElementsByClassName('txt'); // 获取产品介绍文案DOM
+        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+        let intoOpa = 0; // 进入可视区域文案透明度初始值
+        let leaveOpa = 1; // 离开可视区域文案透明度初始值
+        // 改变内容透明度
+        function setEleOpacity(productcontentDom) {
+            let topHei = productcontentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            if (topHei > 0 && topHei <= winHeight) {
+                // 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
+                intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
+                if (intoOpa > 1) {
+                    intoOpa = 1;
+                }
+                productcontentDom.style.opacity = intoOpa;
+            } else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
+                // 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
+                leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 2).toFixed(2);
+                productcontentDom.style.opacity = Math.abs(leaveOpa);
+            }
+        }
+        // 设置元素位移
+        function setEleTransform(dom) {
+            let titleTopHei = dom.getElementsByClassName('productTitle')[0].getBoundingClientRect()
+            .top; // 动态获取DOM距离顶部的距离
+            // 设置标题移动
+            if (titleTopHei <= winHeight / 1.5) {
+                let titlehei = (winHeight / 1.5 - titleTopHei) * (128 / winHeight);
+                if (titlehei > 128) {
+                    titlehei = 128;
+                } else if (titlehei < 0) {
+                    titlehei = 0;
+                }
+                dom.getElementsByClassName('productTitle')[0].style.transform = 'translateY(-' + titlehei + 'px)';
+                dom.getElementsByClassName('productTxt')[0].style.transform = 'translateY(-' + titlehei + 'px)';
+
+            } else if (titleTopHei < winHeight && titleTopHei >= winHeight / 1.5) {
+                dom.getElementsByClassName('productTitle')[0].style.transform = 'translateY(0px)';
+                dom.getElementsByClassName('productTxt')[0].style.transform = 'translateY(0px)';
+            }
+        }
+        // 监听滚动事件、改变产品介绍DOM样式
+        window.addEventListener('scroll', (e) => {
+            // 设置透明度、文字移动
+            for (let i = 0; i < productContent.length; i++) {
+                const item = productContent[i];
+                let topHei = item.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+                let productTitle = item.getElementsByClassName('productTitle')[0]; // 获取标题文字节点
+                let productTxt = item.getElementsByClassName('productTxt')[0]; // 获取介绍文字节点
+                // 判断在产品介绍进入屏幕可视范围之内执行
+                if (topHei <= winHeight && topHei > 0) {
+                    item.getElementsByClassName('productTitle')[0].style.transform =
+                    'translateY(0px)'; // 初始化标题文字位置
+                    item.getElementsByClassName('productTxt')[0].style.transform =
+                    'translateY(0px)'; // 初始化介绍文字位置
+                    setEleOpacity(item);
+                    setEleTransform(item);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
