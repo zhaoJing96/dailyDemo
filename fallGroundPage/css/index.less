@@ -4,11 +4,12 @@
 }
 
 .ui_container {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     background-color: #ffffff
 }
 
+// 介绍文字公共样式
 .introduce {
     color: #ffffff;
 
@@ -30,7 +31,19 @@
         transform: translateY(90px);
         opacity: 0;
     }
+}
 
+// 公共动效
+// 上移、透明度改变
+.tyo_animate {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+// 动效初始值
+.tyo_animate_init {
+    transform: translateY(90px);
+    opacity: 0;
 }
 
 .ui_product_box {
@@ -41,21 +54,8 @@
     justify-content: center;
     flex-direction: column;
 
-    // 公共动效
-    // 上移、透明度改变
-    .tyo_animate {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-    }
-
-    // 动效初始值
-    .tyo_animate_init {
-        transform: translateY(90px);
-        opacity: 0;
-    }
-
     // 公共方法
-    .ui_product_content {
+    .ui_content_box {
         width: 1200px;
         padding: 208px 0;
         margin: 0 auto;
@@ -160,28 +160,25 @@
     }
 }
 
-.ui_ear_box{
+// 耳机介绍
+.ui_ear_box {
     width: 100%;
     background-color: #ffffff;
     height: 100vh;
     position: relative;
-    img{
+    display: flex;
+    align-items: center;
+
+    img {
         width: 50%;
-        // height: 100%;
         position: absolute;
         right: 0;
         bottom: 0;
     }
-    .introduce{
-        position: absolute;
-        left: 0;
-        width: 50%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        justify-items: flex-end;
-        height: 100%;
+
+    .ear_introduce {
+        width: 1200px;
+        margin: 0 auto;
         color: #000000 !important;
     }
 }
