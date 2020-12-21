@@ -90,15 +90,14 @@
             // 设置标题移动
             if (titleTopHei <= winHeight / 1.5) {
                 let titlehei = (winHeight / 1.5 - titleTopHei) * (128 / winHeight);
-                if (titlehei > 64) {
-                    titlehei = 64;
+                console.log(titlehei);
+                if (titlehei > 128) {
+                    titlehei = 128;
                 } else if (titlehei < 0) {
                     titlehei = 0;
                 }
                 titleDom.style.transform = 'translateY(-' + titlehei + 'px)';
                 txtDom.style.transform = 'translateY(-' + titlehei + 'px)';
-                // titleDom.style.transform = 'translateY(-32px)';
-                // txtDom.style.transform = 'translateY(-32px)';
 
             } else if (titleTopHei < winHeight && titleTopHei >= winHeight / 1.5) {
                 titleDom.style.transform = 'translateY(0px)';
@@ -108,39 +107,38 @@
         // 监听滚动事件、改变产品介绍DOM样式
         window.addEventListener('scroll', (e) => {
             // // 设置透明度
-            // for (let i = 0; i < productContent.length; i++) {
-            //     const item = productContent[i];
-            //     setEleOpacity(item);
-
-            // }
-            // // 设置位移
-            // for (let j = 0; j < productTitle.length; j++) {
-            //     const item = productTitle[j]; // 标题DOM
-            //     const titItem = productTxt[j]; // 内容DOM
-            //     item.style.transform = 'translateY(0px)';
-            //     titItem.style.transform = 'translateY(0px)';
-            //     setEleTransform(item, titItem)
-            // }
-            // 设置透明度
             for (let i = 0; i < productContent.length; i++) {
-                const dom = productContent[i];
-                let titleTopHei = dom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-                if (titleTopHei <= winHeight && titleTopHei > 0) {
-                    // setEleOpacity(dom,titleTopHei);
-                    setTranslateY(dom, titleTopHei);
-                }
+                const item = productContent[i];
+                setEleOpacity(item);
+
             }
+            // // 设置位移
+            for (let j = 0; j < productTitle.length; j++) {
+                const item = productTitle[j]; // 标题DOM
+                const titItem = productTxt[j]; // 内容DOM
+                item.style.transform = 'translateY(0px)';
+                titItem.style.transform = 'translateY(0px)';
+                setEleTransform(item, titItem)
+            }
+            // 设置透明度
+            // for (let i = 0; i < productContent.length; i++) {
+            //     const dom = productContent[i];
+            //     let titleTopHei = dom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            //     if (titleTopHei <= winHeight && titleTopHei > 0) {
+            //         // setEleOpacity(dom,titleTopHei);
+            //         setTranslateY(dom, titleTopHei);
+            //     }
+            // }
 
         });
 
         function setTranslateY(dom, topHei) {
-            let hei = 160 - (winHeight - topHei) / winHeight * 80 * 2;
-            let opa = (winHeight - topHei) / winHeight;
-            opa = opa < 0 ? 0 : opa > 1 ? 1 : opa;
-            console.log(hei);
-            dom.getElementsByClassName('productTitle')[0].style.transform = 'translateY(' + hei + 'px)';
+            let hei = 160 - (winHeight - topHei) / winHeight * 160;
+            console.log(winHeight - topHei);
+            let opa = (160 - hei) / 160 / 2;
+            dom.getElementsByClassName('productTitle')[0].style.transform = 'translateY(' + hei * 2 + 'px)';
             dom.getElementsByClassName('productTitle')[0].style.opacity = opa;
-            dom.getElementsByClassName('productTxt')[0].style.transform = 'translateY(' + hei + 'px)';
+            dom.getElementsByClassName('productTxt')[0].style.transform = 'translateY(' + hei * 2 + 'px)';
             dom.getElementsByClassName('productTxt')[0].style.opacity = opa;
         }
     </script>
