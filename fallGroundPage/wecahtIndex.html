@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落地页-智安汇小程序介绍</title>
+    <link rel="stylesheet/less" type="text/css" href="./css/index.less" />
+</head>
+
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
+    <div class="ui_container">
+        <div style="height: 3000px;"></div>
+        <div class="ui_wechat_box">
+            <div class="ui_wechat_content">
+                <div class="introduce">
+                    <h1 class="title">小空间容纳大世界</h1>
+                    <p class="txt">智安汇小程序界面清晰易操作，可轻松创建工作组，<br>随时随地管理多个项目，这一点，业内几乎无人匹敌</p>
+                </div>
+                <div class="ui_banner_box">
+                    <div class="phone_box">
+                        <div class="phone_border"></div>
+                        <div class="banner_box">
+                            <img class="bannerImg" src="./img/img_iphone01.png" alt="">
+                            <img class="bannerImg" src="./img/img_iphone02.png" alt="">
+                            <img class="bannerImg" src="./img/img_iphone03.png" alt="">
+                        </div>
+                    </div>
+                    <img class="tipsImg" src="./img/fonts_01.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div style="height: 3000px;"></div>
+    </div>
+
+    <script>
+        let wechatContent = document.getElementsByClassName('ui_wechat_content')[0]; // 获取小程序内容DOM
+        let wechatBox = document.getElementsByClassName('ui_wechat_box')[0]; // 获取产品介绍DOM
+        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+        // 设置小程序元素位移
+        function setTransFormY(type, titleDom, txtDom) {
+            if (type === 'add') {
+                if (!titleDom.classList.contains('tyo_animate')) {
+                    titleDom.classList.add('tyo_animate');
+                }
+                if (!txtDom.classList.contains('tyo_animate')) {
+                    txtDom.classList.add('tyo_animate');
+                }
+            } else if (type === 'remove') {
+                if (titleDom.classList.contains('tyo_animate')) {
+                    titleDom.classList.remove('tyo_animate');
+                }
+                if (txtDom.classList.contains('tyo_animate')) {
+                    txtDom.classList.remove('tyo_animate');
+                }
+            }
+        }
+        // 监听滚动事件、改变产品介绍DOM样式
+        window.addEventListener('scroll', (e) => {
+            // 微信小程序
+            let topHei = wechatContent.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            let wechatTitle = wechatContent.getElementsByClassName('title')[0]; // 获取标题文字节点
+            let wechatTxt = wechatContent.getElementsByClassName('txt')[0]; // 获取介绍文字节点
+            let bannerImg = wechatContent.getElementsByClassName('bannerImg'); // 获取轮播节点
+            // 设置文字移动
+            let titleTopHei = wechatTitle.getBoundingClientRect().top // 获取文字距离顶部高度
+            if (titleTopHei <= winHeight && titleTopHei > 0) {
+                setTransFormY('add', wechatTitle, wechatTxt);
+            } else if (titleTopHei > winHeight) {
+                setTransFormY('remove', wechatTitle, wechatTxt);
+            }
+            let wechatBoxTop = wechatBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            let translateYOne = 'translateY(' + (667.43 * (wechatBoxTop / (winHeight / 3))) + 'px)';
+            let translateYTwo = 'translateY(' + (667.43 * ((wechatBoxTop + winHeight / 3) / (winHeight / 3))) + 'px)';
+            if (wechatBoxTop <= 0 && wechatBoxTop > -winHeight / 3) {
+                bannerImg[0].style.transform = translateYOne;
+                bannerImg[1].style.transform = 'translateY(0)';
+            } else if (wechatBoxTop <= -winHeight / 3 && wechatBoxTop > -winHeight / 3 * 2) {
+                bannerImg[1].style.transform = translateYTwo;
+                bannerImg[0].style.transform = 'translateY(-657.43px)';
+            } else if (wechatBoxTop < -winHeight) {
+                bannerImg[2].style.transform = 'translateY(0px)';
+                bannerImg[1].style.transform = 'translateY(-657.43px)';
+            } else if (wechatBoxTop > 0) {
+                bannerImg[0].style.transform = 'translateY(0px)';
+                bannerImg[1].style.transform = 'translateY(0px)';
+                bannerImg[2].style.transform = 'translateY(0px)';
+            }
+        });
+    </script>
+</body>
+
+</html>
