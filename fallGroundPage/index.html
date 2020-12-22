@@ -84,6 +84,27 @@
 		</div>
 		<img src="./img/earImg.png" alt="">
 	</div>
+	<!-- 咨询 -->
+	<div class="ui_consult_box">
+		<div class="ui_consult_content">
+			<div class="form_box">
+				<div class="item">
+					<span class="label">*姓名</span>
+					<input type="text" placeholder="您的姓名">
+				</div>
+				<div class="item">
+					<span class="label">*手机</span>
+					<input type="text" placeholder="您的手机号">
+				</div>
+				<div class="item">
+					<span class="label">订购数量</span>
+					<input type="text" value="1">
+				</div>
+				<button class='submit'>免费咨询</button>
+			</div>
+			<p>*您的隐私将受严格保护</p>
+		</div>
+	</div>
 	<!-- <div id="simpleBg"></div> -->
 	<!-- <div class="test"></div> -->
 	<!-- 咨询 -->
@@ -185,73 +206,73 @@
 
 		//赵靖
 		let content = document.getElementsByClassName('ui_content_box'); // 获取产品介绍DOM
-        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
-        let intoOpa = 0; // 进入可视区域文案透明度初始值
-        let leaveOpa = 1; // 离开可视区域文案透明度初始值
+		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+		let intoOpa = 0; // 进入可视区域文案透明度初始值
+		let leaveOpa = 1; // 离开可视区域文案透明度初始值
 		// 改变内容透明度
 		function setEleOpacity(contentDom) {
-            let topHei = contentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-            if (topHei > 0 && topHei <= winHeight) {
-                // 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
-                intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
-                if (intoOpa > 1) {
-                    intoOpa = 1;
-                }
-                contentDom.style.opacity = intoOpa;
-            } else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
-                // 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
-                leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 1.5).toFixed(2);
-                contentDom.style.opacity = Math.abs(leaveOpa);
-            }
-        }
+			let topHei = contentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+			if (topHei > 0 && topHei <= winHeight) {
+				// 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
+				intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
+				if (intoOpa > 1) {
+					intoOpa = 1;
+				}
+				contentDom.style.opacity = intoOpa;
+			} else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
+				// 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
+				leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 1.5).toFixed(2);
+				contentDom.style.opacity = Math.abs(leaveOpa);
+			}
+		}
 		// 文字动效 - 移动
 		function setTransFormY(type, titleDom, txtDom, timeDom) {
-            if (type === 'add') {
-                if (!titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.add('tyo_animate');
-                }
-                if (!txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.add('tyo_animate');
-                }
-                if (timeDom && !timeDom.classList.contains('tyo_animate')) {
-                    timeDom.classList.add('tyo_animate');
-                }
-            } else if (type === 'remove') {
-                if (titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.remove('tyo_animate');
-                }
-                if (txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.remove('tyo_animate');
-                }
-                if (timeDom && timeDom.classList.contains('tyo_animate')) {
-                    timeDom.classList.remove('tyo_animate');
-                }
-            }
-        }
+			if (type === 'add') {
+				if (!titleDom.classList.contains('tyo_animate')) {
+					titleDom.classList.add('tyo_animate');
+				}
+				if (!txtDom.classList.contains('tyo_animate')) {
+					txtDom.classList.add('tyo_animate');
+				}
+				if (timeDom && !timeDom.classList.contains('tyo_animate')) {
+					timeDom.classList.add('tyo_animate');
+				}
+			} else if (type === 'remove') {
+				if (titleDom.classList.contains('tyo_animate')) {
+					titleDom.classList.remove('tyo_animate');
+				}
+				if (txtDom.classList.contains('tyo_animate')) {
+					txtDom.classList.remove('tyo_animate');
+				}
+				if (timeDom && timeDom.classList.contains('tyo_animate')) {
+					timeDom.classList.remove('tyo_animate');
+				}
+			}
+		}
 		// 产品介绍
 		// 文字上移和透明度动画
-        function wordsOrOpacityAnimation() {
-            // 设置透明度、文字移动
-            for (let i = 0; i < content.length; i++) {
-                const item = content[i];
-                console.log(item);
-                let topHei = item.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-                let title = item.getElementsByClassName('title')[0]; // 获取标题文字节点
-                let txt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-                let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
-                // 判断在产品介绍进入屏幕可视范围之内执行
-                if (topHei <= winHeight && topHei > 0) {
-                    setEleOpacity(item);
-                }
-                // 设置文字移动
-                let titleTopHei = title.getBoundingClientRect().top // 获取文字距离顶部高度
-                if (titleTopHei <= winHeight && titleTopHei > 0) {
-                    setTransFormY('add', title, txt, productTime);
-                } else if (titleTopHei > winHeight) {
-                    setTransFormY('remove', title, txt, productTime);
-                }
-            }
-        }
+		function wordsOrOpacityAnimation() {
+			// 设置透明度、文字移动
+			for (let i = 0; i < content.length; i++) {
+				const item = content[i];
+				console.log(item);
+				let topHei = item.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+				let title = item.getElementsByClassName('title')[0]; // 获取标题文字节点
+				let txt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
+				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
+				// 判断在产品介绍进入屏幕可视范围之内执行
+				if (topHei <= winHeight && topHei > 0) {
+					setEleOpacity(item);
+				}
+				// 设置文字移动
+				let titleTopHei = title.getBoundingClientRect().top // 获取文字距离顶部高度
+				if (titleTopHei <= winHeight && titleTopHei > 0) {
+					setTransFormY('add', title, txt, productTime);
+				} else if (titleTopHei > winHeight) {
+					setTransFormY('remove', title, txt, productTime);
+				}
+			}
+		}
 
 		//周鑫
 		let scrollTop = null;
@@ -276,12 +297,15 @@
 				if (!animationOneStatus) {
 					return;
 				}
-				imgDOM[0].style.transform = 'translate(-50%,-50%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne * 100) + ')';
-				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) + 'vh)';
+				imgDOM[0].style.transform = 'translate(-50%,-50%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne *
+					100) + ')';
+				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) +
+					'vh)';
 				// wordsDOM[0].style.color = rgb(255,255,255);
-				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ')';
-			}
-			else {
+				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 -
+					3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne *
+					100) + ')';
+			} else {
 				if (!animationOneStatus) {
 					return;
 				}
@@ -316,7 +340,9 @@
 					if (!animationTwoStatusTwo) {
 						return;
 					}
-					animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%)';
+					animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 -
+						6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 *
+						(animationTwoTop / visibleHeight * 100))) + '%)';
 				}
 
 				if (animationTwoTop / visibleHeight < 0.5) {
@@ -330,12 +356,14 @@
 					interval = setInterval(() => {
 						num += 2;
 						if (num < 300) {
-							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 - num) + '%, #F7B500 ' + (300 - num) + '%)';
-						}
-						else if (num >= 300 && num <= 700) {
-							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' + (700 - num) + '%)';
-						}
-						else {
+							animationTwoWordsDOM[0].style.backgroundImage =
+								'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 -
+									num) + '%, #F7B500 ' + (300 - num) + '%)';
+						} else if (num >= 300 && num <= 700) {
+							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (
+									400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) +
+								'%, #ffffff ' + (700 - num) + '%)';
+						} else {
 							clearInterval(interval);
 							animationTwoStatusTwo = true;
 						}
