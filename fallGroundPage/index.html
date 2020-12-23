@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>落地页</title>
+	<title></title>
 	<link rel="stylesheet/less" type="text/css" href="./css/index_zx.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
@@ -185,10 +185,12 @@
 	</div>
 	<!-- 动画五 -->
 	<div id="animationFive" class="animationFive_zx">
-		<div class="title" id="animationFiveTitle">两大软件平台，抓住智能风口</div>
-		<div class="container">
-			<img src="./img/img_pingtai1@2x.png" alt="" id="animationFiveImgOne">
-			<img src="./img/img_pingtai2@2x.png" alt="" id="animationFiveImgTwo">
+		<div id="containerFive">
+			<div class="title" id="animationFiveTitle">两大软件平台，抓住智能风口</div>
+			<div class="container">
+				<img src="./img/img_pingtai1@2x.png" alt="" id="animationFiveImgOne">
+				<img src="./img/img_pingtai2@2x.png" alt="" id="animationFiveImgTwo">
+			</div>
 		</div>
 	</div>
 	<!-- 3D可视化模型，展示数据的实力派 -->
@@ -351,9 +353,6 @@
 				animationOneHeight = $('#animationOne')[0].clientHeight;
 				heightDistanceOne = animationOneHeight - visibleHeight;
 
-				//动画二
-				animationTwoWordsHeight = animationTwoWordsOneDOM[0].clientHeight;
-
 
 				scrollTop = getScrollTop();
 				animationOne();
@@ -365,7 +364,9 @@
 			animationTwo();
 			animationFour();
 			animationFive();
+			animationSix();
 
+			productAnimation();
 			wordsOrOpacityAnimation();
 			earAnimation();
 			wechatAnimation();
@@ -375,7 +376,8 @@
 
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
-		let content = document.getElementsByClassName('ui_content_box'); // 获取产品介绍DOM，需设置透明度、文字移动内容
+		let productBox = document.getElementsByClassName('ui_product_box')[0]; // 获取产品介绍box
+		let content = document.getElementsByClassName('ui_content_box'); // 获取产品介绍内容DOM，需设置透明度、文字移动内容
 		let shadowBoxTop = document.getElementsByClassName('shadowBox_top')[0]; // 获取底部阴影Box
 		let shadowBoxBottom = document.getElementsByClassName('shadowBox_bottom')[0]; // 获取底部阴影Box
 		shadowBoxTop.style.height = winHeight / 3 + 'px';
@@ -444,6 +446,16 @@
 				if (dom && dom.classList.contains('tyo_animate')) {
 					dom.classList.remove('tyo_animate');
 				}
+			}
+		}
+		// 产品透明度动画
+		function productAnimation() {
+			let productTopHei = productBox.getBoundingClientRect().top // 获取文字距离顶部高度
+			// 设置文字移动
+			if (productTopHei <= winHeight && productTopHei <= winHeight / 2) {
+				leaveOpa = 1 - (((winHeight - Math.abs(productTopHei)) / winHeight) * 2).toFixed(2);
+				let content = productBox.getElementsByClassName('ui_content_box')[0];
+				content.style.opacity = Math.abs(leaveOpa);
 			}
 		}
 		// 文字上移、透明度动画
@@ -554,11 +566,13 @@
 		let visibleWidth, visibleHeight;
 
 		//动画一
+		let animationOneDOM = $("#animationOne");
 		let imgDOM = $("#imgDOM");
 		let wordsDOM = $("#words");
 		let videoDOM = $('#videoDOM');
 		let animationOneStatus = true;
 		let animationOneHeight, heightDistanceOne;
+		let animationOneTop;
 
 		//动画二
 		let animationTwoWordsOneDOM = $('#animationTwoWordsOne');
@@ -586,56 +600,22 @@
 		let animationFiveImgOneDOM = $("#animationFiveImgOne");
 		let animationFiveImgTwoDOM = $("#animationFiveImgTwo");
 
+		//动画六
+		let animationSixItemDOM = $('.ui_manage_box .item h3');
+
 		//动画一
 		function animationOne() {
-			// if (scrollTop >=visibleHeight*0.37*0/6&&scrollTop<=visibleHeight*0.37*1/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgOne');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsOne');
-			// 	} else if (scrollTop > visibleHeight*0.37*1/6 && scrollTop <=visibleHeight*0.37*2/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgTwo');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsTwo');
-			// 	} else if (scrollTop > visibleHeight*0.37*2/6 && scrollTop <=visibleHeight*0.37*3/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgThree');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsThree');
-			// 	} else if (scrollTop > visibleHeight*0.37*3/6 && scrollTop <= visibleHeight*0.37*4/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgFour');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsFour');
-			// 	} else if (scrollTop > visibleHeight*0.37*4/6 && scrollTop <= visibleHeight*0.37*5/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgFive');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsFive');
-			// 	} else if (scrollTop > visibleHeight*0.37*5/6 && scrollTop <= visibleHeight*0.37*6/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgSix');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsSix');
-			// 	} else if (scrollTop > visibleHeight*0.37*6/6) {
-			// 		imgDOM.removeClass();
-			// 		imgDOM.addClass('imgSix');
-			// 		wordsDOM.removeClass();
-			// 		wordsDOM.addClass('wordsSix');
-			// 	}
-			if (scrollTop >= 0 && scrollTop <= heightDistanceOne * 0.7) {
+			animationOneTop = animationOneDOM[0].getBoundingClientRect().top;
+			if (animationOneTop <= 64 && animationOneTop / visibleHeight > -1.4) {
 				if (!animationOneStatus) {
 					return;
 				}
-				imgDOM[0].style.transform = 'translate(-50%,-' + (5 + 0.6428 * scrollTop / heightDistanceOne * 100) +
-					'%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne * 100) + ')';
-				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) +
-					'vh)';
-				// wordsDOM[0].style.color = rgb(255,255,255);
-				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 -
-					3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne *
-					100) + ')';
+				imgDOM[0].style.transform = 'translate(-50%,-' + (5 - 32.1428 * (animationOneTop / visibleHeight)) +
+					'%) scale(' + (10 + 6.4285 * (animationOneTop / visibleHeight)) + ')';
+				wordsDOM[0].style.transform = 'translate(-50%,-' + (4 - 25 * (animationOneTop / visibleHeight)) + 'vh)';
+				wordsDOM[0].style.color = 'rgb(' + (255 + 182.1428 * (animationOneTop / visibleHeight)) + ',' + (255 +
+					182.1428 * (animationOneTop / visibleHeight)) + ',' + (255 + 182.1428 * (animationOneTop /
+					visibleHeight)) + ')';
 			} else {
 				if (!animationOneStatus) {
 					return;
@@ -647,8 +627,31 @@
 				setTimeout(() => {
 					videoDOM[0].style.opacity = 1;
 					videoDOM[0].play();
-				}, 500);
+				}, 400);
 			}
+			// if (scrollTop >= 0 && scrollTop <= heightDistanceOne * 0.7) {
+			// 	if (!animationOneStatus) {
+			// 		return;
+			// 	}
+			// 	imgDOM[0].style.transform = 'translate(-50%,-'+(5 + 0.6428 * scrollTop / heightDistanceOne * 100)+'%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne * 100) + ')';
+			// 	wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) + 'vh)';
+			// 	wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ')';
+			// }
+			// else {
+			// 	if (!animationOneStatus) {
+			// 		return;
+			// 	}
+			// 	animationOneStatus = false;
+			// 	imgDOM[0].style.transform = 'translate(-50%,-50%) scale(1)';
+			// 	wordsDOM[0].style.transform = 'translate(-50%,-39vh)';
+			// 	wordsDOM[0].style.color = 'rgb(0,0,0)';
+			// 	setTimeout(() => {
+			// 		videoDOM[0].style.opacity = 1;
+			// 		videoDOM[0].play();
+			// 	}, 500);
+			// }
+
+
 		}
 
 		//动画二
@@ -790,23 +793,78 @@
 		//动画五
 		function animationFive() {
 
-			// 设置文字移动
 
-			let titleTopHei = animationFiveImgTitleDOM[0].getBoundingClientRect().top // 获取文字距离顶部高度
-			if (titleTopHei <= winHeight && titleTopHei > 0) {
-				setTransFormY('add', animationFiveImgTitleDOM[0]);
-			} else if (titleTopHei > winHeight) {
-				setTransFormY('remove', animationFiveImgTitleDOM[0]);
-			}
+			setTxtTranslateY(animationFiveImgTitleDOM[0]);
+
 
 			animationFiveTop = animationFiveDOM[0].getBoundingClientRect().top;
-			if (animationFiveTop <= 64) {
+			if (animationFiveTop < (-visibleHeight * 0.5)) {
 				animationFiveImgOneDOM[0].style.transform = 'translateX(-60%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(60%)';
-			} else {
+			} else if (animationFiveTop <= 0 && animationFiveTop >= (-visibleHeight * 0.5)) {
+				animationFiveImgOneDOM[0].style.transform = 'translateX(-' + (-1.2 * (animationFiveTop / visibleHeight) *
+					100) + '%)';
+				animationFiveImgTwoDOM[0].style.transform = 'translateX(' + (-1.2 * (animationFiveTop / visibleHeight) *
+					100) + '%)';
+			} else if (animationFiveTop > 0) {
 				animationFiveImgOneDOM[0].style.transform = 'translateX(0%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(0%)';
 			}
+
+			// if(animationFiveTop<=64){
+			// 	animationFiveImgOneDOM[0].style.transform = 'translateX(-60%)';
+			// 	animationFiveImgTwoDOM[0].style.transform = 'translateX(60%)';
+			// }
+			// else {
+			// 	animationFiveImgOneDOM[0].style.transform = 'translateX(0%)';
+			// 	animationFiveImgTwoDOM[0].style.transform = 'translateX(0%)';
+			// }
+		}
+
+		//动画六
+		function animationSix() {
+			// for(let i = 0;i<animationSixItemDOM.length;i++){
+			// 	wordsGradient(animationSixItemDOM[i],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
+			// }
+
+			wordsGradient(animationSixItemDOM[0], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[1], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[2], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[3], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[4], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[5], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
+		}
+
+		//文字颜色渐变
+		function wordsGradient(DOM, FC, SC, TC, EC) {
+			let topDistance = DOM.getBoundingClientRect().top;
+
+			// 三色渐变
+			// if(topDistance/visibleHeight<0.2){
+			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (-200) + '%, '+SC+' ' + (-100) + '%, '+TC+' ' + (0) + '%)';
+			// }
+			// else if(topDistance/visibleHeight>=0.2&&topDistance/visibleHeight<=0.8){
+			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100 - (400-5 * (topDistance / visibleHeight * 100))) + '%, '+SC+' ' + (200 - (400-5 * (topDistance / visibleHeight * 100))) + '%, '+TC+' ' + (300 - (400-5 * (topDistance / visibleHeight * 100))) + '%)';
+			// }
+			// else if(topDistance/visibleHeight>0.8){
+			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%)';
+			// }
+
+			//四色渐变
+			if (topDistance / visibleHeight < 0.2) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (-300) + '%, ' + SC + ' ' + (-200) +
+					'%, ' + TC + ' ' + (-100) + '%, ' + EC + ' ' + (0) + '%)';
+			} else if (topDistance / visibleHeight >= 0.2 && topDistance / visibleHeight <= 0.8) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100 - (533.3333 - 6.6666 * (topDistance /
+						visibleHeight * 100))) + '%, ' + SC + ' ' + (200 - (533.3333 - 6.6666 * (topDistance / visibleHeight *
+						100))) + '%, ' + TC + ' ' + (300 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) +
+					'%, ' + EC + ' ' + (400 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) + '%)';
+			} else if (topDistance / visibleHeight > 0.8) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100) + '%, ' + SC + ' ' + (200) + '%, ' +
+					TC + ' ' + (300) + '%, ' + EC + ' ' + (400) + '%)';
+			}
+
 		}
 
 		//获取滚动条高度
