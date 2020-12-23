@@ -69,7 +69,6 @@
     // sos介绍
     .ui_sos_box {
         width: 1200px;
-        height: 600px;
         display: flex;
         align-items: center;
         position: relative;
@@ -85,7 +84,6 @@
     // 心率介绍
     .ui_heartRate_box {
         width: 1200px;
-        height: 600px;
         display: flex;
         align-items: flex-start;
         position: relative;
@@ -112,7 +110,6 @@
     // 高的精度定位介绍
     .ui_location_box {
         width: 1200px;
-        height: 600px;
         display: flex;
         align-items: flex-start;
         position: relative;
@@ -251,42 +248,6 @@
     }
 }
 
-// 软件平台
-.ui_software_box {
-    width: 100%;
-    background-color: #ffffff;
-    text-align: center;
-    padding-top: 260px;
-    box-sizing: border-box;
-    overflow: hidden;
-
-    h1 {
-        font-size: 64px;
-        line-height: 64px;
-        margin-bottom: 120px;
-    }
-
-    .ui_software_content {
-        width: 1200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-
-        .left,
-        .right {
-            width: 347.05px;
-            height: 706.2px;
-            border: 1px solid;
-            margin-bottom: -134px;
-        }
-
-        .left {
-            margin-right: 62px;
-        }
-    }
-}
-
 // 小程序介绍
 .ui_wechat_box {
     width: 100%;
@@ -311,15 +272,11 @@
             h1 {
                 font-size: 40px;
                 margin-bottom: 40px;
-                transform: translateY(90px);
-                opacity: 0;
             }
 
             p {
                 font-size: 20px;
                 line-height: 32px;
-                transform: translateY(90px);
-                opacity: 0;
             }
         }
 
@@ -352,7 +309,6 @@
                 .banner_box {
                     width: 298.57px;
                     height: 647.43px;
-                    // font-size: 0;
                     position: absolute;
                     z-index: 1;
                     right: calc(50% - 298.57px / 2);
@@ -384,9 +340,23 @@
                 }
             }
 
-            .tipsImg {
+            .tipsBox {
+                width: 130px;
+                height: 148px;
+                overflow: hidden;
                 margin-left: 35px;
+                position: relative;
+
+                .tipsImg {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 130px;
+                    height: 148px;
+                    opacity: 0;
+                }
             }
+
         }
     }
 }

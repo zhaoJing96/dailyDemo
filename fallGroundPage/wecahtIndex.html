@@ -11,7 +11,7 @@
 <body>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
     <div class="ui_container">
-        <div style="height: 3000px;"></div>
+        <div style="height: 3000px; background-color: blueviolet;"></div>
         <div class="ui_wechat_box">
             <div class="ui_wechat_content">
                 <div class="introduce">
@@ -27,7 +27,10 @@
                             <img class="bannerImg" src="./img/img_iphone03.png" alt="">
                         </div>
                     </div>
-                    <img class="tipsImg" src="./img/fonts_01.png" alt="">
+                    <div class="tipsBox">
+                        <img class="tipsImg" src="./img/fonts_01.png" alt="">
+                        <img class="tipsImg" src="./img/fonts_02.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,21 +40,22 @@
     <script>
         let wechatContent = document.getElementsByClassName('ui_wechat_content')[0]; // 获取小程序内容DOM
         let wechatBox = document.getElementsByClassName('ui_wechat_box')[0]; // 获取产品介绍DOM
+        let tipsImg = document.getElementsByClassName('tipsImg'); // 获取tipsDOM
         let winHeight = window.innerHeight; // 获取屏幕可视区域高度
         // 设置小程序元素位移
         function setTransFormY(type, titleDom, txtDom) {
             if (type === 'add') {
-                if (!titleDom.classList.contains('tyo_animate')) {
+                if (titleDom && !titleDom.classList.contains('tyo_animate')) {
                     titleDom.classList.add('tyo_animate');
                 }
-                if (!txtDom.classList.contains('tyo_animate')) {
+                if (txtDom && !txtDom.classList.contains('tyo_animate')) {
                     txtDom.classList.add('tyo_animate');
                 }
             } else if (type === 'remove') {
-                if (titleDom.classList.contains('tyo_animate')) {
+                if (titleDom && titleDom.classList.contains('tyo_animate')) {
                     titleDom.classList.remove('tyo_animate');
                 }
-                if (txtDom.classList.contains('tyo_animate')) {
+                if (txtDom && txtDom.classList.contains('tyo_animate')) {
                     txtDom.classList.remove('tyo_animate');
                 }
             }
@@ -72,13 +76,21 @@
             }
             let wechatBoxTop = wechatBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
             let translateYOne = 'translateY(' + (667.43 * (wechatBoxTop / (winHeight / 3))) + 'px)';
-            let translateYTwo = 'translateY(' + (667.43 * ((wechatBoxTop + winHeight / 3) / (winHeight / 3))) + 'px)';
+            let translateYTwo = 'translateY(' + (667.43 * ((wechatBoxTop + winHeight / 3) / (winHeight / 3))) +
+                'px)';
             if (wechatBoxTop <= 0 && wechatBoxTop > -winHeight / 3) {
                 bannerImg[0].style.transform = translateYOne;
                 bannerImg[1].style.transform = 'translateY(0)';
+                // 提示文案
+                tipsImg[1].style.opacity = 0;
+                tipsImg[0].style.opacity = 1;
+
             } else if (wechatBoxTop <= -winHeight / 3 && wechatBoxTop > -winHeight / 3 * 2) {
                 bannerImg[1].style.transform = translateYTwo;
                 bannerImg[0].style.transform = 'translateY(-657.43px)';
+                // 提示文案
+                tipsImg[0].style.opacity = 0;
+                tipsImg[1].style.opacity = 1;
             } else if (wechatBoxTop < -winHeight) {
                 bannerImg[2].style.transform = 'translateY(0px)';
                 bannerImg[1].style.transform = 'translateY(-657.43px)';
