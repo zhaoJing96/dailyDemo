@@ -480,13 +480,14 @@
 				// 提示文案
 				tipsImg[1].style.opacity = 0;
 				tipsImg[0].style.opacity = 1;
-
+				tipsImg[0].style.transform = 'translateY(' + wechatBoxTop / 4 + 'px)';
 			} else if (wechatBoxTop <= -winHeight / 3 && wechatBoxTop > -winHeight / 3 * 2) {
 				bannerImg[1].style.transform = translateYTwo;
 				bannerImg[0].style.transform = 'translateY(-657.43px)';
 				// 提示文案
 				tipsImg[0].style.opacity = 0;
 				tipsImg[1].style.opacity = 1;
+				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + winHeight / 3) / 4 + 'px)';
 			} else if (wechatBoxTop < -winHeight) {
 				bannerImg[2].style.transform = 'translateY(0px)';
 				bannerImg[1].style.transform = 'translateY(-657.43px)';
