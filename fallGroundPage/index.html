@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>落地页</title>
 	<link rel="stylesheet/less" type="text/css" href="./css/index_zx.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
@@ -175,7 +175,63 @@
 			<img src="./img/img_pingtai2@2x.png" alt="" id="animationFiveImgTwo">
 		</div>
 	</div>
-	<!-- 小程序介绍 -->
+	<!-- 3D可视化模型，展示数据的实力派 -->
+	<div class="ui_3D_box">
+		<div class="introduce">
+			<h1 class="title">3D可视化模型，展示数据的实力派</h1>
+			<p class="txt">
+				智安汇是以智能安全帽为入口的SaaS智慧工程管理平台。它用先进的人工智能+机器学习算法+大数据采集等，<br>
+				轻松盯紧施工动态。3D和2D的多维数据展示，地图支持无线放大，每一个细节都清楚
+			</p>
+		</div>
+		<div class="ui_3DVideo_box">
+			<video class="video chipVideo" src="./video/chip.mp4" autoplay='autoplay' muted='muted'></video>
+		</div>
+	</div>
+	<!-- 后台式管家，掌控顷刻发生 -->
+	<div class="ui_manage_box">
+		<div class="introduce">
+			<h1 class="title">后台式管家，掌控顷刻发生</h1>
+		</div>
+		<div class="ui_manage_content">
+			<div class="item">
+				<h3>项目配置管理</h3>
+				<p>项目信息<br>作业面<br>安全规则等配置</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>成员管理</h3>
+				<p>管理团队成员<br>扫二维码<br>或小程序拍照快捷添加成员</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>智能旁站管理</h3>
+				<p>解决是否按规旁站的问题</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>统计管理</h3>
+				<p>工作时长<br>旁站时长<br>脱帽次数统计等</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>智能巡检管理</h3>
+				<p>自定义巡检任务<br>促进按时按质按区域巡检</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>报警管理</h3>
+				<p>坠落跌倒<br>危险区域<br>心率异常等</p>
+			</div>
+			<div class="border"></div>
+			<div class="item">
+				<h3>动静态电子围栏管理</h3>
+				<p>定义和管理危险区域</p>
+			</div>
+			<div class="border"></div>
+		</div>
+	</div>
+	<!-- 小空间容纳大世界 -->
 	<div class="ui_wechat_box">
 		<div class="ui_wechat_content">
 			<div class="introduce">
@@ -291,6 +347,8 @@
 			animationFive();
 			wordsOrOpacityAnimation();
 			wechatAnimation();
+			animation3D();
+			manageAnimation();
 		});
 
 		//赵靖
@@ -305,10 +363,12 @@
 		let wechatTxt = wechatContent.getElementsByClassName('txt')[0]; // 获取介绍文字节点
 		let bannerImg = wechatContent.getElementsByClassName('bannerImg'); // 获取手机轮播节点
 		let tipsImg = document.getElementsByClassName('tipsImg'); // 获取tipsDOM
+		let content3D = document.getElementsByClassName('ui_3D_box')[0]; // 获取3D可视化内容DOM
+		let manageContent = document.getElementsByClassName('ui_manage_box')[0]; // 获取后台管理内容DOM
 		// 改变内容透明度
 		function setEleOpacity(contentDom) {
 			let topHei = contentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-			if (topHei > 0 && topHei <= winHeight) {
+			if (topHei > 0 && topHei <= winHeight / 3 * 2) {
 				// 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
 				intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
 				if (intoOpa > 1) {
@@ -317,7 +377,7 @@
 				contentDom.style.opacity = intoOpa;
 			} else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
 				// 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
-				leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 1.5).toFixed(2);
+				leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 2).toFixed(2);
 				contentDom.style.opacity = Math.abs(leaveOpa);
 			}
 		}
@@ -410,19 +470,43 @@
 				bannerImg[2].style.transform = 'translateY(0px)';
 			}
 		}
-		// 小程序介绍动画
+		// 小空间容纳大世界动画
 		function wechatAnimation() {
-			// 微信小程序
-			let topHei = wechatContent.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
 			// 设置文字移动
-			let titleTopHei = wechatTitle.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (titleTopHei <= winHeight && titleTopHei > 0) {
+			let wechatTitleTopHei = wechatTitle.getBoundingClientRect().top // 获取文字距离顶部高度
+			if (wechatTitleTopHei <= winHeight && wechatTitleTopHei > 0) {
 				setTransFormY('add', wechatTitle, wechatTxt);
-			} else if (titleTopHei > winHeight) {
+			} else if (wechatTitleTopHei > winHeight) {
 				setTransFormY('remove', wechatTitle, wechatTxt);
 			}
 			// 手机轮播
 			bannerAnimation();
+		}
+		// 3D可视化模型，展示数据的实力派动画
+		function animation3D() {
+			// 3D文字移动
+			let topHei = content3D.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+			let title3D = content3D.getElementsByClassName('title')[0]; // 获取标题文字节点
+			let txt3D = content3D.getElementsByClassName('txt')[0]; // 获取介绍文字节点
+			let title3DTopHei = title3D.getBoundingClientRect().top // 获取文字距离顶部高度
+			if (title3DTopHei <= winHeight && title3DTopHei > 0) {
+				setTransFormY('add', title3D, txt3D);
+			} else if (title3DTopHei > winHeight) {
+				setTransFormY('remove', title3D, txt3D);
+			}
+		}
+		// 后台式管家，掌控顷刻发生动画
+		function manageAnimation() {
+			// 管理文字移动
+			let topHei = manageContent.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+			let manageTitle = manageContent.getElementsByClassName('title')[0]; // 获取标题文字节点
+			// 设置文字移动
+			let manageTitleTopHei = manageTitle.getBoundingClientRect().top // 获取文字距离顶部高度
+			if (manageTitleTopHei <= winHeight && manageTitleTopHei > 0) {
+				setTransFormY('add', manageTitle);
+			} else if (manageTitleTopHei > winHeight) {
+				setTransFormY('remove', manageTitle);
+			}
 		}
 
 

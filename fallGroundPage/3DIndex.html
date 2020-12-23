@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落地页-3D可视化模型，展示数据的实力派</title>
+    <link rel="stylesheet/less" type="text/css" href="./css/index.less" />
+</head>
+
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
+    <div class="ui_container">
+        <div style="height: 3000px; background-color: cadetblue;"></div>
+        <div class="ui_3D_box">
+            <div class="introduce">
+                <h1 class="title">3D可视化模型，展示数据的实力派</h1>
+                <p class="txt">
+                    智安汇是以智能安全帽为入口的SaaS智慧工程管理平台。它用先进的人工智能+机器学习算法+大数据采集等，<br>
+                    轻松盯紧施工动态。3D和2D的多维数据展示，地图支持无线放大，每一个细节都清楚
+                </p>
+            </div>
+            <div class="ui_3DVideo_box">
+                <video class="video chipVideo" src="./video/chip.mp4" autoplay='autoplay' muted='muted'></video>
+            </div>
+        </div>
+        <div style="height: 3000px;"></div>
+    </div>
+
+    <script>
+        let content3D = document.getElementsByClassName('ui_3D_box')[0]; // 获取3D可视化内容DOM
+        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+        // 设置小程序元素位移
+        function setTransFormY(type, titleDom, txtDom) {
+            if (type === 'add') {
+                if (titleDom && !titleDom.classList.contains('tyo_animate')) {
+                    titleDom.classList.add('tyo_animate');
+                }
+                if (txtDom && !txtDom.classList.contains('tyo_animate')) {
+                    txtDom.classList.add('tyo_animate');
+                }
+            } else if (type === 'remove') {
+                if (titleDom && titleDom.classList.contains('tyo_animate')) {
+                    titleDom.classList.remove('tyo_animate');
+                }
+                if (txtDom && txtDom.classList.contains('tyo_animate')) {
+                    txtDom.classList.remove('tyo_animate');
+                }
+            }
+        }
+        // 3D可视化模型，展示数据的实力派动画
+        function animation3D() {
+            // 3D文字移动
+            let topHei = content3D.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            let title3D = content3D.getElementsByClassName('title')[0]; // 获取标题文字节点
+            let txt3D = content3D.getElementsByClassName('txt')[0]; // 获取介绍文字节点
+            let title3DTopHei = title3D.getBoundingClientRect().top // 获取文字距离顶部高度
+            if (title3DTopHei <= winHeight && title3DTopHei > 0) {
+                setTransFormY('add', title3D, txt3D);
+            } else if (title3DTopHei > winHeight) {
+                setTransFormY('remove', title3D, txt3D);
+            }
+        }
+        // 监听滚动事件、改变产品介绍DOM样式
+        window.addEventListener('scroll', (e) => {
+            animation3D();
+        });
+    </script>
+</body>
+
+</html>
