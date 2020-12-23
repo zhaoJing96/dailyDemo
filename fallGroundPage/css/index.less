@@ -54,114 +54,149 @@
     justify-content: center;
     flex-direction: column;
 
-    // 公共方法
-    .ui_content_box {
-        width: 1200px;
-        padding: 200px 0;
-        box-sizing: border-box;
-        margin: 0 auto;
+    // 上下阴影盒子
+    .shadow {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        height: 100vh;
+        pointer-events: none;
 
-        .video {
-            width: 800px;
-            height: 800px;
+        // 阴影
+        .shadowBox_top {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            top: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .shadowBox_bottom {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
         }
     }
 
-    // sos介绍
-    .ui_sos_box {
-        display: flex;
-        align-items: center;
-        position: relative;
+    // 产品介绍内容盒子
+    .content {
+        position: sticky;
+        margin-top: -100vh;
+        top: 0;
+        z-index: 2;
+        width: 100%;
+
+        // 公共方法
+        .ui_content_box {
+            width: 1200px;
+            padding: 200px 0;
+            box-sizing: border-box;
+            margin: 0 auto;
+
+            .video {
+                width: 800px;
+                height: 800px;
+            }
+        }
 
         // sos介绍
-        .sos_introduce {
-            position: absolute;
-            right: 0;
-            z-index: 2;
-        }
-    }
+        .ui_sos_box {
+            display: flex;
+            align-items: center;
+            position: relative;
 
-    // 心率介绍
-    .ui_heartRate_box {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        position: relative;
+            // sos介绍
+            .sos_introduce {
+                position: absolute;
+                right: 0;
+                z-index: 2;
+            }
+        }
 
         // 心率介绍
-        .heartRate_introduce {
-            margin-bottom: 110px;
-            position: absolute;
-            left: 0;
-            z-index: 2;
-        }
-    }
+        .ui_heartRate_box {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            position: relative;
 
-    // 芯片介绍
-    .ui_chip_box {
-        text-align: center;
+            // 心率介绍
+            .heartRate_introduce {
+                margin-bottom: 110px;
+                position: absolute;
+                left: 0;
+                z-index: 2;
+            }
+        }
 
         // 芯片介绍
-        .chip_introduce {
-            margin-bottom: 24px;
-        }
-    }
+        .ui_chip_box {
+            text-align: center;
 
-    // 高的精度定位介绍
-    .ui_location_box {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-
-        // 高精度定位介绍
-        .location_introduce {
-            position: absolute;
-            left: 0;
-            z-index: 2;
-
-            h1 {
-                line-height: 64px;
+            // 芯片介绍
+            .chip_introduce {
+                margin-bottom: 24px;
             }
         }
 
-        .video {
-            width: 1100px;
-            height: 600px;
-            margin-top: 75px;
-        }
-    }
+        // 高的精度定位介绍
+        .ui_location_box {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
 
-    // 电量
-    .ui_battery_box {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
+            // 高精度定位介绍
+            .location_introduce {
+                position: absolute;
+                left: 0;
+                z-index: 2;
 
-        // 高精度定位介绍
-        .battery_introduce {
-            position: absolute;
-            left: 0;
-            z-index: 2;
-
-            .battery_time {
-                font-size: 20px;
-                line-height: 20px;
-                color: #ffffff;
-                margin-top: 35px;
-                transition-delay: .4s; // 延迟两秒
-                transform: translateY(90px);
-                opacity: 0;
-
-                .time {
-                    color: #F80B0B;
-                    font-size: 40px;
-                    line-height: 40px;
+                h1 {
+                    line-height: 64px;
                 }
             }
+
+            .video {
+                width: 1000px;
+                height: 600px;
+                margin-top: 75px;
+            }
         }
 
-        .batteryVideo {
-            margin-top: 85px;
+        // 电量
+        .ui_battery_box {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+
+            // 高精度定位介绍
+            .battery_introduce {
+                position: absolute;
+                left: 0;
+                z-index: 2;
+
+                .battery_time {
+                    font-size: 20px;
+                    line-height: 20px;
+                    color: #ffffff;
+                    margin-top: 35px;
+                    transition-delay: .4s; // 延迟两秒
+                    transform: translateY(90px);
+                    opacity: 0;
+
+                    .time {
+                        color: #F80B0B;
+                        font-size: 40px;
+                        line-height: 40px;
+                    }
+                }
+            }
+
+            .batteryVideo {
+                margin-top: 85px;
+            }
         }
     }
 }
