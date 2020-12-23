@@ -24,13 +24,21 @@
 				<span class="title">建造者智能安全帽</span>
 				<span class="dec">出色，必定与众不同</span>
 			</div>
-			<img src="./img/cat.png" id="imgDOM" />
+			<img src="./img/cat1.png" id="imgDOM" />
 			<video src="./video/cat.mp4" id="videoDOM" muted="muted"></video>
 		</div>
 	</div>
 	<!-- 动画二 -->
 	<div id="animationTwo" class="animationTwo_zx">
-		<div id="wordsOne">Hello.</div>
+		<div id="animationTwoWordsOne">Hello.</div>
+		<div id="animationTwoContainer">
+			<div id="animationTwoWordsTwo">自动开机，高明至极</div>
+			<div id="animationTwoWordsThree">怎样唤醒这顶安全帽？戴上它，感受强有力的新生科技</div>
+			<div id="animationTwoImg">
+				<!-- <img src="./img/kaiji_01@2x.png" alt="" id="animationTwoImgOne"> -->
+				<img src="./img/kaiji_02@2x.png" alt="" id="animationTwoImgTwo">
+			</div>
+		</div>
 	</div>
 	<!-- 产品介绍 -->
 	<div class="ui_product_box">
@@ -327,24 +335,29 @@
 		//全局
 		$(() => {
 			setTimeout(() => {
+
 				visibleWidth = $('#containerOne')[0].clientWidth;
 				visibleHeight = $('#containerOne')[0].clientHeight;
+
 				//动画一
 				animationOneHeight = $('#animationOne')[0].clientHeight;
 				heightDistanceOne = animationOneHeight - visibleHeight;
+
 				//动画二
-				animationTwoWordsHeight = animationTwoWordsDOM[0].clientHeight;
+				animationTwoWordsHeight = animationTwoWordsOneDOM[0].clientHeight;
+
+				
 				scrollTop = getScrollTop();
 				animationOne();
 			}, 0)
 		});
-		// 监听页面滚动事件
 		window.addEventListener('scroll', (e) => {
 			scrollTop = getScrollTop();
 			animationOne();
 			animationTwo();
 			animationFour();
 			animationFive();
+
 			wordsOrOpacityAnimation();
 			wechatAnimation();
 			animation3D();
@@ -509,8 +522,10 @@
 			}
 		}
 
-
-
+		
+		
+		
+		
 		//周鑫
 		let scrollTop = null;
 		let visibleWidth, visibleHeight;
@@ -523,7 +538,10 @@
 		let animationOneHeight, heightDistanceOne;
 
 		//动画二
-		let animationTwoWordsDOM = $('#wordsOne');
+		let animationTwoWordsOneDOM = $('#animationTwoWordsOne');
+		let animationTwoWordsTwoDOM = $('#animationTwoWordsTwo');
+		let animationTwoWordsThreeDOM = $('#animationTwoWordsThree');
+		let animationTwoImgTwoDOM = $('#animationTwoImgTwo');
 		let animationTwoStatusOne = true;
 		let animationTwoStatusTwo = true;
 		let animationTwoTop, animationTwoWordsHeight;
@@ -547,19 +565,52 @@
 
 		//动画一
 		function animationOne() {
+			// if (scrollTop >=visibleHeight*0.37*0/6&&scrollTop<=visibleHeight*0.37*1/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgOne');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsOne');
+			// 	} else if (scrollTop > visibleHeight*0.37*1/6 && scrollTop <=visibleHeight*0.37*2/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgTwo');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsTwo');
+			// 	} else if (scrollTop > visibleHeight*0.37*2/6 && scrollTop <=visibleHeight*0.37*3/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgThree');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsThree');
+			// 	} else if (scrollTop > visibleHeight*0.37*3/6 && scrollTop <= visibleHeight*0.37*4/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgFour');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsFour');
+			// 	} else if (scrollTop > visibleHeight*0.37*4/6 && scrollTop <= visibleHeight*0.37*5/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgFive');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsFive');
+			// 	} else if (scrollTop > visibleHeight*0.37*5/6 && scrollTop <= visibleHeight*0.37*6/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgSix');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsSix');
+			// 	} else if (scrollTop > visibleHeight*0.37*6/6) {
+			// 		imgDOM.removeClass();
+			// 		imgDOM.addClass('imgSix');
+			// 		wordsDOM.removeClass();
+			// 		wordsDOM.addClass('wordsSix');
+			// 	}
 			if (scrollTop >= 0 && scrollTop <= heightDistanceOne * 0.7) {
 				if (!animationOneStatus) {
 					return;
 				}
-				imgDOM[0].style.transform = 'translate(-50%,-50%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne *
-					100) + ')';
-				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) +
-					'vh)';
+				imgDOM[0].style.transform = 'translate(-50%,-'+(5 + 0.6428 * scrollTop / heightDistanceOne * 100)+'%) scale(' + (10 - 0.1285 * scrollTop / heightDistanceOne * 100) + ')';
+				wordsDOM[0].style.transform = 'translate(-50%,' + (-(13 + 0.3714 * scrollTop / heightDistanceOne * 100)) + 'vh)';
 				// wordsDOM[0].style.color = rgb(255,255,255);
-				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 -
-					3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne *
-					100) + ')';
-			} else {
+				wordsDOM[0].style.color = 'rgb(' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ',' + (255 - 3.6428 * scrollTop / heightDistanceOne * 100) + ')';
+			}
+			else {
 				if (!animationOneStatus) {
 					return;
 				}
@@ -576,27 +627,27 @@
 
 		//动画二
 		function animationTwo() {
-			animationTwoTop = animationTwoWordsDOM[0].getBoundingClientRect().top;
+			animationTwoTop = animationTwoWordsOneDOM[0].getBoundingClientRect().top;
 			// if(animationTwoTop<=visibleHeight){
 			// 	if(Math.abs(animationTwoTop-visibleHeight)>animationTwoWordsHeight){
-			// 		animationTwoWordsDOM[0].style.opacity = 1;
+			// 		animationTwoWordsOneDOM[0].style.opacity = 1;
 			// 	}
 			// 	else {
-			// 		animationTwoWordsDOM[0].style.opacity = 0.01*(Math.abs(animationTwoTop-visibleHeight)/animationTwoWordsHeight)*100;
+			// 		animationTwoWordsOneDOM[0].style.opacity = 0.01*(Math.abs(animationTwoTop-visibleHeight)/animationTwoWordsHeight)*100;
 			// 	}
 			// }
 			// else {
-			// 	animationTwoWordsDOM[0].style.opacity = 0;
+			// 	animationTwoWordsOneDOM[0].style.opacity = 0;
 			// }
 			if (animationTwoTop >= 0 && animationTwoTop <= visibleHeight) {
+
 				if ((animationTwoTop / visibleHeight) <= 0.9 && (animationTwoTop / visibleHeight) >= 0.6) {
 					if (!animationTwoStatusTwo) {
 						return;
 					}
-					animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 -
-						6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 *
-						(animationTwoTop / visibleHeight * 100))) + '%)';
+					animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%)';
 				}
+
 				if (animationTwoTop / visibleHeight < 0.5) {
 					if (!animationTwoStatusOne) {
 						return;
@@ -606,18 +657,39 @@
 					let num = 0;
 					let interval = null;
 					interval = setInterval(() => {
-						num += 2;
+						num += 3;
 						if (num < 300) {
-							animationTwoWordsDOM[0].style.backgroundImage =
-								'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 -
-									num) + '%, #F7B500 ' + (300 - num) + '%)';
-						} else if (num >= 300 && num <= 700) {
-							animationTwoWordsDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (
-									400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) +
-								'%, #ffffff ' + (700 - num) + '%)';
-						} else {
+							animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 - num) + '%, #F7B500 ' + (300 - num) + '%)';
+						}
+						else if (num >= 300 && num <= 700) {
+							animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' + (700 - num) + '%)';
+						}
+						else {
 							clearInterval(interval);
-							animationTwoStatusTwo = true;
+							//文字一
+							animationTwoWordsOneDOM[0].style.opacity = 0;
+							animationTwoWordsOneDOM[0].style.transition = 'all 1s linear';
+							setTimeout(() => {
+								//文字二
+								setTxtTranslateY(animationTwoWordsTwoDOM[0]);
+								//文字三
+								setTxtTranslateY(animationTwoWordsThreeDOM[0]);
+								window.addEventListener('scroll', (e) => {
+									//文字二
+									setTxtTranslateY(animationTwoWordsTwoDOM[0]);
+									//文字三
+									setTxtTranslateY(animationTwoWordsThreeDOM[0]);
+								});
+								//图片
+								animationTwoImgTwoDOM[0].style.opacity = 1;
+								animationTwoImgTwoDOM[0].style.transition = 'all 1s linear';
+								setTimeout(() => {
+									animationTwoImgTwoDOM.addClass('openHelmet');
+								}, 1000);
+							}, 1000);
+							
+
+							
 						}
 					}, 10);
 				}
@@ -625,7 +697,8 @@
 		}
 
 		//动画四
-		function animationFour() {
+		function animationFour(){
+
 			// animationFourTop = animationFourDOM[0].getBoundingClientRect().top;
 			// if(animationFourTop<-(visibleHeight*0.4)){
 			// 	animationFourContainerDOM[0].style.backdropFilter = 'blur('+(10)+'px)';
@@ -636,61 +709,73 @@
 			// else if(animationFourTop>visibleHeight){
 			// 	animationFourContainerDOM[0].style.backdropFilter = 'blur('+(0)+'px)';
 			// }
+			
 			animationFourTop = animationFourDOM[0].getBoundingClientRect().top;
-			if (animationFourTop / visibleHeight < 0.25) {
+			if(animationFourTop/visibleHeight<0.25){
 				animationFourTitleDOM[0].style.opacity = 1;
-			} else if (animationFourTop / visibleHeight <= 0.5 && animationFourTop / visibleHeight >= 0.25) {
-				animationFourTitleDOM[0].style.opacity = 2 - 4 * (animationFourTop / visibleHeight);
+			}
+			else if(animationFourTop/visibleHeight<=0.5&&animationFourTop/visibleHeight>=0.25){
+				animationFourTitleDOM[0].style.opacity = 2-4*(animationFourTop/visibleHeight);
 				animationFourTitleDOM[0].style.transition = 'all .1s linear';
-			} else if (animationFourTop / visibleHeight > 0.5) {
+			}
+			else if(animationFourTop/visibleHeight>0.5){
 				animationFourTitleDOM[0].style.opacity = 0;
 			}
 
-			if (!animationFourStatus) {
+			if(!animationFourStatus){
 				return;
 			}
-			if (animationFourTop < (-visibleHeight * 0.12) && animationFourType != 1) {
+			if(animationFourTop<(-visibleHeight*0.12)&&animationFourType!=1){
 				animationFourStatus = false;
 				animationFourType = 1;
 				simpleBgTwoDOM[0].style.opacity = 1;
 				animationFourTitleDOM[0].style.transform = 'translateY(0)';
 				animationFourTitleDOM[0].style.transition = 'all .7s linear';
-				for (let i = 0; i < containerFourListDOM.length; i++) {
-					containerFourListDOM[i].style.transition = 'all .3s linear ' + (0.5 + i * 20 / 100) + 's';
+				for(let i =0;i<containerFourListDOM.length;i++){
+					containerFourListDOM[i].style.transition = 'all .3s linear '+(0.5+i*20/100)+'s';
 					containerFourListDOM[i].style.transform = 'translateY(0)';
 					containerFourListDOM[i].style.opacity = 1;
 				}
-				setTimeout(() => {
+				setTimeout(()=>{
 					animationFourStatus = true;
-				}, 2000)
+				},2000)
 			}
-			if (animationFourTop >= (-visibleHeight * 0.12) && animationFourType != 2) {
+			if(animationFourTop>=(-visibleHeight*0.12)&&animationFourType!=2){
 				animationFourStatus = false;
 				animationFourType = 2;
 				simpleBgTwoDOM[0].style.opacity = 0;
 				animationFourTitleDOM[0].style.transform = 'translateY(30vh)';
 				animationFourTitleDOM[0].style.transition = 'all .7s linear 1.3s';
-				for (let i = 0; i < containerFourListDOM.length; i++) {
-					containerFourListDOM[i].style.transition = 'all .3s linear ' + (0 + (containerFourListDOM.length - 1 -
-						i) * 20 / 100) + 's';
+				for(let i =0;i<containerFourListDOM.length;i++){
+					containerFourListDOM[i].style.transition = 'all .3s linear '+(0+(containerFourListDOM.length-1-i)*20/100)+'s';
 					containerFourListDOM[i].style.transform = 'translateY(150%)';
 					containerFourListDOM[i].style.opacity = 0;
 				}
-				setTimeout(() => {
+				setTimeout(()=>{
 					animationFourStatus = true;
-				}, 2000)
+				},2000)
 			}
+			
 		}
 
 		//动画五
-		function animationFive() {
+		function animationFive(){
+
 			// 设置文字移动
-			setTxtTranslateY(animationFiveImgTitleDOM[0])
+
+			let titleTopHei =animationFiveImgTitleDOM[0].getBoundingClientRect().top // 获取文字距离顶部高度
+            if (titleTopHei <= winHeight && titleTopHei > 0) {
+                setTransFormY('add',animationFiveImgTitleDOM[0]);
+            } else if (titleTopHei > winHeight) {
+                setTransFormY('remove',animationFiveImgTitleDOM[0]);
+            }
+
 			animationFiveTop = animationFiveDOM[0].getBoundingClientRect().top;
-			if (animationFiveTop <= 64) {
+			if(animationFiveTop<=64){
 				animationFiveImgOneDOM[0].style.transform = 'translateX(-60%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(60%)';
-			} else {
+			}
+			else {
 				animationFiveImgOneDOM[0].style.transform = 'translateX(0%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(0%)';
 			}

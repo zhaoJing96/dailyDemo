@@ -57,22 +57,18 @@
     // 公共方法
     .ui_content_box {
         width: 1200px;
-        height: 100vh;
+        padding: 200px 0;
+        box-sizing: border-box;
         margin: 0 auto;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
 
         .video {
-            width: 1200px;
-            height: 600px;
+            width: 800px;
+            height: 800px;
         }
     }
 
     // sos介绍
     .ui_sos_box {
-        width: 1200px;
         display: flex;
         align-items: center;
         position: relative;
@@ -87,13 +83,14 @@
 
     // 心率介绍
     .ui_heartRate_box {
-        width: 1200px;
         display: flex;
-        align-items: flex-start;
+        align-items: flex-end;
+        justify-content: flex-end;
         position: relative;
 
         // 心率介绍
         .heartRate_introduce {
+            margin-bottom: 110px;
             position: absolute;
             left: 0;
             z-index: 2;
@@ -102,20 +99,18 @@
 
     // 芯片介绍
     .ui_chip_box {
-        width: 1200px;
         text-align: center;
 
         // 芯片介绍
         .chip_introduce {
-            margin-bottom: 52px;
+            margin-bottom: 24px;
         }
     }
 
     // 高的精度定位介绍
     .ui_location_box {
-        width: 1200px;
         display: flex;
-        align-items: flex-start;
+        justify-content: flex-end;
         position: relative;
 
         // 高精度定位介绍
@@ -128,14 +123,24 @@
                 line-height: 64px;
             }
         }
+
+        .video {
+            width: 1100px;
+            height: 600px;
+            margin-top: 75px;
+        }
     }
 
     // 电量
     .ui_battery_box {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
 
         // 高精度定位介绍
         .battery_introduce {
-            position: relative;
+            position: absolute;
+            left: 0;
             z-index: 2;
 
             .battery_time {
@@ -156,12 +161,12 @@
         }
 
         .batteryVideo {
-            margin-top: -35px;
+            margin-top: 85px;
         }
     }
 }
 
-// 耳机介绍
+// 按它，接听世界的声音
 .ui_ear_box {
     width: 100%;
     background-color: #ffffff;
@@ -392,7 +397,7 @@
     }
 }
 
-// 小程序介绍
+// 小空间容纳大世界
 .ui_wechat_box {
     width: 100%;
     height: 200vh;
