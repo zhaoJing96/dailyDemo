@@ -491,24 +491,24 @@
 		// 手机翻页动画
 		function bannerAnimation() {
 			let wechatBoxTop = wechatBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-			let translateYOne = 'translateY(' + (667.43 * (wechatBoxTop / (winHeight / 3))) + 'px)'; // 第一张图滚动高度
-			let translateYTwo = 'translateY(' + (667.43 * ((wechatBoxTop + winHeight / 3) / (winHeight / 3))) +
+			let translateYOne = 'translateY(' + (667.43 * (wechatBoxTop / ((2 * winHeight) / 3))) + 'px)'; // 第一张图滚动高度
+			let translateYTwo = 'translateY(' + (667.43 * ((wechatBoxTop + (2 * winHeight) / 3) / ((2 * winHeight) / 3))) +
 				'px)'; // 第二张图滚动高度
-			if (wechatBoxTop <= 0 && wechatBoxTop > -winHeight / 3) {
+			if (wechatBoxTop <= 0 && wechatBoxTop > -(2 * winHeight) / 3) {
 				bannerImg[0].style.transform = translateYOne;
 				bannerImg[1].style.transform = 'translateY(0)';
 				// 提示文案
 				tipsImg[1].style.opacity = 0;
 				tipsImg[0].style.opacity = 1;
 				tipsImg[0].style.transform = 'translateY(' + wechatBoxTop / 4 + 'px)';
-			} else if (wechatBoxTop <= -winHeight / 3 && wechatBoxTop > -winHeight / 3 * 2) {
+			} else if (wechatBoxTop <= -(2 * winHeight) / 3 && wechatBoxTop > -(2 * winHeight) / 3 * 2) {
 				bannerImg[1].style.transform = translateYTwo;
 				bannerImg[0].style.transform = 'translateY(-657.43px)';
 				// 提示文案
 				tipsImg[0].style.opacity = 0;
 				tipsImg[1].style.opacity = 1;
-				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + winHeight / 3) / 4 + 'px)';
-			} else if (wechatBoxTop < -winHeight) {
+				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + (2 * winHeight) / 3) / 4 + 'px)';
+			} else if (wechatBoxTop < -(2 * winHeight)) {
 				bannerImg[2].style.transform = 'translateY(0px)';
 				bannerImg[1].style.transform = 'translateY(-657.43px)';
 			} else if (wechatBoxTop > 0) {
