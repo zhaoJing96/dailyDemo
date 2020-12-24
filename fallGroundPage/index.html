@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>落地页</title>
 	<link rel="stylesheet/less" type="text/css" href="./css/index_zx.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
@@ -495,7 +495,7 @@
 			let winHeightHalf = winHeight / 2; // 开始滚动高度
 			let winHeightPoint1 = winHeight + (winHeight / 2); // 第一个滚动节点
 			let winHeightPoint2 = (winHeight * 2) + (winHeight / 2); // 第二个滚动节点
-
+			tipsImg[0].style.opacity = 1;
 			if (wechatBoxTop <= -winHeightHalf && wechatBoxTop > -winHeightPoint1) {
 				let topYOne = 667.43 * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
 				let translateYOne = 'translateY(' + topYOne + 'px)'; // 第一张图滚动高度
@@ -504,7 +504,7 @@
 				// 提示文案
 				tipsImg[1].style.opacity = 0;
 				tipsImg[0].style.opacity = 1;
-				tipsImg[0].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf) / 4 + 'px)';
+				tipsImg[0].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf) / 5 + 'px)';
 			} else if (wechatBoxTop <= -winHeightPoint1 && wechatBoxTop > -winHeightPoint2) {
 				let topYTwo = 667.43 * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
 				let translateYTwo = 'translateY(' + topYTwo + 'px)'; // 第二张图滚动高度
@@ -513,15 +513,19 @@
 				// 提示文案
 				tipsImg[0].style.opacity = 0;
 				tipsImg[1].style.opacity = 1;
-				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf + winHeight) / 4 + 'px)';
+				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf + winHeight) / 5 + 'px)';
 			} else if (wechatBoxTop < -winHeightPoint2) {
 				bannerImg[2].style.transform = 'translateY(0px)';
 				bannerImg[1].style.transform = 'translateY(-657.43px)';
+				tipsImg[0].style.opacity = 0;
+				tipsImg[1].style.opacity = 1;
 			} else if (wechatBoxTop > -winHeightHalf) {
 				// 超出范围重置
 				bannerImg[0].style.transform = 'translateY(0px)';
 				bannerImg[1].style.transform = 'translateY(0px)';
 				bannerImg[2].style.transform = 'translateY(0px)';
+				tipsImg[0].style.opacity = 1;
+				tipsImg[1].style.opacity = 0;
 			}
 		}
 		// 小空间容纳大世界动画
