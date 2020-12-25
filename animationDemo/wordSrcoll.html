@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>洗牌动画</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        background-color: #f5f5f5;
+    }
+
+    .content {
+        position: relative;
+        width: 100%;
+        height: 500vh;
+    }
+
+    .bigBox {
+        position: relative;
+        /* position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0; */
+    }
+
+    .box {
+        width: 800px;
+        height: 800px;
+        margin: 200px auto 0;
+        transition: 0.1s all;
+        position: sticky;
+        top: calc(50vh - 400px);
+    }
+
+    .box1 {
+        background-color: firebrick;
+    }
+
+    .box2 {
+        background-color: rosybrown;
+    }
+
+    .box3 {
+        background-color: cadetblue;
+    }
+
+    .box4 {
+        background-color: yellowgreen;
+    }
+
+    .box5 {
+        background-color: orange;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div style="height: 1000px; background-color: #ffffff;"></div>
+        <div class="content">
+            <div class="bigBox">
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+                <div class="box box3"></div>
+                <div class="box box4"></div>
+                <div class="box box5"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+        let bigBox = document.getElementsByClassName('content')[0];
+        let box1 = document.getElementsByClassName('box1')[0];
+        let box2 = document.getElementsByClassName('box2')[0];
+        let box3 = document.getElementsByClassName('box3')[0];
+        let box4 = document.getElementsByClassName('box4')[0];
+        let box5 = document.getElementsByClassName('box5')[0];
+        window.addEventListener('scroll', (e) => {
+            let topHei = bigBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            let boxHei = 850; // 每一次盒子移动高度
+            if (topHei <= 0 && topHei > -winHeight) {
+                let topY = 50 * (topHei / winHeight); // box1缩小后，计算第一个盒子上移的高度10px,缩小后的高度和正常高度少40px
+                let scale = 1 - ((Math.abs(topHei) / winHeight) * 0.05); // 缩小到0.95计算缩放值
+                let opa = 1 - (0.5 * (Math.abs(topHei) / winHeight)); // box1透明度1-0.5
+                box1.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
+                box1.style.opacity = opa;
+            } else if (topHei < -winHeight && topHei > -2 * winHeight) {
+                let topY = 50 * ((topHei - winHeight) / winHeight) + 100; // box1缩小后，计算第一个盒子上移的高度10px,缩小后的高度和正常高度少40px
+                console.log(topY);
+                // let scale = 1 - ((Math.abs(topHei + winHeight) / winHeight) * 0.05); // 缩小到0.95计算缩放值
+                // let opa = 1 - (0.5 * (Math.abs(topHei + winHeight) / winHeight)); // box1透明度1-0.5
+                box2.style.transform = 'translateY(' + topY + 'px)';
+                // box2.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
+                // box2.style.opacity = opa;
+            } else if (topHei < -2 * winHeight && topHei > -3 * winHeight) {
+                // box3.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
+                // box4.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
+                // box5.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
+                // let opa = 1 - ((0.5 * (Math.abs(topHei - 2 * winHeight) / winHeight)) - 0.5); // box1透明度 0.5-0
+                // box1.style.opacity = opa;
+                // // 计算第三个盒子上移高度 盒子高度800，间距50，第一个次滚动850高度
+                // let topY = -850 + (850 * ((topHei + winHeight) / winHeight));
+                // box3.style.transform = 'translateY(' + topY + 'px)';
+                // box4.style.transform = 'translateY(' + topY + 'px)';
+                // box5.style.transform = 'translateY(' + topY + 'px)';
+            }
+        });
+    </script>
+</body>
+
+</html>
