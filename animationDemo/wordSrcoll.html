@@ -94,24 +94,13 @@
                 box1.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
                 box1.style.opacity = opa;
             } else if (topHei < -winHeight && topHei > -2 * winHeight) {
+                box1.style.opacity = 0;
                 let topY = 50 * ((topHei - winHeight) / winHeight) + 100; // box1缩小后，计算第一个盒子上移的高度10px,缩小后的高度和正常高度少40px
                 console.log(topY);
-                // let scale = 1 - ((Math.abs(topHei + winHeight) / winHeight) * 0.05); // 缩小到0.95计算缩放值
-                // let opa = 1 - (0.5 * (Math.abs(topHei + winHeight) / winHeight)); // box1透明度1-0.5
-                box2.style.transform = 'translateY(' + topY + 'px)';
-                // box2.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
-                // box2.style.opacity = opa;
-            } else if (topHei < -2 * winHeight && topHei > -3 * winHeight) {
-                // box3.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
-                // box4.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
-                // box5.style.transform = 'translateY(-' + boxHei * 2 + 'px)';
-                // let opa = 1 - ((0.5 * (Math.abs(topHei - 2 * winHeight) / winHeight)) - 0.5); // box1透明度 0.5-0
-                // box1.style.opacity = opa;
-                // // 计算第三个盒子上移高度 盒子高度800，间距50，第一个次滚动850高度
-                // let topY = -850 + (850 * ((topHei + winHeight) / winHeight));
-                // box3.style.transform = 'translateY(' + topY + 'px)';
-                // box4.style.transform = 'translateY(' + topY + 'px)';
-                // box5.style.transform = 'translateY(' + topY + 'px)';
+                let scale = 1 - ((Math.abs(topHei + winHeight) / winHeight) * 0.05); // 缩小到0.95计算缩放值
+                let opa = 1 - (0.5 * (Math.abs(topHei + winHeight) / winHeight)); // box1透明度1-0.5
+                box2.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
+                box2.style.opacity = opa;
             }
         });
     </script>
