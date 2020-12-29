@@ -86,7 +86,6 @@
         let box5 = document.getElementsByClassName('box5')[0];
         window.addEventListener('scroll', (e) => {
             let topHei = bigBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-            let boxHei = 850; // 每一次盒子移动高度
             if (topHei <= 0 && topHei > -winHeight) {
                 let topY = 50 * (topHei / winHeight); // box1缩小后，计算第一个盒子上移的高度10px,缩小后的高度和正常高度少40px
                 let scale = 1 - ((Math.abs(topHei) / winHeight) * 0.05); // 缩小到0.95计算缩放值
@@ -96,7 +95,6 @@
             } else if (topHei < -winHeight && topHei > -2 * winHeight) {
                 box1.style.opacity = 0;
                 let topY = 50 * ((topHei - winHeight) / winHeight) + 100; // box1缩小后，计算第一个盒子上移的高度10px,缩小后的高度和正常高度少40px
-                console.log(topY);
                 let scale = 1 - ((Math.abs(topHei + winHeight) / winHeight) * 0.05); // 缩小到0.95计算缩放值
                 let opa = 1 - (0.5 * (Math.abs(topHei + winHeight) / winHeight)); // box1透明度1-0.5
                 box2.style.transform = 'scale(' + scale + ') translateY(' + topY + 'px)';
