@@ -199,6 +199,8 @@
 			<div class="container">
 				<img src="./img/img_pingtai1@2x.png" alt="" id="animationFiveImgOne">
 				<img src="./img/img_pingtai2@2x.png" alt="" id="animationFiveImgTwo">
+				<div id="animationFiveWordsOne">智安汇</div>
+				<div id="animationFiveWordsTwo">天天云志</div>
 			</div>
 		</div>
 	</div>
@@ -351,15 +353,16 @@
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" defer="defer">
-		let scrollTop, visibleWidth, visibleHeight;
+	
+		let scrollTop,visibleWidth, visibleHeight;
 		//全局
 		$(() => {
 			setTimeout(() => {
 				visibleWidth = $('#containerOne')[0].clientWidth;
 				visibleHeight = $('#containerOne')[0].clientHeight;
 				scrollTop = getScrollTop();
-
-				if (scrollTop === 0) {
+				
+				if(scrollTop===0){
 					animationOne();
 				}
 			}, 100)
@@ -373,6 +376,7 @@
 			animationFour();
 			animationFive();
 			animationSix();
+			
 
 			productAnimation();
 			wordsOrOpacityAnimation();
@@ -380,6 +384,7 @@
 			wechatAnimation();
 			animation3D();
 			manageAnimation();
+			bgMove(consultboxDOM);
 		});
 
 		//赵靖
@@ -402,6 +407,8 @@
 		let tipsImg = document.getElementsByClassName('tipsImg'); // 获取tipsDOM
 		let content3D = document.getElementsByClassName('ui_3D_box')[0]; // 获取3D可视化内容DOM
 		let manageContent = document.getElementsByClassName('ui_manage_box')[0]; // 获取后台管理内容DOM
+		//咨询
+		let consultboxDOM = $('.ui_consult_box')[0];
 		// 改变内容透明度
 		function setEleOpacity(contentDom) {
 			let topHei = contentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
@@ -576,10 +583,10 @@
 		}
 
 
-
-
-
-
+		
+		
+		
+		
 		//周鑫
 
 		//动画一
@@ -615,6 +622,8 @@
 		let animationFiveImgTitleDOM = $("#animationFiveTitle");
 		let animationFiveImgOneDOM = $("#animationFiveImgOne");
 		let animationFiveImgTwoDOM = $("#animationFiveImgTwo");
+		let animationFiveWordsOneDOM = $("#animationFiveWordsOne");
+		let animationFiveWordsTwoDOM = $("#animationFiveWordsTwo");
 
 		//动画六
 		let animationSixItemDOM = $('.ui_manage_box .item h3');
@@ -622,17 +631,15 @@
 		//动画一
 		function animationOne() {
 			animationOneTop = animationOneDOM[0].getBoundingClientRect().top;
-			if (animationOneTop <= 64 && animationOneTop / visibleHeight > -1) {
+			if(animationOneTop<=64&&animationOneTop/visibleHeight>-1){
 				if (!animationOneStatus) {
 					return;
 				}
-				imgDOM[0].style.transform = 'translate(-50%,-' + (5 - 32.1428 * (animationOneTop / visibleHeight)) +
-					'%) scale(' + (10 + 9 * (animationOneTop / visibleHeight)) + ')';
-				wordsDOM[0].style.transform = 'translate(-50%,-' + (4 - 25 * (animationOneTop / visibleHeight)) + 'vh)';
-				wordsDOM[0].style.color = 'rgb(' + (255 + 182.1428 * (animationOneTop / visibleHeight)) + ',' + (255 +
-					182.1428 * (animationOneTop / visibleHeight)) + ',' + (255 + 182.1428 * (animationOneTop /
-					visibleHeight)) + ')';
-			} else {
+				imgDOM[0].style.transform = 'translate(-50%,-'+(5-32.1428*(animationOneTop/visibleHeight))+'%) scale(' + (10+9*(animationOneTop/visibleHeight)) + ')';
+				wordsDOM[0].style.transform = 'translate(-50%,-'+(4-25*(animationOneTop/visibleHeight))+'vh)';
+				wordsDOM[0].style.color = 'rgb(' + (255+182.1428*(animationOneTop/visibleHeight)) + ',' + (255+182.1428*(animationOneTop/visibleHeight)) + ',' + (255+182.1428*(animationOneTop/visibleHeight)) + ')';
+			}
+			else {
 				if (!animationOneStatus) {
 					return;
 				}
@@ -669,7 +676,7 @@
 
 
 		}
-
+		
 		//动画二
 		function animationTwo() {
 			animationTwoTop = animationTwoWordsOneDOM[0].getBoundingClientRect().top;
@@ -690,9 +697,7 @@
 					if (!animationTwoStatusTwo) {
 						return;
 					}
-					animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 -
-						6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 *
-						(animationTwoTop / visibleHeight * 100))) + '%)';
+					animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 * (animationTwoTop / visibleHeight * 100))) + '%)';
 				}
 
 				if (animationTwoTop / visibleHeight < 0.5) {
@@ -706,14 +711,12 @@
 					interval = setInterval(() => {
 						num += 3;
 						if (num < 300) {
-							animationTwoWordsOneDOM[0].style.backgroundImage =
-								'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 -
-									num) + '%, #F7B500 ' + (300 - num) + '%)';
-						} else if (num >= 300 && num <= 700) {
-							animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (
-									400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) +
-								'%, #ffffff ' + (700 - num) + '%)';
-						} else {
+							animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 - num) + '%, #F7B500 ' + (300 - num) + '%)';
+						}
+						else if (num >= 300 && num <= 700) {
+							animationTwoWordsOneDOM[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' + (700 - num) + '%)';
+						}
+						else {
 							clearInterval(interval);
 							//文字一
 							animationTwoWordsOneDOM[0].style.opacity = 0;
@@ -722,7 +725,9 @@
 								//文字二
 								setTxtTranslateY(animationTwoWordsTwoDOM[0]);
 								//文字三
-								setTxtTranslateY(animationTwoWordsThreeDOM[0]);
+								setTimeout(()=>{
+									setTxtTranslateY(animationTwoWordsThreeDOM[0]);
+								},50)
 								window.addEventListener('scroll', (e) => {
 									//文字二
 									setTxtTranslateY(animationTwoWordsTwoDOM[0]);
@@ -736,9 +741,9 @@
 									animationTwoImgTwoDOM.addClass('openHelmet');
 								}, 1000);
 							}, 1000);
+							
 
-
-
+							
 						}
 					}, 10);
 				}
@@ -746,7 +751,7 @@
 		}
 
 		//动画四
-		function animationFour() {
+		function animationFour(){
 
 			// animationFourTop = animationFourDOM[0].getBoundingClientRect().top;
 			// if(animationFourTop<-(visibleHeight*0.4)){
@@ -758,73 +763,86 @@
 			// else if(animationFourTop>visibleHeight){
 			// 	animationFourContainerDOM[0].style.backdropFilter = 'blur('+(0)+'px)';
 			// }
-
+			
 			animationFourTop = animationFourDOM[0].getBoundingClientRect().top;
-			if (animationFourTop / visibleHeight < 0.25) {
+			if(animationFourTop/visibleHeight<0.25){
 				animationFourTitleDOM[0].style.opacity = 1;
-			} else if (animationFourTop / visibleHeight <= 0.5 && animationFourTop / visibleHeight >= 0.25) {
-				animationFourTitleDOM[0].style.opacity = 2 - 4 * (animationFourTop / visibleHeight);
+			}
+			else if(animationFourTop/visibleHeight<=0.5&&animationFourTop/visibleHeight>=0.25){
+				animationFourTitleDOM[0].style.opacity = 2-4*(animationFourTop/visibleHeight);
 				animationFourTitleDOM[0].style.transition = 'all .1s linear';
-			} else if (animationFourTop / visibleHeight > 0.5) {
+			}
+			else if(animationFourTop/visibleHeight>0.5){
 				animationFourTitleDOM[0].style.opacity = 0;
 			}
 
-			if (!animationFourStatus) {
+			if(!animationFourStatus){
 				return;
 			}
-			if (animationFourTop < (-visibleHeight * 0.12) && animationFourType != 1) {
+			if(animationFourTop<(-visibleHeight*0.12)&&animationFourType!=1){
 				animationFourStatus = false;
 				animationFourType = 1;
 				simpleBgTwoDOM[0].style.opacity = 1;
 				animationFourTitleDOM[0].style.transform = 'translateY(0)';
 				animationFourTitleDOM[0].style.transition = 'all .7s linear';
-				for (let i = 0; i < containerFourListDOM.length; i++) {
-					containerFourListDOM[i].style.transition = 'all .3s linear ' + (0.5 + i * 20 / 100) + 's';
+				for(let i =0;i<containerFourListDOM.length;i++){
+					containerFourListDOM[i].style.transition = 'all .3s linear '+(0.5+i*20/100)+'s';
 					containerFourListDOM[i].style.transform = 'translateY(0)';
 					containerFourListDOM[i].style.opacity = 1;
 				}
-				setTimeout(() => {
+				setTimeout(()=>{
 					animationFourStatus = true;
-				}, 2000)
+				},2000)
 			}
-			if (animationFourTop >= (-visibleHeight * 0.12) && animationFourType != 2) {
+			if(animationFourTop>=(-visibleHeight*0.12)&&animationFourType!=2){
 				animationFourStatus = false;
 				animationFourType = 2;
 				simpleBgTwoDOM[0].style.opacity = 0;
 				animationFourTitleDOM[0].style.transform = 'translateY(30vh)';
 				animationFourTitleDOM[0].style.transition = 'all .5s linear 1s';
-				for (let i = 0; i < containerFourListDOM.length; i++) {
-					containerFourListDOM[i].style.transition = 'all .3s linear ' + (0 + (containerFourListDOM.length - 1 -
-						i) * 20 / 100) + 's';
+				for(let i =0;i<containerFourListDOM.length;i++){
+					containerFourListDOM[i].style.transition = 'all .3s linear '+(0+(containerFourListDOM.length-1-i)*20/100)+'s';
 					containerFourListDOM[i].style.transform = 'translateY(150%)';
 					containerFourListDOM[i].style.opacity = 0;
 				}
-				setTimeout(() => {
+				setTimeout(()=>{
 					animationFourStatus = true;
-				}, 1500)
+				},1500)
 			}
-
+			
 		}
 
 		//动画五
-		function animationFive() {
+		function animationFive(){
 
 			setTxtTranslateY(animationFiveImgTitleDOM[0]);
 
 			animationFiveTop = animationFiveDOM[0].getBoundingClientRect().top;
-			if (animationFiveTop < (-visibleHeight * 0.6)) {
+			if(animationFiveTop<(-visibleHeight*0.6)){
 				animationFiveImgOneDOM[0].style.transform = 'translateX(-60%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(60%)';
-			} else if (animationFiveTop <= (-visibleHeight * 0.3) && animationFiveTop >= (-visibleHeight * 0.6)) {
-				animationFiveImgOneDOM[0].style.transform = 'translateX(-' + (-200 * (animationFiveTop / visibleHeight) -
-					60) + '%)';
-				animationFiveImgTwoDOM[0].style.transform = 'translateX(' + (-200 * (animationFiveTop / visibleHeight) - 60) +
-					'%)';
-			} else if (animationFiveTop > (-visibleHeight * 0.3)) {
+			}
+			else if(animationFiveTop<=(-visibleHeight*0.3)&&animationFiveTop>=(-visibleHeight*0.6)){
+				animationFiveImgOneDOM[0].style.transform = 'translateX(-'+(-200*(animationFiveTop/visibleHeight)-60)+'%)';
+				animationFiveImgTwoDOM[0].style.transform = 'translateX('+(-200*(animationFiveTop/visibleHeight)-60)+'%)';
+			}
+			else if(animationFiveTop>(-visibleHeight*0.3)){
 				animationFiveImgOneDOM[0].style.transform = 'translateX(0%)';
 				animationFiveImgTwoDOM[0].style.transform = 'translateX(0%)';
 			}
 
+			if(animationFiveTop<(-visibleHeight*0.6)){
+				animationFiveWordsOneDOM[0].style.opacity = 1;
+				animationFiveWordsOneDOM[0].style.transform = 'translateY(0)';
+				animationFiveWordsTwoDOM[0].style.opacity = 1;
+				animationFiveWordsTwoDOM[0].style.transform = 'translateY(0)';
+			}
+			else {
+				animationFiveWordsOneDOM[0].style.opacity = 0;
+				animationFiveWordsOneDOM[0].style.transform = 'translateY(150%)';
+				animationFiveWordsTwoDOM[0].style.opacity = 0
+				animationFiveWordsTwoDOM[0].style.transform = 'translateY(150%)';
+			}
 			// if(animationFiveTop<=64){
 			// 	animationFiveImgOneDOM[0].style.transform = 'translateX(-60%)';
 			// 	animationFiveImgTwoDOM[0].style.transform = 'translateX(60%)';
@@ -836,22 +854,22 @@
 		}
 
 		//动画六
-		function animationSix() {
+		function animationSix(){
 			// for(let i = 0;i<animationSixItemDOM.length;i++){
 			// 	wordsGradient(animationSixItemDOM[i],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
 			// }
 
-			wordsGradient(animationSixItemDOM[0], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[1], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[2], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[3], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[4], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[5], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[0],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[1],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[2],'rgb(255,255,255)','#98D60D','#44D7B6','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[3],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[4],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[5],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[6],'rgb(255,255,255)','#98D60D','#44D7B6','rgb(255,255,255)');
 		}
 
 		//文字颜色渐变
-		function wordsGradient(DOM, FC, SC, TC, EC) {
+		function wordsGradient(DOM,FC,SC,TC,EC){
 			let topDistance = DOM.getBoundingClientRect().top;
 
 			// 三色渐变
@@ -864,23 +882,31 @@
 			// else if(topDistance/visibleHeight>0.8){
 			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%)';
 			// }
-
+			
 			//四色渐变
-			if (topDistance / visibleHeight < 0.2) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (-300) + '%, ' + SC + ' ' + (-200) +
-					'%, ' + TC + ' ' + (-100) + '%, ' + EC + ' ' + (0) + '%)';
-			} else if (topDistance / visibleHeight >= 0.2 && topDistance / visibleHeight <= 0.8) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100 - (533.3333 - 6.6666 * (topDistance /
-						visibleHeight * 100))) + '%, ' + SC + ' ' + (200 - (533.3333 - 6.6666 * (topDistance / visibleHeight *
-						100))) + '%, ' + TC + ' ' + (300 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) +
-					'%, ' + EC + ' ' + (400 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) + '%)';
-			} else if (topDistance / visibleHeight > 0.8) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100) + '%, ' + SC + ' ' + (200) + '%, ' +
-					TC + ' ' + (300) + '%, ' + EC + ' ' + (400) + '%)';
+			if(topDistance/visibleHeight<0.2){
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (-300) + '%, '+SC+' ' + (-200) + '%, '+TC+' ' + (-100) + '%, '+EC+' ' + (0) + '%)';
 			}
-
+			else if(topDistance/visibleHeight>=0.2&&topDistance/visibleHeight<=0.8){
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+SC+' ' + (200 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+TC+' ' + (300 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+EC+' ' + (400 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%)';
+			}
+			else if(topDistance/visibleHeight>0.8){
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%, '+EC+' ' + (400) + '%)';
+			}
+			
 		}
-
+		
+		//背景图移动
+        function bgMove(dom){
+            let bgImgTop = dom.getBoundingClientRect().top;
+            if(bgImgTop<=visibleHeight){
+				dom.style.backgroundPosition = '50% '+'calc('+(-Math.abs(bgImgTop-visibleHeight)/15)+'px + 50%)';
+			}
+			else {
+				dom.style.backgroundPosition = '50% 50%';
+			}
+        }
+		
 		//获取滚动条高度
 		function getScrollTop() {
 			let scrollTop = 0;

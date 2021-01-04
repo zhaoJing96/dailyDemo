@@ -230,7 +230,11 @@
     width: 100%;
     height: 500px;
     background-image: url(../img/consultBgImg.png);
-    background-size: 100% 100%;
+    background-size: 150% 150%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    transition: all .5s linear;
+    background-color: #ffffff;
 
     .ui_consult_content {
         width: 1200px;
@@ -355,7 +359,7 @@
                 margin-bottom: 16px;
                 display: block;
                 -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
+				-webkit-background-clip: text;
             }
 
             p {
@@ -608,10 +612,6 @@
 
                 input::-webkit-input-placeholder {
                     color: #D5D5D5;
-                }
-
-                input:focus {
-                    outline: 1px solid #FF3737; //边框不用border，用outline
                 }
             }
 
