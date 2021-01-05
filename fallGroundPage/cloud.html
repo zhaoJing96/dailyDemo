@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>天天云志</title>
+	<link rel="stylesheet/less" type="text/css" href="./css/cloud.less" />
+	<script src="./js/less.min.js"></script>
+</head>
+
+<body>
+    <!-- 导航 -->
+	<header>
+		<nav></nav>
+    </header>
+    <!-- 头部背景图 -->
+    <div class="header_bg_box">
+        <div class="title">天天云志</div>
+        <div class="des">工程项目完美的开始</div>
+    </div>
+    <!-- 中间部分描述 -->
+    <div class="middle_des_box common_bg_move">
+        <div class="content common_move_appear">互联网时代，科技悄然改变了我们看待和沟通世界的方式。<br>建筑行业，也在被颠覆着…</div>
+    </div>
+    <!-- 介绍列表 -->
+    <div class="intro_list_box">
+        <div class="list max_width">
+            <div class="words_intro">
+                <div class="title common_move_appear">创新，从改变管理方式开始</div>
+                <div class="des common_move_appear">天天云志是一款以微信为载体，针对建造及管理人员，提升施工协同效率的工具。当传统的工程管理人员还在抱着电脑、平板管控项目时，施工人员可直接使用小程序，查看个人任务并创建工作组进行项目管理。创新的力量，让智能管理更高效。</div>
+            </div>
+            <img src="./img/pad2.jpg" alt="" class="img_intro common_move_appear">
+        </div>
+        <div class="list max_width">
+            <img src="./img/pad2.jpg" alt="" class="img_intro common_move_appear">
+            <div class="words_intro">
+                <div class="title common_move_appear">科技管控，打破协同壁垒</div>
+                <div class="des common_move_appear">传统化的工业生产模式，不同公司、工种、人员间协同不及时，执行监管困难。天天云志小程序不仅完美支持团队内部的协作，还将外部参与人员纳入到统一平台，便于人员进行高效有序的管理和协同工作。</div>
+            </div>
+        </div>
+        <div class="list max_width">
+            <div class="words_intro">
+                <div class="title common_move_appear">多方移动配合，重要事项抢先知道</div>
+                <div class="des common_move_appear">天天云志创新整合项目各环节人员及信息，完美解决了一线作业人员与管理者的沟通问题：人员通过文字、图片、视频、文件等形式创建任务，用微信快速转发汇报，相关负责人轻松汇总，远程处理问题；你关心的，一个不漏，施工问题，可随时随地手机上报；智能填报、一键汇总日志，让信息尽善尽美；重要事项提醒设置，及时畅晓最新讯息。 </div>
+            </div>
+            <img src="./img/pad2.jpg" alt="" class="img_intro common_move_appear">
+        </div>
+        <div class="list max_width">
+            <img src="./img/pad2.jpg" alt="" class="img_intro common_move_appear">
+            <div class="words_intro">
+                <div class="title common_move_appear">云端储存，信息也有“身份证”</div>
+                <div class="des common_move_appear">高效精准的时代，信息整合是一种能力。以往的项目信息，过于碎片化且无法存档，人员进行总结复盘等耗时耗力。天天云志可以一键汇总、云端储存，自动生成数据报告。云端海量的空间，标签式的管理，一切数据都有迹可循，让搜索便捷高效。</div>
+            </div>
+        </div>
+    </div>
+    <!-- 微信平台 -->
+    <div class="wx_place_box">
+        <div class="content max_width">
+            <div class="title common_move_appear">有微信就能用，简单还免费</div>
+            <div class="intro common_move_appear">在这个注重及时高效的时代，我们的目标是最大限度地降低任何任务和应用的时间成本。天天云志小程序依托于微信<br>生态，零使用门槛，下拉微信顶部菜单，即可获取。</div>
+            <div class="place_list">
+                <div class="list">
+                    <div class="name">方式一</div>
+                    <div class="des">直接扫码进入“天天云志”小程序</div>
+                    <div class="qrcode_box">
+                        <img src="./img/pad2.jpg" alt="" class="qrcode">
+                        <div class="tips">扫码进入“天天云志”小程序</div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="name">方式二</div>
+                    <div class="des">关注公众号，点击菜单栏“用云志”可进入天天云志小程序</div>
+                    <div class="qrcode_box">
+                        <img src="./img/pad2.jpg" alt="" class="qrcode">
+                        <div class="tips">扫码关注“天天云志”公众号</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" defer="defer">
+	
+        let scrollTop;//滚动条距离
+		let visibleWidth;//浏览器可用宽度
+		let visibleHeight;//浏览器可以高度
+        
+        let commonMoveAppearDom = $(".common_move_appear");//同时具有渐变出现动画的节点
+        let commonMoveAppearDomLen = commonMoveAppearDom.length;
+
+        let commonBgMoveDom = $(".common_bg_move");//同时具有背景移动动画的节点
+        let commonBgMoveDomLen = commonBgMoveDom.length;
+     
+        //页面滚动
+		window.addEventListener('scroll', (e) => {
+            scrollTop = getScrollTop();//获取滚动条高度
+            visibleWidth = $('.header_bg_box')[0].clientWidth;//获取浏览器可用宽度
+			visibleHeight = $('.header_bg_box')[0].clientHeight;//获取浏览器可用高度
+
+            //绑定公共动画
+            commonAnimation();
+
+		});
+
+        //公共动画
+        function commonAnimation(){
+
+            //添加渐变出现动画效果
+            for(let i =0;i<commonMoveAppearDomLen;i++){
+                moveAppear(commonMoveAppearDom[i]);
+            }
+
+            //添加背景移动动画
+            for(let i =0;i<commonBgMoveDomLen;i++){
+                bgMove(commonBgMoveDom[i]);
+            }
+
+        }
+
+        //标签渐变出现
+        function moveAppear(dom){
+            let domTop = dom.getBoundingClientRect().top;
+            if(domTop<visibleHeight*0.9){
+                dom.style.opacity = "1";
+                dom.style.transform = 'translateY(0)';
+            }
+            else {
+                dom.style.opacity = "0";
+                dom.style.transform = 'translateY(100px)';
+            }
+        }
+
+        //背景图移动
+        function bgMove(dom){
+            let bgImgTop = dom.getBoundingClientRect().top;
+            if(bgImgTop<=visibleHeight){
+				dom.style.backgroundPosition = '50% '+'calc('+(-Math.abs(bgImgTop-visibleHeight)/15)+'px + 50%)';
+			}
+			else {
+				dom.style.backgroundPosition = '50% 50%';
+			}
+        }
+
+        //获取滚动条高度
+		function getScrollTop() {
+			let scrollTop = 0;
+			if (document.documentElement && document.documentElement.scrollTop) {//兼容IE和Google的写法
+				scrollTop = document.documentElement.scrollTop;
+			} else if (document.body) {
+				scrollTop = document.body.scrollTop;
+			}
+			return scrollTop;
+		}
+	</script>
+</body>
+
+</html>

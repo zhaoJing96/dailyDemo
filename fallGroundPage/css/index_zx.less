@@ -22,13 +22,13 @@
 					font-size: 20px;
 				}
 			}
-			.animationOne_zx{
+			.helmet_box{
 				width: 100%;
 				height: 230vh;
 				z-index: 1;
 				position: relative;
 				background-color: #FFFFFF;
-				#containerOne{
+				.helmet_content{
 					width: 100%;
 					display: flex;
 					align-items: center;
@@ -38,7 +38,7 @@
 					position: sticky;
 					top: 64px;
 				}
-				#words{
+				.helmet_words{
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -51,30 +51,6 @@
 					transition: all .4s linear;
 					white-space: nowrap;
 				}
-				.wordsOne{
-					transform: translate(-50%,-50%) !important;
-					color: #FFFFFF;
-				}
-				.wordsTwo{
-					transform: translate(-50%,-11vh) !important;
-					color: #c8c8c8;
-				}
-				.wordsThree{
-					transform: translate(-50%,-18vh) !important;
-					color: #969696;
-				}
-				.wordsFour{
-					transform: translate(-50%,-25vh) !important;
-					color: #646464;
-				}
-				.wordsFive{
-					transform: translate(-50%,-32vh) !important;
-					color: #323232;
-				}
-				.wordsSix{
-					transform: translate(-50%,-39vh) !important;
-					color: #000000;
-				}
 				.title{
 					font-size: 40px;
 					font-weight: 600;
@@ -84,7 +60,7 @@
 					font-size: 72px;
 					font-weight: 600;
 				}
-				#imgDOM{
+				.helmet_img{
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -94,7 +70,7 @@
 					transform: translate(-50%,-5%) scale(10);
 					transition: transform .4s linear;
 				}
-				video{
+				.helmet_video{
 					position: absolute;
 					top: 50%;
 					left: calc(50% - 21px);
@@ -107,32 +83,20 @@
 					transition: transform .3s linear;
 					background-color: #FFFFFF;
 				}
-				.imgOne{
-					transform: scale(2);
-				}
-				.imgTwo{
-					transform: scale(1.5);
-				}
-				.imgThree{
-					transform: scale(1);
-				}
-				.imgFour{
-					transform: scale(.7);
-				}
-				.imgFive{
-					transform: scale(.45);
-				}
-				.imgSix{
-					transform: scale(.25);
-				}
 			}
 
-			.animationTwo_zx{
+			.auto_start_box{
 				width: 100%;
-				height: 100vh;
+				height: 200vh;
 				background-color: #000000;
 				position: relative;
-				#animationTwoWordsOne{
+				.auto_start_container{
+					height: 100vh;
+					overflow: hidden;
+					position: sticky;
+					top: 0;
+				}
+				.auto_start_words{
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -145,7 +109,7 @@
 					line-height: 200px;
 					z-index: 3;
 				}
-				#animationTwoContainer{
+				.auto_start_content{
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -155,7 +119,7 @@
 					flex-direction: column;
 					justify-content: center;
 					align-items: center;
-					#animationTwoWordsTwo{
+					.title{
 						color: #FFFFFF;
 						font-size: 48px;
 						line-height: 48px;
@@ -163,7 +127,7 @@
 						opacity: 0;
 						transition: all 1s ease;
 					}
-					#animationTwoWordsThree{
+					.des{
 						color: #FFFFFF;
 						font-size: 20px;
 						line-height: 30px;
@@ -172,23 +136,18 @@
 						opacity: 0;
 						transition: all 1s ease;
 					}
-					#animationTwoImg{
+					.auto_start_img_box{
 						width: 500px;
 						height: 440px;
 						margin-top: 104px;
 						position: relative;
-						img{
+						.auto_start_img{
 							width: 100%;
 							height: 100%;
 							position: absolute;
 							top: 0;
 							left: 0;
 							opacity: 0;
-						}
-						#animationTwoImgOne{
-							z-index: 1;
-						}
-						#animationTwoImgTwo{
 							z-index: 2;
 						}
 						.openHelmet{
@@ -210,7 +169,7 @@
 				}
 			}
 
-			#simpleBgOne{
+			.reduce_down_bg_clear{
 				width: 100%;
 				height: 100vh;
 				position: sticky;
@@ -219,12 +178,9 @@
 				background: url(../img/simpleOne.png);
 				background-size: 100% 100%;
 				transition: all .7s linear;
-				// background-position: center top;
-				// background-size: cover;
-				// background-attachment: fixed;
 			}
 
-			#simpleBgTwo{
+			.reduce_down_bg_fuzzy{
 				width: 100%;
 				height: 100vh;
 				position: sticky;
@@ -234,24 +190,15 @@
 				background-size: 100% 100%;
 				margin-top: -100vh;
 				transition: all .7s linear;
-				// background-position: center top;
-				// background-size: cover;
-				// background-attachment: fixed;
 			}
 			
-			#animationFour{
+			.reduce_down_box{
 				width: 100%;
-				height: 160vh;
+				height: 180vh;
 				position: relative;
 				margin-top: -100vh;
-				#containerCover{
-					width: 100%;
-					height: 100vh;
-					position: sticky;
-					top: 0;
-					overflow: hidden;
-				}
-				#containerFour{
+				
+				.reduce_down_container{
 					width: 100%;
 					height: 100vh;
 					position: sticky;
@@ -269,11 +216,12 @@
 						font-weight: 600;
 						line-height: 72px;
 						white-space: nowrap;
+						z-index: 5;
 					}
 					.content{
 						width: 1200px;
 						margin-top: 120px;
-						
+						// position: ;
 						.listContent{
 							width: 100%;
 							display: flex;
@@ -314,11 +262,11 @@
 				}
 			}
 			
-			#animationFive{
+			.software_platform_box{
 				width: 100%;
 				height: 190vh;
 				position: relative;
-				#containerFive{
+				.software_platform_container{
 					width: 100%;
 					height: 100vh;
 					position: sticky;
@@ -339,7 +287,7 @@
 						opacity: 0;
 						transition: all .8s ease;
 					}
-					.container{
+					.content{
 						// width: 348px;
 						// height: 707px;
 						width: 16.23vw;
@@ -366,18 +314,16 @@
 							white-space: nowrap;
 							transition: all .5s ease;
 						}
-						#animationFiveWordsOne{
+						.name_zah{
 							right: calc(14vw + 100%);
 						}
-						#animationFiveWordsTwo{
+						.name_ttyz{
 							left: calc(14vw + 100%);
 						}
-						#animationFiveImgOne{
+						.img_zah{
 							z-index: 2;
-							// transform: scale(1.2);
-							// transform-origin: bottom;
 						}
-						#animationFiveImgTwo{
+						.img_ttyz{
 							z-index: 1;
 						}
 					}
