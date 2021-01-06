@@ -55,7 +55,7 @@
 					<h1 class="title">是安全帽，更是守护者</h1>
 					<p class="txt">SOS一键呼救，快一秒拯救生命<br>危险区域电子围栏、安全帽脱落、坠落跌倒自动报警...<br>更全能的守护者，规避每一次意外</p>
 				</div>
-				<video class="video productVideo sosVideo" src="./video/sos.mp4" muted='muted' isPlay='false'></video>
+				<video class="video productVideo sosVideo" src="./video/sos.mp4" muted='muted' isplay='false'></video>
 			</div>
 			<!-- 心率 -->
 			<div class="ui_content_box ui_heartRate_box">
@@ -73,7 +73,7 @@
 					<p class="txt">重金研发高科技集成芯片，体积更轻盈，功能更集成。通过将人员行为数据化，<br>联动管理后台高效打造智慧工地</p>
 				</div>
 				<video class="video productVideo chipVideo" src="./video/chip.mp4" autoplay='autoplay' muted='muted'
-					isPlay='false'></video>
+					isplay='false'></video>
 			</div>
 			<!-- 高精度定位 -->
 			<div class="ui_content_box ui_location_box">
@@ -94,7 +94,7 @@
 					<p class="productTime battery_time">可续航6天，约<span class="time">144</span>小时</p>
 				</div>
 				<video class="video productVideo batteryVideo" src="./video/battery.mp4" muted='muted'
-					isPlay='false'></video>
+					isplay='false'></video>
 			</div>
 		</div>
 
@@ -419,17 +419,16 @@
 		let consultboxDOM = $('.ui_consult_box')[0]; // 咨询
 
 		let productVideo = document.getElementsByClassName('productVideo'); // 产品视频
-
 		// 控制视频播放
 		function videoPlay() {
 			for (let i = 0; i < productVideo.length; i++) {
 				const itemDom = productVideo[i];
 				let videoDomTopHei = itemDom.getBoundingClientRect().top // 获取视频距离顶部高度
-				let isPlay = itemDom.getAttribute('isPlay'); // 获取视频是否播放过
+				let isPlay = itemDom.getAttribute('isplay'); // 获取视频是否播放过
 				// 判断视频是否在播放中
 				if (itemDom.paused) {
 					// 控制视频在可视范围内播放
-					if (videoDomTopHei <= winHeight / 2 && videoDomTopHei >= winHeight / 3) {
+					if (videoDomTopHei <= winHeight / 2 && videoDomTopHei >= 0) {
 						// 判断是否播放过
 						if (isPlay === 'false') {
 							itemDom.play();
@@ -439,7 +438,7 @@
 					}
 					// 播放结束监听
 					itemDom.onended = function () {
-						itemDom.setAttribute('isPlay', 'true')
+						itemDom.setAttribute('isplay', 'true');
 					}
 				}
 			}
