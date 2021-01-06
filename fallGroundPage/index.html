@@ -25,7 +25,7 @@
 				<span class="title">建造者智能安全帽</span>
 				<span class="dec">出色，必定与众不同</span>
 			</div>
-			<img src="./img/cat1.png" class="helmet_img"/>
+			<img src="./img/cat1.png" class="helmet_img" />
 			<video src="./video/cat.mp4" muted="muted" class="helmet_video"></video>
 		</div>
 	</div>
@@ -354,18 +354,18 @@
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" defer="defer">
-	
-		let scrollTop;//滚动条距离
-		let visibleWidth;//浏览器可用宽度
-		let visibleHeight;//浏览器可以高度
+		let scrollTop; //滚动条距离
+		let visibleWidth; //浏览器可用宽度
+		let visibleHeight; //浏览器可以高度
+		let intoOpa = 0; // 进入可视区域文案透明度初始值
 		//页面加载完成
 		$(() => {
 			setTimeout(() => {
-				scrollTop = getScrollTop();//获取滚动条高度
-				visibleWidth = $('.helmet_content')[0].clientWidth;//获取浏览器可用宽度
-				visibleHeight = $('.helmet_content')[0].clientHeight;//获取浏览器可用高度
-				
-				if(scrollTop===0){
+				scrollTop = getScrollTop(); //获取滚动条高度
+				visibleWidth = $('.helmet_content')[0].clientWidth; //获取浏览器可用宽度
+				visibleHeight = $('.helmet_content')[0].clientHeight; //获取浏览器可用高度
+
+				if (scrollTop === 0) {
 					helmetAnimation();
 				}
 			}, 100)
@@ -380,7 +380,7 @@
 			reduceDownAnimation();
 			softwarePlatformAnimation();
 			systemManager();
-			
+
 
 			productAnimation();
 			wordsOrOpacityAnimation();
@@ -399,8 +399,6 @@
 		let shadowBoxBottom = document.getElementsByClassName('shadowBox_bottom')[0]; // 获取底部阴影Box
 		shadowBoxTop.style.height = winHeight / 3 + 'px';
 		shadowBoxBottom.style.height = winHeight / 3 + 'px';
-		let intoOpa = 0; // 进入可视区域文案透明度初始值
-		let leaveOpa = 1; // 离开可视区域文案透明度初始值
 		let earContent = document.getElementsByClassName('ui_ear_box')[0]; // 获取耳机介绍DOM，需设置文字移动
 		// 小空间容纳大世界（微信小程序介绍）
 		let wechatContent = document.getElementsByClassName('ui_wechat_content')[0]; // 获取小程序内容DOM
@@ -413,22 +411,6 @@
 		let manageContent = document.getElementsByClassName('ui_manage_box')[0]; // 获取后台管理内容DOM
 		//咨询
 		let consultboxDOM = $('.ui_consult_box')[0];
-		// 改变内容透明度
-		function setEleOpacity(contentDom) {
-			let topHei = contentDom.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
-			if (topHei > 0 && topHei <= winHeight / 3 * 2) {
-				// 判断产品介绍节点进入可视区域时，设置样式opacity:0-1
-				intoOpa = (((winHeight - topHei) / winHeight) * 1.5).toFixed(2);
-				if (intoOpa > 1) {
-					intoOpa = 1;
-				}
-				contentDom.style.opacity = intoOpa;
-			} else if (topHei < 0 && Math.abs(topHei) <= winHeight) {
-				// 判断产品介绍节点离开可视区域时，设置样式opacity:1-0
-				leaveOpa = 1 - (((winHeight - Math.abs(topHei)) / winHeight) * 2).toFixed(2);
-				contentDom.style.opacity = Math.abs(leaveOpa);
-			}
-		}
 		// 文字动效 - 移动
 		function setTransFormY(type, titleDom, txtDom, timeDom) {
 			if (type === 'add') {
@@ -471,10 +453,10 @@
 		function productAnimation() {
 			let productTopHei = productBox.getBoundingClientRect().top // 获取文字距离顶部高度
 			// 设置文字移动
-			if (productTopHei <= winHeight && productTopHei <= winHeight / 2) {
-				leaveOpa = 1 - (((winHeight - Math.abs(productTopHei)) / winHeight) * 2).toFixed(2);
+			if (productTopHei <= winHeight) {
+				intoOpa = 1 - (((winHeight - Math.abs(productTopHei)) / winHeight) * 2).toFixed(2);
 				let content = productBox.getElementsByClassName('ui_content_box')[0];
-				content.style.opacity = Math.abs(leaveOpa);
+				content.style.opacity = Math.abs(intoOpa);
 			}
 		}
 		// 文字上移、透明度动画
@@ -587,63 +569,66 @@
 		}
 
 
-		
-		
-		
-		
+
+
+
+
 		//周鑫
 
 		//出色，必定与众不同
-		let helmetBoxDom = $(".helmet_box");//模块最外层盒子
-		let helmetImgDom = $(".helmet_img");//用于缩放的安全帽
-		let helmetWordsDom = $(".helmet_words");//文字介绍
-		let helmetVideoDom = $('.helmet_video');//安全帽视频
-		let helmetStatus = true;//用于区分动画的种类  true 安全帽缩放  false  播放安全帽视频
-		let helmetBoxTop;//模块最外层盒子距离浏览器可视区域顶部的距离
+		let helmetBoxDom = $(".helmet_box"); //模块最外层盒子
+		let helmetImgDom = $(".helmet_img"); //用于缩放的安全帽
+		let helmetWordsDom = $(".helmet_words"); //文字介绍
+		let helmetVideoDom = $('.helmet_video'); //安全帽视频
+		let helmetStatus = true; //用于区分动画的种类  true 安全帽缩放  false  播放安全帽视频
+		let helmetBoxTop; //模块最外层盒子距离浏览器可视区域顶部的距离
 
 		//自动开机，高明至极
-		let autoStartWordsDom = $('.auto_start_words');//最开始的‘HELLO’文字
-		let autoStartTitleDom = $('.auto_start_content .title');//初始动画结束后的文字标题
-		let autoStartDesDom = $('.auto_start_content .des');//初始动画结束后的文字描述
-		let autoStartImgDom = $('.auto_start_img');//开机样式的图片
-		let autoStartStatusOne = true;//HELLO文字的阴影效果
-		let autoStartStatusTwo = true;//HELLO文字的颜色渐变效果
-		let autoStartWordsTop;//HELLO文字距离浏览器可视区域顶部的距离
+		let autoStartWordsDom = $('.auto_start_words'); //最开始的‘HELLO’文字
+		let autoStartTitleDom = $('.auto_start_content .title'); //初始动画结束后的文字标题
+		let autoStartDesDom = $('.auto_start_content .des'); //初始动画结束后的文字描述
+		let autoStartImgDom = $('.auto_start_img'); //开机样式的图片
+		let autoStartStatusOne = true; //HELLO文字的阴影效果
+		let autoStartStatusTwo = true; //HELLO文字的颜色渐变效果
+		let autoStartWordsTop; //HELLO文字距离浏览器可视区域顶部的距离
 
 		//极减主义，让一切降下来
-		let reduceDownBgClearDom = $(".reduce_down_bg_clear");//清晰的背景图片
-		let reduceDownBgFuzzyDom = $(".reduce_down_bg_fuzzy");//模糊的背景图片
-		let reduceDownBoxDom = $('.reduce_down_box');//模块最外层盒子
-		let reduceDownTitleDom = $('.reduce_down_box .title');//文字介绍
-		let reduceDownListContentDom = $(".reduce_down_box .listContent");//简介列表
-		let reduceDownBoxTop;//模块最外层盒子距离浏览器可视区域顶部的距离
-		let reduceDownStatus = true;//用于区分动画的种类  true  文字显示动画   false  列表动画
-		let reduceDownType = 0;//用于区分动画的种类  1  列表显示   2  列表消失
+		let reduceDownBgClearDom = $(".reduce_down_bg_clear"); //清晰的背景图片
+		let reduceDownBgFuzzyDom = $(".reduce_down_bg_fuzzy"); //模糊的背景图片
+		let reduceDownBoxDom = $('.reduce_down_box'); //模块最外层盒子
+		let reduceDownTitleDom = $('.reduce_down_box .title'); //文字介绍
+		let reduceDownListContentDom = $(".reduce_down_box .listContent"); //简介列表
+		let reduceDownBoxTop; //模块最外层盒子距离浏览器可视区域顶部的距离
+		let reduceDownStatus = true; //用于区分动画的种类  true  文字显示动画   false  列表动画
+		let reduceDownType = 0; //用于区分动画的种类  1  列表显示   2  列表消失
 
 		//两大软件平台，抓住智能风口
-		let softwarePlatformBoxDom = $('.software_platform_box');//模块最外层盒子
-		let softwarePlatformTitle = $(".software_platform_box .title");//文字介绍
-		let softwarePlatformImgZAH = $(".software_platform_box .img_zah");//智安汇图片
-		let softwarePlatformImgTTYZ = $(".software_platform_box .img_ttyz");//天天云志图片
-		let softwarePlatformNameZAH = $(".software_platform_box .name_zah");//智安汇名字
-		let softwarePlatformNameTTYZ = $(".software_platform_box .name_ttyz");//天天云志名字
+		let softwarePlatformBoxDom = $('.software_platform_box'); //模块最外层盒子
+		let softwarePlatformTitle = $(".software_platform_box .title"); //文字介绍
+		let softwarePlatformImgZAH = $(".software_platform_box .img_zah"); //智安汇图片
+		let softwarePlatformImgTTYZ = $(".software_platform_box .img_ttyz"); //天天云志图片
+		let softwarePlatformNameZAH = $(".software_platform_box .name_zah"); //智安汇名字
+		let softwarePlatformNameTTYZ = $(".software_platform_box .name_ttyz"); //天天云志名字
 		let softwarePlatformBoxTop;
 
 		//咨询
-		let animationSixItemDOM = $('.ui_manage_box .item h3');//背景图片
+		let animationSixItemDOM = $('.ui_manage_box .item h3'); //背景图片
 
 
 		//出色，必定与众不同
 		function helmetAnimation() {
 			helmetBoxTop = helmetBoxDom[0].getBoundingClientRect().top;
 			//安全帽缩放效果
-			if(helmetBoxTop<=64&&helmetBoxTop/visibleHeight>-1){
+			if (helmetBoxTop <= 64 && helmetBoxTop / visibleHeight > -1) {
 				if (!helmetStatus) {
 					return;
 				}
-				helmetImgDom[0].style.transform = 'translate(-50%,-'+(5-32.1428*(helmetBoxTop/visibleHeight))+'%) scale(' + (10+9*(helmetBoxTop/visibleHeight)) + ')';
-				helmetWordsDom[0].style.transform = 'translate(-50%,-'+(4-25*(helmetBoxTop/visibleHeight))+'vh)';
-				helmetWordsDom[0].style.color = 'rgb(' + (255+182.1428*(helmetBoxTop/visibleHeight)) + ',' + (255+182.1428*(helmetBoxTop/visibleHeight)) + ',' + (255+182.1428*(helmetBoxTop/visibleHeight)) + ')';
+				helmetImgDom[0].style.transform = 'translate(-50%,-' + (5 - 32.1428 * (helmetBoxTop / visibleHeight)) +
+					'%) scale(' + (10 + 9 * (helmetBoxTop / visibleHeight)) + ')';
+				helmetWordsDom[0].style.transform = 'translate(-50%,-' + (4 - 25 * (helmetBoxTop / visibleHeight)) + 'vh)';
+				helmetWordsDom[0].style.color = 'rgb(' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 +
+						182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) +
+					')';
 			}
 			//播放安全帽视频
 			else {
@@ -660,11 +645,11 @@
 				}, 400);
 			}
 		}
-		
+
 		//自动开机，高明至极
 		function autoStartAnimation() {
 			autoStartWordsTop = autoStartWordsDom[0].getBoundingClientRect().top;
-			
+
 			if (autoStartWordsTop >= 0 && autoStartWordsTop <= visibleHeight) {
 
 				//文字阴影效果
@@ -672,7 +657,9 @@
 					if (!autoStartStatusTwo) {
 						return;
 					}
-					autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 - 6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 - 6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%)';
+					autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 -
+						6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 -
+						6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%)';
 				}
 
 				//文字颜色渐变效果
@@ -687,12 +674,14 @@
 					interval = setInterval(() => {
 						num += 3;
 						if (num < 300) {
-							autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 - num) + '%, #F7B500 ' + (300 - num) + '%)';
-						}
-						else if (num >= 300 && num <= 700) {
-							autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 - num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' + (700 - num) + '%)';
-						}
-						else {
+							autoStartWordsDom[0].style.backgroundImage =
+								'linear-gradient(-45deg, rgb(255, 255, 255) ' + (100 - num) + '%, #FF2323 ' + (200 -
+									num) + '%, #F7B500 ' + (300 - num) + '%)';
+						} else if (num >= 300 && num <= 700) {
+							autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 -
+									num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' +
+								(700 - num) + '%)';
+						} else {
 							clearInterval(interval);
 							//文字一
 							autoStartWordsDom[0].style.opacity = 0;
@@ -701,9 +690,9 @@
 								//文字二
 								setTxtTranslateY(autoStartTitleDom[0]);
 								//文字三
-								setTimeout(()=>{
+								setTimeout(() => {
 									setTxtTranslateY(autoStartDesDom[0]);
-								},50)
+								}, 50)
 								window.addEventListener('scroll', (e) => {
 									//文字二
 									setTxtTranslateY(autoStartTitleDom[0]);
@@ -717,9 +706,9 @@
 									autoStartImgDom.addClass('openHelmet');
 								}, 1000);
 							}, 1000);
-							
 
-							
+
+
 						}
 					}, 10);
 				}
@@ -727,87 +716,85 @@
 		}
 
 		//极减主义，让一切降下来
-		function reduceDownAnimation(){
-		
+		function reduceDownAnimation() {
+
 			reduceDownBoxTop = reduceDownBoxDom[0].getBoundingClientRect().top;
 			//文字渐变
-			if(reduceDownBoxTop/visibleHeight<0.25){
+			if (reduceDownBoxTop / visibleHeight < 0.25) {
 				reduceDownTitleDom[0].style.opacity = 1;
-			}
-			else if(reduceDownBoxTop/visibleHeight<=0.5&&reduceDownBoxTop/visibleHeight>=0.25){
-				reduceDownTitleDom[0].style.opacity = 2-4*(reduceDownBoxTop/visibleHeight);
+			} else if (reduceDownBoxTop / visibleHeight <= 0.5 && reduceDownBoxTop / visibleHeight >= 0.25) {
+				reduceDownTitleDom[0].style.opacity = 2 - 4 * (reduceDownBoxTop / visibleHeight);
 				reduceDownTitleDom[0].style.transition = 'all .1s linear';
-			}
-			else if(reduceDownBoxTop/visibleHeight>0.5){
+			} else if (reduceDownBoxTop / visibleHeight > 0.5) {
 				reduceDownTitleDom[0].style.opacity = 0;
 			}
 
 			//列表移动
-			if(!reduceDownStatus){
+			if (!reduceDownStatus) {
 				return;
 			}
 			//列表出现
-			if(reduceDownBoxTop<(-visibleHeight*0.12)&&reduceDownType!=1){
+			if (reduceDownBoxTop < (-visibleHeight * 0.12) && reduceDownType != 1) {
 				reduceDownStatus = false;
 				reduceDownType = 1;
 				reduceDownBgFuzzyDom[0].style.opacity = 1;
 				reduceDownTitleDom[0].style.transform = 'translateY(0)';
 				reduceDownTitleDom[0].style.transition = 'all .7s linear';
-				for(let i =0;i<reduceDownListContentDom.length;i++){
-					reduceDownListContentDom[i].style.transition = 'all .3s linear '+(0.5+i*20/100)+'s';
+				for (let i = 0; i < reduceDownListContentDom.length; i++) {
+					reduceDownListContentDom[i].style.transition = 'all .3s linear ' + (0.5 + i * 20 / 100) + 's';
 					reduceDownListContentDom[i].style.transform = 'translateY(0)';
 					reduceDownListContentDom[i].style.opacity = 1;
 				}
-				setTimeout(()=>{
+				setTimeout(() => {
 					reduceDownStatus = true;
-				},2000)
+				}, 2000)
 			}
 			//列表消失
-			if(reduceDownBoxTop>=(-visibleHeight*0.12)&&reduceDownType!=2){
+			if (reduceDownBoxTop >= (-visibleHeight * 0.12) && reduceDownType != 2) {
 				reduceDownStatus = false;
 				reduceDownType = 2;
 				reduceDownBgFuzzyDom[0].style.opacity = 0;
 				reduceDownTitleDom[0].style.transform = 'translateY(30vh)';
 				reduceDownTitleDom[0].style.transition = 'all .5s linear 1s';
-				for(let i =0;i<reduceDownListContentDom.length;i++){
-					reduceDownListContentDom[i].style.transition = 'all .3s linear '+(0+(reduceDownListContentDom.length-1-i)*20/100)+'s';
+				for (let i = 0; i < reduceDownListContentDom.length; i++) {
+					reduceDownListContentDom[i].style.transition = 'all .3s linear ' + (0 + (reduceDownListContentDom.length -
+						1 - i) * 20 / 100) + 's';
 					reduceDownListContentDom[i].style.transform = 'translateY(150%)';
 					reduceDownListContentDom[i].style.opacity = 0;
 				}
-				setTimeout(()=>{
+				setTimeout(() => {
 					reduceDownStatus = true;
-				},1500)
+				}, 1500)
 			}
-			
+
 		}
 
 		//两大软件平台，抓住智能风口
-		function softwarePlatformAnimation(){
+		function softwarePlatformAnimation() {
 
 			setTxtTranslateY(softwarePlatformTitle[0]);
 
 			softwarePlatformBoxTop = softwarePlatformBoxDom[0].getBoundingClientRect().top;
 			//图片移动
-			if(softwarePlatformBoxTop<(-visibleHeight*0.6)){
+			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {
 				softwarePlatformImgZAH[0].style.transform = 'translateX(-60%)';
 				softwarePlatformImgTTYZ[0].style.transform = 'translateX(60%)';
-			}
-			else if(softwarePlatformBoxTop<=(-visibleHeight*0.3)&&softwarePlatformBoxTop>=(-visibleHeight*0.6)){
-				softwarePlatformImgZAH[0].style.transform = 'translateX(-'+(-200*(softwarePlatformBoxTop/visibleHeight)-60)+'%)';
-				softwarePlatformImgTTYZ[0].style.transform = 'translateX('+(-200*(softwarePlatformBoxTop/visibleHeight)-60)+'%)';
-			}
-			else if(softwarePlatformBoxTop>(-visibleHeight*0.3)){
+			} else if (softwarePlatformBoxTop <= (-visibleHeight * 0.3) && softwarePlatformBoxTop >= (-visibleHeight * 0.6)) {
+				softwarePlatformImgZAH[0].style.transform = 'translateX(-' + (-200 * (softwarePlatformBoxTop /
+					visibleHeight) - 60) + '%)';
+				softwarePlatformImgTTYZ[0].style.transform = 'translateX(' + (-200 * (softwarePlatformBoxTop /
+					visibleHeight) - 60) + '%)';
+			} else if (softwarePlatformBoxTop > (-visibleHeight * 0.3)) {
 				softwarePlatformImgZAH[0].style.transform = 'translateX(0%)';
 				softwarePlatformImgTTYZ[0].style.transform = 'translateX(0%)';
 			}
 			//文字移动
-			if(softwarePlatformBoxTop<(-visibleHeight*0.6)){
+			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {
 				softwarePlatformNameZAH[0].style.opacity = 1;
 				softwarePlatformNameZAH[0].style.transform = 'translateY(0)';
 				softwarePlatformNameTTYZ[0].style.opacity = 1;
 				softwarePlatformNameTTYZ[0].style.transform = 'translateY(0)';
-			}
-			else {
+			} else {
 				softwarePlatformNameZAH[0].style.opacity = 0;
 				softwarePlatformNameZAH[0].style.transform = 'translateY(150%)';
 				softwarePlatformNameTTYZ[0].style.opacity = 0
@@ -816,18 +803,18 @@
 		}
 
 		//后台式管家，掌控顷刻发生
-		function systemManager(){
-			wordsGradient(animationSixItemDOM[0],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[1],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[2],'rgb(255,255,255)','#98D60D','#44D7B6','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[3],'rgb(255,255,255)','#AA00FF','#6AC5FF','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[4],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[5],'rgb(255,255,255)','#FF926F','#FF2121','rgb(255,255,255)');
-			wordsGradient(animationSixItemDOM[6],'rgb(255,255,255)','#98D60D','#44D7B6','rgb(255,255,255)');
+		function systemManager() {
+			wordsGradient(animationSixItemDOM[0], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[1], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[2], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[3], 'rgb(255,255,255)', '#AA00FF', '#6AC5FF', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[4], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[5], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
+			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
 		}
 
 		//文字颜色渐变
-		function wordsGradient(DOM,FC,SC,TC,EC){
+		function wordsGradient(DOM, FC, SC, TC, EC) {
 			let topDistance = DOM.getBoundingClientRect().top;
 
 			// 三色渐变
@@ -840,31 +827,33 @@
 			// else if(topDistance/visibleHeight>0.8){
 			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%)';
 			// }
-			
+
 			//四色渐变
-			if(topDistance/visibleHeight<0.2){
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (-300) + '%, '+SC+' ' + (-200) + '%, '+TC+' ' + (-100) + '%, '+EC+' ' + (0) + '%)';
+			if (topDistance / visibleHeight < 0.2) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (-300) + '%, ' + SC + ' ' + (-200) +
+					'%, ' + TC + ' ' + (-100) + '%, ' + EC + ' ' + (0) + '%)';
+			} else if (topDistance / visibleHeight >= 0.2 && topDistance / visibleHeight <= 0.8) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100 - (533.3333 - 6.6666 * (topDistance /
+						visibleHeight * 100))) + '%, ' + SC + ' ' + (200 - (533.3333 - 6.6666 * (topDistance / visibleHeight *
+						100))) + '%, ' + TC + ' ' + (300 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) +
+					'%, ' + EC + ' ' + (400 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) + '%)';
+			} else if (topDistance / visibleHeight > 0.8) {
+				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100) + '%, ' + SC + ' ' + (200) + '%, ' +
+					TC + ' ' + (300) + '%, ' + EC + ' ' + (400) + '%)';
 			}
-			else if(topDistance/visibleHeight>=0.2&&topDistance/visibleHeight<=0.8){
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+SC+' ' + (200 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+TC+' ' + (300 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%, '+EC+' ' + (400 - (533.3333-6.6666 * (topDistance / visibleHeight * 100))) + '%)';
-			}
-			else if(topDistance/visibleHeight>0.8){
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%, '+EC+' ' + (400) + '%)';
-			}
-			
+
 		}
-		
+
 		//背景图移动
-        function bgMove(dom){
-            let bgImgTop = dom.getBoundingClientRect().top;
-            if(bgImgTop<=visibleHeight){
-				dom.style.backgroundPosition = '50% '+'calc('+(-Math.abs(bgImgTop-visibleHeight)/15)+'px + 50%)';
-			}
-			else {
+		function bgMove(dom) {
+			let bgImgTop = dom.getBoundingClientRect().top;
+			if (bgImgTop <= visibleHeight) {
+				dom.style.backgroundPosition = '50% ' + 'calc(' + (-Math.abs(bgImgTop - visibleHeight) / 15) + 'px + 50%)';
+			} else {
 				dom.style.backgroundPosition = '50% 50%';
 			}
-        }
-		
+		}
+
 		//获取滚动条高度
 		function getScrollTop() {
 			let scrollTop = 0;
