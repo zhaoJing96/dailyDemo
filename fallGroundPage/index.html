@@ -37,6 +37,7 @@
 				<div class="title">自动开机，高明至极</div>
 				<div class="des">怎样唤醒这顶安全帽？戴上它，感受强有力的新生科技</div>
 				<div class="auto_start_img_box">
+					<img src="./img/kaiji_04@2x.png" alt="" class="auto_start_img_under">
 					<img src="./img/kaiji_04@2x.png" alt="" class="auto_start_img">
 				</div>
 			</div>
@@ -619,6 +620,7 @@
 		let autoStartWordsDom = $('.auto_start_words'); //最开始的‘HELLO’文字
 		let autoStartTitleDom = $('.auto_start_content .title'); //初始动画结束后的文字标题
 		let autoStartDesDom = $('.auto_start_content .des'); //初始动画结束后的文字描述
+		let autoStartImgBoxDom= $(".auto_start_img_box");//开机样式的图片盒子
 		let autoStartImgDom = $('.auto_start_img'); //开机样式的图片
 		let autoStartStatusOne = true; //HELLO文字的阴影效果
 		let autoStartStatusTwo = true; //HELLO文字的颜色渐变效果
@@ -655,7 +657,7 @@
 				if (!helmetStatus) {
 					return;
 				}
-				helmetImgDom[0].style.transform = 'translate(-50%,-' + (5 - 32.1428 * (helmetBoxTop / visibleHeight)) +
+				helmetImgDom[0].style.transform = 'translate(-50%,-' + (5 - 42.1428 * (helmetBoxTop / visibleHeight)) +
 					'%) scale(' + (10 + 9 * (helmetBoxTop / visibleHeight)) + ')';
 				helmetWordsDom[0].style.transform = 'translate(-50%,-' + (10 - 25 * (helmetBoxTop / visibleHeight)) + 'vh)';
 				helmetWordsDom[0].style.color = 'rgb(' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 +
@@ -732,8 +734,8 @@
 									setTxtTranslateY(autoStartDesDom[0]);
 								});
 								//图片
-								autoStartImgDom[0].style.opacity = 1;
-								autoStartImgDom[0].style.transition = 'all 1s linear';
+								autoStartImgBoxDom[0].style.opacity = 1;
+								autoStartImgBoxDom[0].style.transition = 'all 1s linear';
 								setTimeout(() => {
 									autoStartImgDom.addClass('openHelmet');
 								}, 1000);
