@@ -388,39 +388,45 @@
 
 			productAnimation(); // 产品上下阴影动效
 			wordsOrOpacityAnimation(); // 文字移动动效
-			earAnimation(); // 耳机动效
-			wechatAnimation(); // 智安汇小程序动效
-			animation3D(); // 3D动效
-			manageAnimation(); // 后台文字动画
+			bannerAnimation(); // 智安汇小程序动效 - 手机轮播
 			bgMove(consultboxDOM); // 咨询背景移动
 			videoPlay(); // 产品视频播放控制
 		});
 
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+		let introduce = document.getElementsByClassName('introduce'); // 获取文字内容DOM，文字上移
+
 		let productBox = document.getElementsByClassName('ui_product_box')[0]; // 获取产品介绍box
-		let content = document.getElementsByClassName('ui_content_box'); // 获取产品介绍内容DOM，需设置透明度、文字移动内容
 		// 计算产品介绍上下阴影高度
 		let shadowBoxTop = document.getElementsByClassName('shadowBox_top')[0]; // 获取底部阴影Box
 		let shadowBoxBottom = document.getElementsByClassName('shadowBox_bottom')[0]; // 获取底部阴影Box
 		shadowBoxTop.style.height = winHeight / 3 + 'px';
 		shadowBoxBottom.style.height = winHeight / 3 + 'px';
 
-		let earContent = document.getElementsByClassName('ui_ear_box')[0]; // 获取耳机介绍DOM，需设置文字移动
 		// 小空间容纳大世界（微信小程序介绍）
 		let wechatContent = document.getElementsByClassName('ui_wechat_content')[0]; // 获取小程序内容DOM
 		let wechatBox = document.getElementsByClassName('ui_wechat_box')[0]; // 获取小程序内容DOM
-		let wechatTitle = wechatContent.getElementsByClassName('title')[0]; // 获取标题文字节点
-		let wechatTxt = wechatContent.getElementsByClassName('txt')[0]; // 获取介绍文字节点
 
 		let bannerImg = wechatContent.getElementsByClassName('bannerImg'); // 获取手机轮播节点
 		let tipsImg = document.getElementsByClassName('tipsImg'); // 获取tipsDOM
 
-		let content3D = document.getElementsByClassName('ui_3D_box')[0]; // 获取3D可视化内容DOM
-		let manageContent = document.getElementsByClassName('ui_manage_box')[0]; // 获取后台管理内容DOM
 		let consultboxDOM = $('.ui_consult_box')[0]; // 咨询
 
 		let productVideo = document.getElementsByClassName('productVideo'); // 产品视频
+
+		// 文字上移、透明度动画
+		function wordsOrOpacityAnimation() {
+			// 设置透明度、文字移动
+			for (let i = 0; i < introduce.length; i++) {
+				const item = introduce[i];
+				let contentTitle = item.getElementsByClassName('title')[0]; // 获取标题文字节点
+				let contentTxt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
+				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
+				// 设置文字移动
+				setTextTransFormY(winHeight, [contentTitle, contentTxt, productTime]);
+			}
+		}
 		// 控制视频播放
 		function videoPlay() {
 			for (let i = 0; i < productVideo.length; i++) {
@@ -445,34 +451,14 @@
 				}
 			}
 		}
-		// 产品透明度动画
+		// 产品介绍部分、透明度动画
 		function productAnimation() {
 			let productTopHei = productBox.getBoundingClientRect().top // 获取文字距离顶部高度
-			// 设置文字移动
 			if (productTopHei <= winHeight) {
 				intoOpa = 1 - (((winHeight - Math.abs(productTopHei)) / winHeight) * 2).toFixed(2);
 				let content = productBox.getElementsByClassName('ui_content_box')[0];
 				content.style.opacity = Math.abs(intoOpa);
 			}
-		}
-		// 文字上移、透明度动画
-		function wordsOrOpacityAnimation() {
-			// 设置透明度、文字移动
-			for (let i = 0; i < content.length; i++) {
-				const item = content[i];
-				let contentTitle = item.getElementsByClassName('title')[0]; // 获取标题文字节点
-				let contentTxt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
-				// 设置文字移动
-				setTextTransFormY(winHeight, [contentTitle, contentTxt, productTime]);
-			}
-		}
-		// 按它，接听世界的声音动画
-		function earAnimation() {
-			// 设置文字移动
-			let earTitle = earContent.getElementsByClassName('title')[0]; // 获取标题文字节点
-			let earTxt = earContent.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-			setTextTransFormY(winHeight, [earTitle, earTxt]);
 		}
 		// 手机翻页动画
 		function bannerAnimation() {
@@ -513,27 +499,6 @@
 				tipsImg[0].style.opacity = 1;
 				tipsImg[1].style.opacity = 0;
 			}
-		}
-		// 小空间容纳大世界动画
-		function wechatAnimation() {
-			// 设置文字移动
-			setTextTransFormY(winHeight, [wechatTitle, wechatTxt]);
-			// 手机轮播
-			bannerAnimation();
-		}
-		// 3D可视化模型，展示数据的实力派动画
-		function animation3D() {
-			// 3D文字移动
-			let title3D = content3D.getElementsByClassName('title')[0]; // 获取标题文字节点
-			let txt3D = content3D.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-			setTextTransFormY(winHeight, [title3D, txt3D]);
-		}
-		// 后台式管家，掌控顷刻发生动画
-		function manageAnimation() {
-			// 管理文字移动
-			let manageTitle = manageContent.getElementsByClassName('title')[0]; // 获取标题文字节点
-			// 设置文字移动
-			setTextTransFormY(winHeight, [manageTitle]);
 		}
 
 
@@ -662,9 +627,11 @@
 								setTimeout(() => {
 									setTextTransFormY(winHeight, [autoStartDesDom[0]]);
 								}, 50)
-								
+
 								window.addEventListener('scroll', (e) => {
-									setTextTransFormY(winHeight, [autoStartTitleDom[0], autoStartDesDom[0]]);
+									setTextTransFormY(winHeight, [autoStartTitleDom[0],
+										autoStartDesDom[0]
+									]);
 								});
 								//图片
 								autoStartImgBoxDom[0].style.opacity = 1;
