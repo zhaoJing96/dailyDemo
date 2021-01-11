@@ -123,12 +123,12 @@
             if (ontlineTopHei <= (winheight * 0.5)) {
                 for (let i = 0; i < outlineDisText.length; i++) {
                     let itemDom = outlineDisText[i];
-                    itemDom.style.transition = 'transform .5s ease ' + 0.5 * i + 's, opacity .4s linear ' + (0.5 + 0.5 *
-                        i) + 's';
-                    itemDom.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    itemDom.style.transition = 'transform 1s ease ' + 0.7 * i + 's, opacity .9s linear ' + i + 's';
+                    itemDom.style.transform = 'translate(-50%, -50%) scale(1)';
+                    itemDom.style.fontSize = '88px';
                     itemDom.style.opacity = 0;
                 }
-                outlineText.style.transition = 'all 1s ease ' + (0.9 + 0.5 * (outlineDisText.length - 1)) + 's';
+                outlineText.style.transition = 'all .5s ease ' + (1.9 + 0.5 * (outlineDisText.length - 1)) + 's';
                 outlineText.style.transform = 'translateY(0)';
                 outlineText.style.opacity = 1;
             }
