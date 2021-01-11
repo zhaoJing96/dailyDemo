@@ -120,17 +120,30 @@
         // 功能大纲
         function wordsDisappear() {
             let ontlineTopHei = outlineBox.getBoundingClientRect().top;
-            if (ontlineTopHei <= (winheight * 0.5)) {
+            if (ontlineTopHei <= (winheight * 0.5) && ontlineTopHei > 0) {
                 for (let i = 0; i < outlineDisText.length; i++) {
                     let itemDom = outlineDisText[i];
-                    itemDom.style.transition = 'transform 1s ease ' + 0.7 * i + 's, opacity .9s linear ' + i + 's';
-                    itemDom.style.transform = 'translate(-50%, -50%) scale(1)';
-                    itemDom.style.fontSize = '88px';
-                    itemDom.style.opacity = 0;
+                    if (itemDom && !itemDom.classList.contains('dis_text_animation')) {
+                        itemDom.style.transition = 'transform 1s ease ' + 0.7 * i + 's, opacity .9s linear ' + i + 's';
+                        itemDom.classList.add('dis_text_animation');
+                    }
                 }
-                outlineText.style.transition = 'all .5s ease ' + (1.9 + 0.5 * (outlineDisText.length - 1)) + 's';
-                outlineText.style.transform = 'translateY(0)';
-                outlineText.style.opacity = 1;
+                if (outlineText && !outlineText.classList.contains('outline_text_animation')) {
+                    outlineText.style.transition = 'all .5s ease ' + (1.9 + 0.5 * (outlineDisText.length - 1)) + 's';
+                    outlineText.classList.add('outline_text_animation');
+                }
+            } else if (ontlineTopHei >= winheight) {
+                for (let i = 0; i < outlineDisText.length; i++) {
+                    let itemDom = outlineDisText[i];
+                    if (itemDom && itemDom.classList.contains('dis_text_animation')) {
+                        itemDom.style.transition = 'none';
+                        itemDom.classList.remove('dis_text_animation');
+                    }
+                }
+                if (outlineText && outlineText.classList.contains('outline_text_animation')) {
+                    outlineText.style.transition = 'none';
+                    outlineText.classList.remove('outline_text_animation');
+                }
             }
         }
     </script>
