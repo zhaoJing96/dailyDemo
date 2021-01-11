@@ -63,18 +63,18 @@
         // 设置小程序元素位移
         function setTransFormY(type, titleDom, txtDom) {
             if (type === 'add') {
-                if (titleDom && !titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.add('tyo_animate');
+                if (titleDom && !titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.add('index_text_animate');
                 }
-                if (txtDom && !txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.add('tyo_animate');
+                if (txtDom && !txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.add('index_text_animate');
                 }
             } else if (type === 'remove') {
-                if (titleDom && titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.remove('tyo_animate');
+                if (titleDom && titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.remove('index_text_animate');
                 }
-                if (txtDom && txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.remove('tyo_animate');
+                if (txtDom && txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.remove('index_text_animate');
                 }
             }
         }

@@ -97,24 +97,24 @@
         // 文字动效 - 移动
         function setTransFormY(type, titleDom, txtDom, timeDom) {
             if (type === 'add') {
-                if (!titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.add('tyo_animate');
+                if (!titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.add('index_text_animate');
                 }
-                if (!txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.add('tyo_animate');
+                if (!txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.add('index_text_animate');
                 }
-                if (timeDom && !timeDom.classList.contains('tyo_animate')) {
-                    timeDom.classList.add('tyo_animate');
+                if (timeDom && !timeDom.classList.contains('index_text_animate')) {
+                    timeDom.classList.add('index_text_animate');
                 }
             } else if (type === 'remove') {
-                if (titleDom.classList.contains('tyo_animate')) {
-                    titleDom.classList.remove('tyo_animate');
+                if (titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.remove('index_text_animate');
                 }
-                if (txtDom.classList.contains('tyo_animate')) {
-                    txtDom.classList.remove('tyo_animate');
+                if (txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.remove('index_text_animate');
                 }
-                if (timeDom && timeDom.classList.contains('tyo_animate')) {
-                    timeDom.classList.remove('tyo_animate');
+                if (timeDom && timeDom.classList.contains('index_text_animate')) {
+                    timeDom.classList.remove('index_text_animate');
                 }
             }
         }

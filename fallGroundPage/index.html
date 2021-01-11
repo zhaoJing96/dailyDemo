@@ -356,6 +356,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/common.js" defer="defer"></script>
 	<script type="text/javascript" defer="defer">
 		let scrollTop; //滚动条距离
 		let visibleWidth; //浏览器可用宽度
@@ -444,44 +445,6 @@
 				}
 			}
 		}
-		// 文字动效 - 移动
-		function setTransFormY(type, titleDom, txtDom, timeDom) {
-			if (type === 'add') {
-				if (titleDom && !titleDom.classList.contains('tyo_animate')) {
-					titleDom.classList.add('tyo_animate');
-				}
-				if (txtDom && !txtDom.classList.contains('tyo_animate')) {
-					txtDom.classList.add('tyo_animate');
-				}
-				if (timeDom && !timeDom.classList.contains('tyo_animate')) {
-					timeDom.classList.add('tyo_animate');
-				}
-			} else if (type === 'remove') {
-				if (titleDom && titleDom.classList.contains('tyo_animate')) {
-					titleDom.classList.remove('tyo_animate');
-				}
-				if (txtDom && txtDom.classList.contains('tyo_animate')) {
-					txtDom.classList.remove('tyo_animate');
-				}
-				if (timeDom && timeDom.classList.contains('tyo_animate')) {
-					timeDom.classList.remove('tyo_animate');
-				}
-			}
-		}
-		// 设置文字移动效果
-		function setTxtTranslateY(dom) {
-			// 设置文字移动
-			let domTopHei = dom.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (domTopHei <= winHeight && domTopHei > 0) {
-				if (dom && !dom.classList.contains('tyo_animate')) {
-					dom.classList.add('tyo_animate');
-				}
-			} else if (domTopHei > winHeight) {
-				if (dom && dom.classList.contains('tyo_animate')) {
-					dom.classList.remove('tyo_animate');
-				}
-			}
-		}
 		// 产品透明度动画
 		function productAnimation() {
 			let productTopHei = productBox.getBoundingClientRect().top // 获取文字距离顶部高度
@@ -500,14 +463,8 @@
 				let contentTitle = item.getElementsByClassName('title')[0]; // 获取标题文字节点
 				let contentTxt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
 				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
-
 				// 设置文字移动
-				let titleTopHei = contentTitle.getBoundingClientRect().top // 获取文字距离顶部高度
-				if (titleTopHei <= winHeight && titleTopHei > 0) {
-					setTransFormY('add', contentTitle, contentTxt, productTime);
-				} else if (titleTopHei > winHeight) {
-					setTransFormY('remove', contentTitle, contentTxt, productTime);
-				}
+				setTextTransFormY(winHeight, [contentTitle, contentTxt, productTime]);
 			}
 		}
 		// 按它，接听世界的声音动画
@@ -515,12 +472,7 @@
 			// 设置文字移动
 			let earTitle = earContent.getElementsByClassName('title')[0]; // 获取标题文字节点
 			let earTxt = earContent.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-			let earTitleTopHei = earTitle.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (earTitleTopHei <= winHeight && earTitleTopHei > 0) {
-				setTransFormY('add', earTitle, earTxt);
-			} else if (earTitleTopHei > winHeight) {
-				setTransFormY('remove', earTitle, earTxt);
-			}
+			setTextTransFormY(winHeight, [earTitle, earTxt]);
 		}
 		// 手机翻页动画
 		function bannerAnimation() {
@@ -565,40 +517,23 @@
 		// 小空间容纳大世界动画
 		function wechatAnimation() {
 			// 设置文字移动
-			let wechatTitleTopHei = wechatTitle.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (wechatTitleTopHei <= winHeight && wechatTitleTopHei > 0) {
-				setTransFormY('add', wechatTitle, wechatTxt);
-			} else if (wechatTitleTopHei > winHeight) {
-				setTransFormY('remove', wechatTitle, wechatTxt);
-			}
+			setTextTransFormY(winHeight, [wechatTitle, wechatTxt]);
 			// 手机轮播
 			bannerAnimation();
 		}
 		// 3D可视化模型，展示数据的实力派动画
 		function animation3D() {
 			// 3D文字移动
-			let topHei = content3D.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
 			let title3D = content3D.getElementsByClassName('title')[0]; // 获取标题文字节点
 			let txt3D = content3D.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-			let title3DTopHei = title3D.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (title3DTopHei <= winHeight && title3DTopHei > 0) {
-				setTransFormY('add', title3D, txt3D);
-			} else if (title3DTopHei > winHeight) {
-				setTransFormY('remove', title3D, txt3D);
-			}
+			setTextTransFormY(winHeight, [title3D, txt3D]);
 		}
 		// 后台式管家，掌控顷刻发生动画
 		function manageAnimation() {
 			// 管理文字移动
-			let topHei = manageContent.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
 			let manageTitle = manageContent.getElementsByClassName('title')[0]; // 获取标题文字节点
 			// 设置文字移动
-			let manageTitleTopHei = manageTitle.getBoundingClientRect().top // 获取文字距离顶部高度
-			if (manageTitleTopHei <= winHeight && manageTitleTopHei > 0) {
-				setTransFormY('add', manageTitle);
-			} else if (manageTitleTopHei > winHeight) {
-				setTransFormY('remove', manageTitle);
-			}
+			setTextTransFormY(winHeight, [manageTitle]);
 		}
 
 
@@ -722,16 +657,14 @@
 							autoStartWordsDom[0].style.transition = 'all 1s linear';
 							setTimeout(() => {
 								//文字二
-								setTxtTranslateY(autoStartTitleDom[0]);
+								setTextTransFormY(winHeight, [autoStartTitleDom[0]]);
 								//文字三
 								setTimeout(() => {
-									setTxtTranslateY(autoStartDesDom[0]);
+									setTextTransFormY(winHeight, [autoStartDesDom[0]]);
 								}, 50)
+								
 								window.addEventListener('scroll', (e) => {
-									//文字二
-									setTxtTranslateY(autoStartTitleDom[0]);
-									//文字三
-									setTxtTranslateY(autoStartDesDom[0]);
+									setTextTransFormY(winHeight, [autoStartTitleDom[0], autoStartDesDom[0]]);
 								});
 								//图片
 								autoStartImgBoxDom[0].style.opacity = 1;
@@ -805,9 +738,7 @@
 
 		//两大软件平台，抓住智能风口
 		function softwarePlatformAnimation() {
-
-			setTxtTranslateY(softwarePlatformTitle[0]);
-
+			setTextTransFormY(winHeight, [softwarePlatformTitle[0]]);
 			softwarePlatformBoxTop = softwarePlatformBoxDom[0].getBoundingClientRect().top;
 			//图片移动
 			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {
