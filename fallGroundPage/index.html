@@ -275,9 +275,9 @@
 				<div class="phone_box">
 					<div class="phone_border"></div>
 					<div class="banner_box">
-						<img class="bannerImg" src="./img/img_iphone01.png" alt="">
-						<img class="bannerImg" src="./img/img_iphone02.png" alt="">
-						<img class="bannerImg" src="./img/img_iphone03.png" alt="">
+						<img class="wechat_phone_banner" src="./img/img_iphone01.png" alt="">
+						<img class="wechat_phone_banner" src="./img/img_iphone02.png" alt="">
+						<img class="wechat_phone_banner" src="./img/img_iphone03.png" alt="">
 					</div>
 				</div>
 				<div class="tipsBox">
@@ -395,25 +395,25 @@
 
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
-		let introduce = document.getElementsByClassName('introduce'); // 获取文字内容DOM，文字上移
+		let introduce = $('.introduce'); // 获取文字内容DOM，文字上移
 
-		let productBox = document.getElementsByClassName('ui_product_box')[0]; // 获取产品介绍box
+		let productBox = $('.ui_product_box')[0]; // 获取产品介绍box
 		// 计算产品介绍上下阴影高度
-		let shadowBoxTop = document.getElementsByClassName('shadowBox_top')[0]; // 获取底部阴影Box
-		let shadowBoxBottom = document.getElementsByClassName('shadowBox_bottom')[0]; // 获取底部阴影Box
+		let shadowBoxTop = $('.shadowBox_top')[0]; // 获取底部阴影Box
+		let shadowBoxBottom = $('.shadowBox_bottom')[0]; // 获取底部阴影Box
 		shadowBoxTop.style.height = winHeight / 3 + 'px';
 		shadowBoxBottom.style.height = winHeight / 3 + 'px';
 
 		// 小空间容纳大世界（微信小程序介绍）
-		let wechatContent = document.getElementsByClassName('ui_wechat_content')[0]; // 获取小程序内容DOM
-		let wechatBox = document.getElementsByClassName('ui_wechat_box')[0]; // 获取小程序内容DOM
+		let wechatContent = $('.ui_wechat_content')[0]; // 获取小程序内容DOM
+		let wechatBox = $('.ui_wechat_box')[0]; // 获取小程序内容DOM
 
-		let bannerImg = wechatContent.getElementsByClassName('bannerImg'); // 获取手机轮播节点
-		let tipsImg = document.getElementsByClassName('tipsImg'); // 获取tipsDOM
+		let wechat_phone_banner = $('.wechat_phone_banner'); // 获取手机轮播节点
+		let tipsImg = $('.tipsImg'); // 获取tipsDOM
 
 		let consultboxDOM = $('.ui_consult_box')[0]; // 咨询
 
-		let productVideo = document.getElementsByClassName('productVideo'); // 产品视频
+		let productVideo = $('.productVideo'); // 产品视频
 
 		// 文字上移、透明度动画
 		function wordsOrOpacityAnimation() {
@@ -471,8 +471,8 @@
 			if (wechatBoxTop <= -winHeightHalf && wechatBoxTop > -winHeightPoint1) {
 				let topYOne = 667.43 * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
 				let translateYOne = 'translateY(' + topYOne + 'px)'; // 第一张图滚动高度
-				bannerImg[0].style.transform = translateYOne;
-				bannerImg[1].style.transform = 'translateY(0)';
+				wechat_phone_banner[0].style.transform = translateYOne;
+				wechat_phone_banner[1].style.transform = 'translateY(0)';
 				// 提示文案
 				tipsImg[1].style.opacity = 0;
 				tipsImg[0].style.opacity = 1;
@@ -480,22 +480,22 @@
 			} else if (wechatBoxTop <= -winHeightPoint1 && wechatBoxTop > -winHeightPoint2) {
 				let topYTwo = 667.43 * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
 				let translateYTwo = 'translateY(' + topYTwo + 'px)'; // 第二张图滚动高度
-				bannerImg[1].style.transform = translateYTwo;
-				bannerImg[0].style.transform = 'translateY(-657.43px)';
+				wechat_phone_banner[1].style.transform = translateYTwo;
+				wechat_phone_banner[0].style.transform = 'translateY(-657.43px)';
 				// 提示文案
 				tipsImg[0].style.opacity = 0;
 				tipsImg[1].style.opacity = 1;
 				tipsImg[1].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf + winHeight) / 5 + 'px)';
 			} else if (wechatBoxTop < -winHeightPoint2) {
-				bannerImg[2].style.transform = 'translateY(0px)';
-				bannerImg[1].style.transform = 'translateY(-657.43px)';
+				wechat_phone_banner[2].style.transform = 'translateY(0px)';
+				wechat_phone_banner[1].style.transform = 'translateY(-657.43px)';
 				tipsImg[0].style.opacity = 0;
 				tipsImg[1].style.opacity = 1;
 			} else if (wechatBoxTop > -winHeightHalf) {
 				// 超出范围重置
-				bannerImg[0].style.transform = 'translateY(0px)';
-				bannerImg[1].style.transform = 'translateY(0px)';
-				bannerImg[2].style.transform = 'translateY(0px)';
+				wechat_phone_banner[0].style.transform = 'translateY(0px)';
+				wechat_phone_banner[1].style.transform = 'translateY(0px)';
+				wechat_phone_banner[2].style.transform = 'translateY(0px)';
 				tipsImg[0].style.opacity = 1;
 				tipsImg[1].style.opacity = 0;
 			}
