@@ -424,7 +424,7 @@
 				let contentTxt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
 				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
 				// 设置文字移动
-				setTextTransFormY(winHeight, [contentTitle, contentTxt, productTime]);
+				setTextTransFormY([contentTitle, contentTxt, productTime]);
 			}
 		}
 		// 控制视频播放
@@ -453,7 +453,7 @@
 		}
 		// 产品介绍部分、透明度动画
 		function productAnimation() {
-			let productTopHei = productBox.getBoundingClientRect().top // 获取文字距离顶部高度
+			let productTopHei = productBox.getBoundingClientRect().top // 获取产品介绍部分距离顶部高度
 			if (productTopHei <= winHeight) {
 				intoOpa = 1 - (((winHeight - Math.abs(productTopHei)) / winHeight) * 2).toFixed(2);
 				let content = productBox.getElementsByClassName('ui_content_box')[0];
@@ -621,14 +621,14 @@
 							autoStartWordsDom[0].style.transition = 'all 1s linear';
 							setTimeout(() => {
 								//文字二
-								setTextTransFormY(winHeight, [autoStartTitleDom[0]]);
+								setTextTransFormY([autoStartTitleDom[0]]);
 								//文字三
 								setTimeout(() => {
-									setTextTransFormY(winHeight, [autoStartDesDom[0]]);
+									setTextTransFormY([autoStartDesDom[0]]);
 								}, 50)
 
 								window.addEventListener('scroll', (e) => {
-									setTextTransFormY(winHeight, [autoStartTitleDom[0],
+									setTextTransFormY([autoStartTitleDom[0],
 										autoStartDesDom[0]
 									]);
 								});
@@ -704,7 +704,7 @@
 
 		//两大软件平台，抓住智能风口
 		function softwarePlatformAnimation() {
-			setTextTransFormY(winHeight, [softwarePlatformTitle[0]]);
+			setTextTransFormY([softwarePlatformTitle[0]]);
 			softwarePlatformBoxTop = softwarePlatformBoxDom[0].getBoundingClientRect().top;
 			//图片移动
 			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {
