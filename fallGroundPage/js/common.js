@@ -1,7 +1,10 @@
 let winheight = window.innerHeight; // 获取屏幕可视区域高度
-
+let commonWordTitle = $('.ui_common_word .title'); // 介绍文字title
+let commonWordTxt = $('.ui_common_word .txt'); // 介绍文字txt
+// 滚动事件监听
 window.addEventListener('scroll', () => {
-
+    textAnimationDomData(commonWordTitle);
+    textAnimationDomData(commonWordTxt);
 });
 /**
  *  文字动效数据处理
