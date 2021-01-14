@@ -6,16 +6,14 @@ let winheight = window.innerHeight; // 获取屏幕可视区域高度
 function setTextTransFormY(domNode) {
     for (let i = 0; i < domNode.length; i++) {
         const item = domNode[i];
-        if(item){
+        if (item) {
             let domTopHei = item && item.getBoundingClientRect().top;
             if (domTopHei <= winheight && domTopHei > 0) {
-                if (item && !item.classList.contains('index_text_animate')) {
-                    item.classList.add('index_text_animate');
-                }
+                item.style.transform = 'translateY(0)';
+                item.style.opacity = 1;
             } else if (domTopHei > winheight) {
-                if (item && item.classList.contains('index_text_animate')) {
-                    item.classList.remove('index_text_animate');
-                }
+                item.style.transform = 'translateY(90px)';
+                item.style.opacity = 0;
             }
         }
     }
