@@ -396,6 +396,9 @@
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
 		let introduce = $('.introduce'); // 获取文字内容DOM，文字上移
+		let introduceTitle = $('.introduce .title'); // 获取文字内容DOM title，文字上移
+		let introduceTxt = $('.introduce .txt'); // 获取文字内容DOM txt，文字上移
+		let productTime = $('.introduce .productTime')[0]; // 获取文字内容DOM productTime，文字上移
 
 		let productBox = $('.ui_product_box')[0]; // 获取产品介绍box
 		// 计算产品介绍上下阴影高度
@@ -417,15 +420,9 @@
 
 		// 文字上移、透明度动画
 		function wordsOrOpacityAnimation() {
-			// 设置透明度、文字移动
-			for (let i = 0; i < introduce.length; i++) {
-				const item = introduce[i];
-				let contentTitle = item.getElementsByClassName('title')[0]; // 获取标题文字节点
-				let contentTxt = item.getElementsByClassName('txt')[0]; // 获取介绍文字节点
-				let productTime = item.getElementsByClassName('productTime')[0]; // 获取介绍文字节点
-				// 设置文字移动
-				setTextTransFormY([contentTitle, contentTxt, productTime]);
-			}
+			textAnimationDomData(introduceTitle);
+			textAnimationDomData(introduceTxt);
+			setTextTransFormY(productTime);
 		}
 		// 控制视频播放
 		function videoPlay() {
@@ -621,14 +618,14 @@
 							autoStartWordsDom[0].style.transition = 'all 1s linear';
 							setTimeout(() => {
 								//文字二
-								setTextTransFormY([autoStartTitleDom[0]]);
+								setTextTransFormY(autoStartTitleDom[0]);
 								//文字三
 								setTimeout(() => {
-									setTextTransFormY([autoStartDesDom[0]]);
+									setTextTransFormY(autoStartDesDom[0]);
 								}, 50)
 
 								window.addEventListener('scroll', (e) => {
-									setTextTransFormY([autoStartTitleDom[0],
+									textAnimationDomData([autoStartTitleDom[0],
 										autoStartDesDom[0]
 									]);
 								});
@@ -704,7 +701,7 @@
 
 		//两大软件平台，抓住智能风口
 		function softwarePlatformAnimation() {
-			setTextTransFormY([softwarePlatformTitle[0]]);
+			setTextTransFormY(softwarePlatformTitle[0]);
 			softwarePlatformBoxTop = softwarePlatformBoxDom[0].getBoundingClientRect().top;
 			//图片移动
 			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {

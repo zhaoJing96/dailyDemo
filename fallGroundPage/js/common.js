@@ -1,20 +1,31 @@
 let winheight = window.innerHeight; // 获取屏幕可视区域高度
+
+window.addEventListener('scroll', () => {
+    console.log(111111111);
+})
 /**
- * 文字动效 上移
- * @param {*} domNode 需要添加动效的节点 [dom] array类型
+ *  文字动效数据处理
+ * 同类型文字添加动效
+ * @param {*} domListData dom List 相同类名数据
+ */
+function textAnimationDomData(domListData) {
+    for (let j = 0; j < domListData.length; j++) {
+        const item = domListData[j];
+        setTextTransFormY(item);
+    }
+}
+/**
+ * 文字添加动效 上移
+ * 单个文字添加动效
+ * @param {*} domNode 需要添加动效的节点dom
  */
 function setTextTransFormY(domNode) {
-    for (let i = 0; i < domNode.length; i++) {
-        const item = domNode[i];
-        if (item) {
-            let domTopHei = item && item.getBoundingClientRect().top;
-            if (domTopHei <= winheight && domTopHei > 0) {
-                item.style.transform = 'translateY(0)';
-                item.style.opacity = 1;
-            } else if (domTopHei > winheight) {
-                item.style.transform = 'translateY(90px)';
-                item.style.opacity = 0;
-            }
-        }
+    let domTopHei = domNode.getBoundingClientRect().top;
+    if (domTopHei <= winheight && domTopHei > 0) {
+        domNode.style.transform = 'translateY(0)';
+        domNode.style.opacity = 1;
+    } else if (domTopHei > winheight) {
+        domNode.style.transform = 'translateY(100px)';
+        domNode.style.opacity = 0;
     }
 }

@@ -26,9 +26,10 @@
         flex-direction: column;
         overflow: hidden;
 
-        video{
+        video {
             height: 100vh;
         }
+
         p {
             color: #FFFFFF;
             font-weight: 600;
@@ -104,13 +105,21 @@
                 margin-top: 0;
             }
 
-            .text_box {
+            .zah_introduce {
                 color: #000000;
 
-                p {
+                .txt {
                     margin-top: 40px;
                     font-size: 18px;
                     line-height: 30px;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    transition: .8s ease;
+                    transition-delay: .4s; // 延迟两秒
+
+                    &:nth-child(2) {
+                        transition-delay: .2s; // 延迟两秒
+                    }
                 }
 
                 .title {
@@ -118,6 +127,9 @@
                     line-height: 56px;
                     font-weight: 600;
                     margin-top: 0;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    transition: .8s ease;
                 }
             }
 

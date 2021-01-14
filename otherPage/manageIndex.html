@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落地页-后台式管家，掌控顷刻发生</title>
+    <link rel="stylesheet/less" type="text/css" href="./css/index.less" />
+</head>
+
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
+    <div class="ui_container">
+        <div style="height: 3000px; background-color: cadetblue;"></div>
+        <div class="ui_manage_box">
+            <div class="introduce">
+                <h1 class="title">后台式管家，掌控顷刻发生</h1>
+            </div>
+            <div class="ui_manage_content">
+                <div class="item">
+                    <h3>项目配置管理</h3>
+                    <p>项目信息<br>作业面<br>安全规则等配置</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>成员管理</h3>
+                    <p>管理团队成员<br>扫二维码<br>或小程序拍照快捷添加成员</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>智能旁站管理</h3>
+                    <p>解决是否按规旁站的问题</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>统计管理</h3>
+                    <p>工作时长<br>旁站时长<br>脱帽次数统计等</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>智能巡检管理</h3>
+                    <p>自定义巡检任务<br>促进按时按质按区域巡检</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>报警管理</h3>
+                    <p>坠落跌倒<br>危险区域<br>心率异常等</p>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <h3>动静态电子围栏管理</h3>
+                    <p>定义和管理危险区域</p>
+                </div>
+                <div class="border"></div>
+            </div>
+        </div>
+        <div style="height: 3000px;"></div>
+    </div>
+
+    <script>
+        let manageContent = document.getElementsByClassName('ui_manage_box')[0]; // 获取后台管理内容DOM
+        let winHeight = window.innerHeight; // 获取屏幕可视区域高度
+        // 设置小程序元素位移
+        function setTransFormY(type, titleDom, txtDom) {
+            if (type === 'add') {
+                if (titleDom && !titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.add('index_text_animate');
+                }
+                if (txtDom && !txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.add('index_text_animate');
+                }
+            } else if (type === 'remove') {
+                if (titleDom && titleDom.classList.contains('index_text_animate')) {
+                    titleDom.classList.remove('index_text_animate');
+                }
+                if (txtDom && txtDom.classList.contains('index_text_animate')) {
+                    txtDom.classList.remove('index_text_animate');
+                }
+            }
+        }
+
+        // 后台式管家，掌控顷刻发生动画
+        function manageAnimation() {
+            // 管理文字移动
+            let topHei = manageContent.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+            let manageTitle = manageContent.getElementsByClassName('title')[0]; // 获取标题文字节点
+            // 设置文字移动
+            let manageTitleTopHei = manageTitle.getBoundingClientRect().top // 获取文字距离顶部高度
+            if (manageTitleTopHei <= winHeight && manageTitleTopHei > 0) {
+                setTransFormY('add', manageTitle);
+            } else if (manageTitleTopHei > winHeight) {
+                setTransFormY('remove', manageTitle);
+            }
+        }
+        // 监听滚动事件、改变产品介绍DOM样式
+        window.addEventListener('scroll', (e) => {
+            manageAnimation();
+        });
+    </script>
+</body>
+
+</html>
