@@ -1,11 +1,22 @@
+
 //全局
+let scrollTop;
 let visibleWidth = document.documentElement.clientWidth;//浏览器可用宽度
 let visibleHeight = document.documentElement.clientHeight;//浏览器可用高度
+
 //渐渐出现/退出动画效果
 let commonFadeInOut = $(".common_fade_inout");
 let commonFadeInOutLen = commonFadeInOut.length;
 
-//视频缩放
+//滑动移动动画效果
+let commonSlideMove = $(".common_slide_move");
+let commonSlideMoveLen = commonSlideMove.length;
+
+//缩放移动动画效果
+let commonZoomMove = $(".common_zoom_move");
+let commonZoomMoveLen = commonZoomMove.length;
+
+//视频缩放动画效果
 let commonVideoBox = $(".common_video_box");//存放视频的盒子
 let commonVideoBoxLen = commonVideoBox.length;
 let commonVideoModel = $(".common_video_model");//视频上面的蒙版
@@ -35,6 +46,16 @@ function commonAnimationAll() {
         fadeInOut(commonFadeInOut[i]);
     }
 
+    //滑动移动动画效果
+    for (let i = 0; i < commonSlideMoveLen; i++) {
+        slideMove(commonSlideMove[i]);
+    }
+
+    //缩放移动动画效果
+    for (let i = 0; i < commonZoomMoveLen; i++) {
+        zoomMove(commonZoomMove[i]);
+    }
+
     //添加视频缩放动画效果
     for (let i = 0; i < commonVideoBoxLen; i++) {
         videoZoom(commonVideoBox[i], commonVideoModel[i]);
@@ -48,12 +69,39 @@ function fadeInOut(dom) {
     if (top < visibleHeight * 0.9) {
         dom.style.opacity = "1";
         dom.style.transform = 'translateY(0)';
+
     }
     else {
         dom.style.opacity = "0";
         dom.style.transform = 'translateY(100px)';
     }
 }
+
+//滑动移动
+function slideMove(dom, speed) {
+    speed ? speed = speed : speed = 20;
+    let top = dom.getBoundingClientRect().top;
+    if (top <= visibleHeight * 0.8) {
+        dom.style.opacity = "1";
+        dom.style.transform = 'translate(0,' + (-Math.abs(top - visibleHeight) / speed) + 'px)';
+    }
+    else {
+        dom.style.opacity = "0";
+        dom.style.transform = 'translate(0,0)';
+    }
+}
+
+//缩放移动
+function zoomMove(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top <= visibleHeight * 0.8) {
+        dom.style.transform = 'scale(1) translate(0,' + (-Math.abs(top - visibleHeight) / 20) + 'px)';
+    }
+    else {
+        dom.style.transform = 'scale(0) translate(0,0)';
+    }
+}
+
 
 //视频缩放
 function videoZoom(box, model) {
@@ -95,6 +143,16 @@ function wordsGradient(dom, FC, SC, TC, EC) {
     // 		TC + ' ' + (300) + '%, ' + EC + ' ' + (400) + '%)';
     // }
 
+}
+
+//背景图移动
+function bgMove(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top <= visibleHeight) {
+        dom.style.backgroundPosition = '50% ' + 'calc(' + (-Math.abs(top - visibleHeight) / 15) + 'px + 50%)';
+    } else {
+        dom.style.backgroundPosition = '50% 50%';
+    }
 }
 
 //获取滚动条高度

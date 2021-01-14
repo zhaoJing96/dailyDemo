@@ -4,10 +4,10 @@
 <head>
 	<meta charset="utf-8" />
 	<title>落地页</title>
+	<link rel="stylesheet/less" type="text/css" href="./css/animation.less" />
+	<link rel="stylesheet/less" type="text/css" href="./css/common.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index_zx.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
-	<link rel="stylesheet/less" type="text/css" href="./css/common.less" />
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script> -->
 	<script src="./js/less.min.js"></script>
 	<style>
 
@@ -109,6 +109,13 @@
 		</div>
 		<img src="./img/earImg.png" alt="">
 	</div>
+	<!-- 视频 -->
+	<div class="common_video_box">
+        <div class="common_video_content">
+            <video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
+            <div class="common_video_model"></div>
+        </div>
+    </div>
 	<!-- 极减主义，让一切降下来 -->
 	<div class="reduce_down_bg_clear"></div>
 	<div class="reduce_down_bg_fuzzy"></div>
@@ -357,19 +364,15 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/animation.js"></script>
 	<script type="text/javascript" src="./js/common.js" defer="defer"></script>
 	<script type="text/javascript" defer="defer">
-		let scrollTop; //滚动条距离
-		let visibleWidth; //浏览器可用宽度
-		let visibleHeight; //浏览器可以高度
+		
 		let intoOpa = 0; // 进入可视区域文案透明度初始值
 		//页面加载完成
 		$(() => {
 			setTimeout(() => {
 				scrollTop = getScrollTop(); //获取滚动条高度
-				visibleWidth = $('.helmet_content')[0].clientWidth; //获取浏览器可用宽度
-				visibleHeight = $('.helmet_content')[0].clientHeight; //获取浏览器可用高度
-
 				if (scrollTop === 0) {
 					helmetAnimation();
 				}
@@ -377,22 +380,22 @@
 		});
 		//页面滚动
 		window.addEventListener('scroll', (e) => {
-			scrollTop = getScrollTop();
-			visibleWidth = $('.helmet_content')[0].clientWidth;
-			visibleHeight = $('.helmet_content')[0].clientHeight;
-			helmetAnimation();
-			autoStartAnimation();
-			reduceDownAnimation();
-			softwarePlatformAnimation();
-			systemManager();
+
+			helmetAnimation();//出色，必定与众不同
+			autoStartAnimation();//自动开机，高明至极
+			reduceDownAnimation();//极减主义，让一切降下来
+			softwarePlatformAnimation();//两大软件平台，抓住智能风口
+			systemManager();//后台式管家，掌控顷刻发生
 
 
 			productAnimation(); // 产品上下阴影动效
 			bannerAnimation(); // 智安汇小程序动效 - 手机轮播
 			bgMove(consultboxDOM); // 咨询背景移动
 			videoPlay(); // 产品视频播放控制
+
 		});
 
+		
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
 		let productBox = $('.ui_product_box')[0]; // 获取产品介绍box
@@ -505,7 +508,7 @@
 		let autoStartWordsDom = $('.auto_start_words'); //最开始的‘HELLO’文字
 		let autoStartTitleDom = $('.auto_start_content .title'); //初始动画结束后的文字标题
 		let autoStartDesDom = $('.auto_start_content .des'); //初始动画结束后的文字描述
-		let autoStartImgBoxDom = $(".auto_start_img_box"); //开机样式的图片盒子
+		let autoStartImgBoxDom= $(".auto_start_img_box");//开机样式的图片盒子
 		let autoStartImgDom = $('.auto_start_img'); //开机样式的图片
 		let autoStartStatusOne = true; //HELLO文字的阴影效果
 		let autoStartStatusTwo = true; //HELLO文字的颜色渐变效果
@@ -523,6 +526,7 @@
 
 		//两大软件平台，抓住智能风口
 		let softwarePlatformBoxDom = $('.software_platform_box'); //模块最外层盒子
+		let softwarePlatformTitle = $(".software_platform_box .title"); //文字介绍
 		let softwarePlatformImgZAH = $(".software_platform_box .img_zah"); //智安汇图片
 		let softwarePlatformImgTTYZ = $(".software_platform_box .img_ttyz"); //天天云志图片
 		let softwarePlatformNameZAH = $(".software_platform_box .name_zah"); //智安汇名字
@@ -531,6 +535,7 @@
 
 		//咨询
 		let animationSixItemDOM = $('.ui_manage_box .item h3'); //背景图片
+
 
 
 		//出色，必定与众不同
@@ -625,9 +630,6 @@
 									autoStartImgDom.addClass('openHelmet');
 								}, 1000);
 							}, 1000);
-
-
-
 						}
 					}, 10);
 				}
@@ -690,6 +692,9 @@
 
 		//两大软件平台，抓住智能风口
 		function softwarePlatformAnimation() {
+
+			setTextTransFormY(softwarePlatformTitle[0]);
+
 			softwarePlatformBoxTop = softwarePlatformBoxDom[0].getBoundingClientRect().top;
 			//图片移动
 			if (softwarePlatformBoxTop < (-visibleHeight * 0.6)) {
@@ -729,57 +734,7 @@
 			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
 		}
 
-		//文字颜色渐变
-		function wordsGradient(DOM, FC, SC, TC, EC) {
-			let topDistance = DOM.getBoundingClientRect().top;
 
-			// 三色渐变
-			// if(topDistance/visibleHeight<0.2){
-			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (-200) + '%, '+SC+' ' + (-100) + '%, '+TC+' ' + (0) + '%)';
-			// }
-			// else if(topDistance/visibleHeight>=0.2&&topDistance/visibleHeight<=0.8){
-			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100 - (400-5 * (topDistance / visibleHeight * 100))) + '%, '+SC+' ' + (200 - (400-5 * (topDistance / visibleHeight * 100))) + '%, '+TC+' ' + (300 - (400-5 * (topDistance / visibleHeight * 100))) + '%)';
-			// }
-			// else if(topDistance/visibleHeight>0.8){
-			// 	DOM.style.backgroundImage = 'linear-gradient(-45deg, '+FC+' ' + (100) + '%, '+SC+' ' + (200) + '%, '+TC+' ' + (300) + '%)';
-			// }
-
-			//四色渐变
-			if (topDistance / visibleHeight < 0.2) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (-300) + '%, ' + SC + ' ' + (-200) +
-					'%, ' + TC + ' ' + (-100) + '%, ' + EC + ' ' + (0) + '%)';
-			} else if (topDistance / visibleHeight >= 0.2 && topDistance / visibleHeight <= 0.8) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100 - (533.3333 - 6.6666 * (topDistance /
-						visibleHeight * 100))) + '%, ' + SC + ' ' + (200 - (533.3333 - 6.6666 * (topDistance / visibleHeight *
-						100))) + '%, ' + TC + ' ' + (300 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) +
-					'%, ' + EC + ' ' + (400 - (533.3333 - 6.6666 * (topDistance / visibleHeight * 100))) + '%)';
-			} else if (topDistance / visibleHeight > 0.8) {
-				DOM.style.backgroundImage = 'linear-gradient(-45deg, ' + FC + ' ' + (100) + '%, ' + SC + ' ' + (200) + '%, ' +
-					TC + ' ' + (300) + '%, ' + EC + ' ' + (400) + '%)';
-			}
-
-		}
-
-		//背景图移动
-		function bgMove(dom) {
-			let bgImgTop = dom.getBoundingClientRect().top;
-			if (bgImgTop <= visibleHeight) {
-				dom.style.backgroundPosition = '50% ' + 'calc(' + (-Math.abs(bgImgTop - visibleHeight) / 15) + 'px + 50%)';
-			} else {
-				dom.style.backgroundPosition = '50% 50%';
-			}
-		}
-
-		//获取滚动条高度
-		function getScrollTop() {
-			let scrollTop = 0;
-			if (document.documentElement && document.documentElement.scrollTop) {
-				scrollTop = document.documentElement.scrollTop;
-			} else if (document.body) {
-				scrollTop = document.body.scrollTop;
-			}
-			return scrollTop;
-		}
 	</script>
 </body>
 

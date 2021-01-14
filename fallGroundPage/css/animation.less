@@ -1,10 +1,26 @@
 
+//渐渐出现/退出
 .common_fade_inout{
     opacity: 0;
     transform: translateY(100px);
     transition: transform 1s ease,opacity 1s ease;
 }
 
+//滑动移动
+.common_slide_move{
+    opacity: 0;
+    transform:translate(0,0);
+    transition: transform 1s ease,opacity 1s ease;
+}
+
+//缩放移动
+.common_zoom_move{
+    transform: scale(0) translate(0,0);
+    transform-origin: bottom center;
+    transition: transform 1s ease;
+}
+
+//视频缩放
 .common_video_box{
     width: 100%;
     height: 200vh;

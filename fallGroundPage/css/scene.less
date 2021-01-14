@@ -3,7 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body{
+    // overflow: hidden;
+}
+.common_words_gradient{
+    -webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
 header{
     width: 100%;
     z-index: 999;
@@ -18,17 +24,7 @@ header{
         font-size: 20px;
     }
 }
-.header_bg{
-    width: 100%;
-    height: 100vh;
-    background-color:#787878;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 72px;
-    line-height: 72px;
-    font-weight: 600;
-    color: #ffffff;
+.header_box{
     margin-top: -64px;
 }
 .img_intro{
@@ -39,20 +35,21 @@ header{
     z-index: -1;
     .list{
         width: 50%;
-        height: 0vh;
+        height: 100%;
+        // height: 0vh;
         position: absolute;
         overflow: hidden;
         right: 0;
         bottom: 0;
         z-index: -1;
         background-color: #ffffff;
+        img{
+            width: 100%;
+            height: 100%;
+            // position: absolute;
+            // left: 0;
+            // bottom: 0;
         }
-    .list img{
-        width: 100%;
-        height: 100vh;
-        position: absolute;
-        left: 0;
-        bottom: 0;
     }
 }
 .words_intro{
@@ -75,11 +72,6 @@ header{
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            >div{
-                opacity: 0;
-                transform: translateY(100px);
-                transition: all 1s ease;
-            }
             .rank_num{
                 width: 67px;
                 height: 43px;
@@ -103,6 +95,7 @@ header{
                 margin-top: 32px;
             }
             .des{
+                width: 520px;
                 color: #000000;
                 font-size: 18px;
                 line-height: 30px;
