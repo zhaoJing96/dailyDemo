@@ -1,8 +1,8 @@
 let winheight = window.innerHeight; // 获取屏幕可视区域高度
 
 window.addEventListener('scroll', () => {
-    console.log(111111111);
-})
+
+});
 /**
  *  文字动效数据处理
  * 同类型文字添加动效
