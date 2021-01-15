@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .zah_container {
     width: 100%;
     background-color: #ffffff;
@@ -51,7 +55,6 @@
     .ui_outline_box {
         width: 100%;
         height: 500px;
-        // background-color: #ffffff;
         position: relative;
         display: flex;
         align-items: center;
@@ -85,14 +88,298 @@
             font-size: 88px;
         }
 
+        // 正方形
+        .ui_square_box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
+            .item_box {
+                width: 360px;
+                height: 100%;
+                // background-color: #ECECEC;
+                position: relative;
+
+                @keyframes rotate3dLeft {
+                    0% {
+                        transform: rotateZ(0) rotateY(0) rotateX(0);
+                    }
+
+                    100% {
+                        transform: rotateZ(0deg) rotateY(360deg) rotateX(360deg);
+                    }
+                }
+
+                @keyframes rotate3dRight {
+                    0% {
+                        transform: rotateZ(0) rotateY(0) rotateX(0);
+                    }
+
+                    100% {
+                        transform: rotateZ(0deg) rotateY(-360deg) rotateX(360deg);
+                    }
+                }
+
+                // 左边正方形定位
+                &.left_box {
+                    .posi_box {
+
+                        &:nth-child(1) {
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &:nth-child(2) {
+                            top: 120px;
+                            left: 108px;
+                        }
+
+                        &:nth-child(3) {
+                            top: 81px;
+                            left: 281px;
+                        }
+
+                        &:nth-child(4) {
+                            top: 213px;
+                            left: -58px;
+                        }
+
+                        &:nth-child(5) {
+                            top: 310px;
+                            left: 214px;
+                        }
+
+                        .square {
+                            transform-style: preserve-3d;
+                            animation: rotate3dLeft 50s infinite linear;
+                        }
+                    }
+                }
+
+                // 左边正方形定位
+                &.right_box {
+                    .posi_box {
+                        &:nth-child(1) {
+                            top: 0;
+                            right: 0;
+                        }
+
+                        &:nth-child(2) {
+                            top: 120px;
+                            right: 108px;
+                        }
+
+                        &:nth-child(3) {
+                            top: 81px;
+                            right: 281px;
+                        }
+
+                        &:nth-child(4) {
+                            top: 213px;
+                            right: -58px;
+                        }
+
+                        &:nth-child(5) {
+                            top: 310px;
+                            right: 214px;
+                        }
+
+                        .square {
+                            transform-style: preserve-3d;
+                            animation: rotate3dRight 50s infinite linear;
+                        }
+                    }
+                }
+
+                .posi_box {
+                    position: absolute;
+
+                    &:nth-child(1) {
+                        .square {
+                            width: 90px;
+                            height: 90px;
+
+                            i {
+                                background: linear-gradient(202deg, #2BF8BF 0%, #04CBA3 100%);
+                                // background: radial-gradient(circle, #2BF8BF 0%, #04CBA3 100%);
+
+                                &:nth-child(1) {
+                                    transform: translateZ(-90px);
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotateY(-90deg) translateX(-45px) translateZ(45px);
+                                }
+
+                                &:nth-child(4) {
+                                    transform: rotateY(-90deg) translateX(-45px) translateZ(-45px);
+                                }
+
+                                &:nth-child(5) {
+                                    transform: rotateX(90deg) translateZ(90px);
+                                }
+
+                                &:nth-child(6) {
+                                    transform: rotateX(-90deg) translateY(90px);
+                                }
+                            }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        .square {
+                            width: 108px;
+                            height: 108px;
+
+                            i {
+                                background: linear-gradient(202deg, #32FFE6 0%, #32C5FF 100%);
+                                // background: radial-gradient(circle, #32FFE6 0%, #32C5FF 100%);
+
+                                &:nth-child(1) {
+                                    transform: translateZ(-108px);
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotateY(-90deg) translateX(-54px) translateZ(54px);
+                                }
+
+                                &:nth-child(4) {
+                                    transform: rotateY(-90deg) translateX(-54px) translateZ(-54px);
+                                }
+
+                                &:nth-child(5) {
+                                    transform: rotateX(90deg) translateZ(108px);
+                                }
+
+                                &:nth-child(6) {
+                                    transform: rotateX(-90deg) translateY(108px);
+                                }
+                            }
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        .square {
+                            width: 44px;
+                            height: 44px;
+
+                            i {
+                                background: linear-gradient(202deg, #FFEE27 0%, #F7B500 100%);
+                                // background: radial-gradient(circle, #FFEE27 0%, #F7B500 100%);
+
+                                &:nth-child(1) {
+                                    transform: translateZ(-44px);
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotateY(-90deg) translateX(-22px) translateZ(22px);
+                                }
+
+                                &:nth-child(4) {
+                                    transform: rotateY(-90deg) translateX(-22px) translateZ(-22px);
+                                }
+
+                                &:nth-child(5) {
+                                    transform: rotateX(90deg) translateZ(44px);
+                                }
+
+                                &:nth-child(6) {
+                                    transform: rotateX(-90deg) translateY(44px);
+                                }
+                            }
+                        }
+
+                    }
+
+                    &:nth-child(4) {
+                        .square {
+                            width: 148px;
+                            height: 148px;
+
+                            i {
+                                background: linear-gradient(202deg, #1BCFF8 0%, #1F42D1 100%);
+
+                                &:nth-child(1) {
+                                    transform: translateZ(-148px);
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotateY(-90deg) translateX(-74px) translateZ(74px);
+                                }
+
+                                &:nth-child(4) {
+                                    transform: rotateY(-90deg) translateX(-74px) translateZ(-74px);
+                                }
+
+                                &:nth-child(5) {
+                                    transform: rotateX(90deg) translateZ(148px);
+                                }
+
+                                &:nth-child(6) {
+                                    transform: rotateX(-90deg) translateY(148px);
+                                }
+                            }
+                        }
+                    }
+
+                    &:nth-child(5) {
+                        .square {
+                            width: 68px;
+                            height: 68px;
+
+                            i {
+                                // background: radial-gradient(circle, #FFBD47 0%, #FF8400 100%);
+                                background: linear-gradient(202deg, #FFBD47 0%, #FF8400 100%);
+
+                                &:nth-child(1) {
+                                    transform: translateZ(-68px);
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotateY(-90deg) translateX(-34px) translateZ(34px);
+                                }
+
+                                &:nth-child(4) {
+                                    transform: rotateY(-90deg) translateX(-34px) translateZ(-34px);
+                                }
+
+                                &:nth-child(5) {
+                                    transform: rotateX(90deg) translateZ(68px);
+                                }
+
+                                &:nth-child(6) {
+                                    transform: rotateX(-90deg) translateY(68px);
+                                }
+                            }
+                        }
+                    }
+
+                    // 正方形动画
+                    .square {
+
+                        // 每一面样式
+                        i {
+                            display: inline-block;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            transform-origin: bottom;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // 功能介绍
     .ui_function_box {
         width: 100%;
         padding: 220px 0;
-        // background-color: #f2f2f2;
 
         .list {
             width: 1200px;
