@@ -111,11 +111,11 @@
 	</div>
 	<!-- 视频 -->
 	<div class="common_video_box">
-        <div class="common_video_content">
-            <video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
-            <div class="common_video_model"></div>
-        </div>
-    </div>
+		<div class="common_video_content">
+			<video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
+			<div class="common_video_model"></div>
+		</div>
+	</div>
 	<!-- 极减主义，让一切降下来 -->
 	<div class="reduce_down_bg_clear"></div>
 	<div class="reduce_down_bg_fuzzy"></div>
@@ -364,10 +364,9 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/animation.js"></script>
+	<script type="text/javascript" src="./js/animation.js"></script>
 	<script type="text/javascript" src="./js/common.js" defer="defer"></script>
 	<script type="text/javascript" defer="defer">
-		
 		let intoOpa = 0; // 进入可视区域文案透明度初始值
 		//页面加载完成
 		$(() => {
@@ -381,11 +380,11 @@
 		//页面滚动
 		window.addEventListener('scroll', (e) => {
 
-			helmetAnimation();//出色，必定与众不同
-			autoStartAnimation();//自动开机，高明至极
-			reduceDownAnimation();//极减主义，让一切降下来
-			softwarePlatformAnimation();//两大软件平台，抓住智能风口
-			systemManager();//后台式管家，掌控顷刻发生
+			helmetAnimation(); //出色，必定与众不同
+			autoStartAnimation(); //自动开机，高明至极
+			reduceDownAnimation(); //极减主义，让一切降下来
+			softwarePlatformAnimation(); //两大软件平台，抓住智能风口
+			systemManager(); //后台式管家，掌控顷刻发生
 
 
 			productAnimation(); // 产品上下阴影动效
@@ -395,15 +394,15 @@
 
 		});
 
-		
+
 		//赵靖
 		let winHeight = window.innerHeight; // 获取屏幕可视区域高度
 		let productBox = $('.ui_product_box')[0]; // 获取产品介绍box
 		// 计算产品介绍上下阴影高度
 		let shadowBoxTop = $('.shadowBox_top')[0]; // 获取底部阴影Box
 		let shadowBoxBottom = $('.shadowBox_bottom')[0]; // 获取底部阴影Box
-		shadowBoxTop.style.height = winHeight / 3 + 'px';
-		shadowBoxBottom.style.height = winHeight / 3 + 'px';
+		shadowBoxTop.style.height = winHeight / 4 + 'px';
+		shadowBoxBottom.style.height = winHeight / 4 + 'px';
 
 		// 小空间容纳大世界（微信小程序介绍）
 		let wechatContent = $('.ui_wechat_content')[0]; // 获取小程序内容DOM
@@ -432,6 +431,8 @@
 						} else {
 							itemDom.pause();
 						}
+					} else if (videoDomTopHei >= winHeight) {
+						itemDom.setAttribute('isplay', 'false');
 					}
 					// 播放结束监听
 					itemDom.onended = function () {
@@ -508,7 +509,7 @@
 		let autoStartWordsDom = $('.auto_start_words'); //最开始的‘HELLO’文字
 		let autoStartTitleDom = $('.auto_start_content .title'); //初始动画结束后的文字标题
 		let autoStartDesDom = $('.auto_start_content .des'); //初始动画结束后的文字描述
-		let autoStartImgBoxDom= $(".auto_start_img_box");//开机样式的图片盒子
+		let autoStartImgBoxDom = $(".auto_start_img_box"); //开机样式的图片盒子
 		let autoStartImgDom = $('.auto_start_img'); //开机样式的图片
 		let autoStartStatusOne = true; //HELLO文字的阴影效果
 		let autoStartStatusTwo = true; //HELLO文字的颜色渐变效果
@@ -733,8 +734,6 @@
 			wordsGradient(animationSixItemDOM[5], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
 			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
 		}
-
-
 	</script>
 </body>
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片逐渐加载</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .imgBox {
+        width: 535px;
+        height: 360px;
+        position: relative;
+        margin-bottom: 100px;
+    }
+
+    .zhu_img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .jiantou_img {
+        position: absolute;
+        top: 36px;
+        right: -20px;
+    }
+
+    .jiantou_img1 {
+        width: 448px;
+        height: 173px;
+        transition: all 2s ease;
+        transform-origin: left bottom;
+        transform: scale(0);
+    }
+
+    .jiantou_img1_active {
+        transform: scale(1);
+    }
+
+
+    .jiantou_img2 {
+        width: 448px;
+        height: 173px;
+        animation: move 5s infinite;
+    }
+
+    /* 字体动画 淡出 */
+    @keyframes move {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    .jiantou_img3 {
+        /* width: 0;
+        height: 0; */
+        /* transition: all 2s ease;
+        transform-origin: right top; */
+        animation: move1 5s;
+    }
+
+    /* 字体动画 淡出 */
+    @keyframes move1 {
+        from {
+            width: 0;
+            height: 0;
+        }
+
+        to {
+            width: 448px;
+            height: 173px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="imgBox imgbox_scale">
+            <img class="zhu_img zhu_img1" src="./image/banner5.jpg">
+            <img class="jiantou_img jiantou_img1" src="./image/jiantou.png">
+        </div>
+        <div class="imgBox">
+            <img class="zhu_img" src="./image/banner5.jpg">
+            <img class="jiantou_img jiantou_img2" src="./image/jiantou.png">
+        </div>
+        <div class="imgBox">
+            <img class="zhu_img" src="./image/banner5.jpg">
+            <img class="jiantou_img jiantou_img3" src="./image/jiantou.png">
+        </div>
+    </div>
+    <script>
+        let jiantouImg1 = document.getElementsByClassName('jiantou_img1')[0];
+        let jiantouImg3 = document.getElementsByClassName('jiantou_img3')[0];
+        window.onload = () => {
+            // 弹射显示
+            jiantouImg1.style.transform = 'scale(1)';
+
+            jiantouImg3.style.width = '448px';
+            jiantouImg3.style.height = '173px';
+        };
+    </script>
+</body>
+
+</html>
