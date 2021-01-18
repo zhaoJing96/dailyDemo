@@ -1,10 +1,15 @@
 let winheight = window.innerHeight; // 获取屏幕可视区域高度
 let commonWordTitle = $('.ui_common_word .title'); // 介绍文字title
 let commonWordTxt = $('.ui_common_word .txt'); // 介绍文字txt
+
+let commonLeftInout = $('.ui_common_left_inout'); // 左侧出现公共方法
+let commonRightInout = $('.ui_common_right_inout'); // 左侧出现公共方法
 // 滚动事件监听
 window.addEventListener('scroll', () => {
     textAnimationDomData(commonWordTitle);
     textAnimationDomData(commonWordTxt);
+    leftInoutDomData(commonLeftInout); // 左侧进入动效
+    rightInoutDomData(commonRightInout); // 右侧进入动效
 });
 /**
  *  文字动效数据处理
@@ -30,5 +35,58 @@ function setTextTransFormY(domNode) {
     } else if (domTopHei > winheight) {
         domNode.style.transform = 'translateY(100px)';
         domNode.style.opacity = 0;
+    }
+}
+
+
+/**
+ * 同类型左侧出现动效
+ * @param {*} commonleftInoutDom dom List 相同类名数据
+ */
+function leftInoutDomData(commonleftInoutDom) {
+    for (let j = 0; j < commonleftInoutDom.length; j++) {
+        const item = commonleftInoutDom[j];
+        leftInOut(item);
+    }
+}
+/**
+ * 左侧移入移除动效
+ * @param {*} dom 节点
+ */
+function leftInOut(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top < winheight * 0.8) {
+        dom.style.opacity = 1;
+        dom.style.transform = 'translate(0,0)';
+
+    } else {
+        dom.style.opacity = 0;
+        dom.style.transform = 'translate(-100px,0)';
+    }
+}
+
+/**
+ * 同类型右侧出现动效
+ * @param {*} commonRightInoutDom dom List 相同类名数据
+ */
+function rightInoutDomData(commonRightInoutDom) {
+    for (let j = 0; j < commonRightInoutDom.length; j++) {
+        const item = commonRightInoutDom[j];
+        rightInOut(item);
+    }
+}
+/**
+ * 右侧移入移除动效
+ * @param {*} dom 节点
+ */
+function rightInOut(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top < winheight * 0.8) {
+        dom.style.opacity = 1;
+        dom.style.transform = 'translate(0,0)';
+
+    } else {
+        dom.style.opacity = 0;
+        dom.style.transform = 'translate(100px,0)';
     }
 }

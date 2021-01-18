@@ -24,11 +24,14 @@
         </div>
         <!-- 功能概略 -->
         <div class="ui_outline_box">
-            <div class="outline_text">今天天气真好啊！</div>
-            <div class="dis_text">今天</div>
-            <div class="dis_text">天气</div>
-            <div class="dis_text">真好</div>
-            <div class="dis_text">啊！</div>
+            <div class="outline_text">
+                <span class="title">这里，远不止于高效</span>
+                <p class="txt">以项目、成员、危险区域、报警、旁站、巡检、统计、管理更深入、监督更省心、<br>防护更完善、统计更高效。智安汇，把控工程的每一处细节</p>
+            </div>
+            <div class="dis_text">项目</div>
+            <div class="dis_text">成员</div>
+            <div class="dis_text">危险区域</div>
+            <div class="dis_text">报警</div>
             <div class="ui_square_box">
                 <div class="item_box left_box">
                     <div class="posi_box common_slide_move">
@@ -94,8 +97,11 @@
                     <p class="txt">智安汇云平台以智能安全帽为入口，通过集成的人工智能、机器<br>学习算法、大数据采集技术，轻松把握施工动态。</p>
                     <p class="txt">后台黑科技3D展示数据，也可随心切换2D。从多项目→作业面→<br>工作场景，地图可无限放大，一台电脑就能掌握多个工程进度。</p>
                 </div>
-                <div class="other_box">
-
+                <div class="other_box ui_zah_3DBox">
+                    <img class="ui_zah_3Dimg common_fade_inout" src="./img/zahWechat/3D/img_1-1.png">
+                    <img class="ui_zah_3Dimg ui_common_left_inout" src="./img/zahWechat/3D/img_1-2.png">
+                    <img class="ui_zah_3Dimg ui_common_right_inout" src="./img/zahWechat/3D/img_1-3.png">
+                    <img class="ui_zah_3Dimg ui_zah_3Dimg3" src="./img/zahWechat/3D/img_1-4.png">
                 </div>
             </div>
             <div class="list">
@@ -113,8 +119,15 @@
                     <p class="txt">我们融合二维码技术与云平台。不论何时何地都能快捷扫码，添<br>加成员信息。</p>
                     <p class="txt">各部门管理员可自主管理成员，高效解决项目人员多、流动大的<br>难题。</p>
                 </div>
-                <div class="other_box">
-
+                <div class="other_box ui_zah_memberBox">
+                    <img class="ui_zah_memberimg common_fade_inout" src="./img/zahWechat/member/img_3-1.png">
+                    <img class="ui_zah_memberimg ui_zah_memberimg1" src="./img/zahWechat/member/img_3-2.png">
+                    <div class="box ui_common_left_inout">
+                        <div class="ui_qrcode_box">
+                            <div class="scan_quare"></div>
+                            <img class="ui_zah_memberimg2" src="./img/zahWechat/member/img_3-3.png">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="list">
@@ -167,6 +180,9 @@
                 </div>
             </div>
         </div>
+        <div class="zah_info_box">
+            <span class="zah_info_txt">人与工程高效管理，随时随地</span>
+        </div>
         <div class="footer"></div>
     </div>
     <script type="text/javascript" src="./js/jquery.min.js"></script>
@@ -177,9 +193,15 @@
         let outlineBox = $('.ui_outline_box')[0];
         let outlineDisText = $('.dis_text');
         let outlineText = $('.outline_text')[0];
+        // 3D图片
+        let zah3Dimg3 = $('.ui_zah_3Dimg3')[0];
+        // 成员管理
+        let zahMemberimg1 = $('.ui_zah_memberimg1')[0];
 
         window.addEventListener('scroll', () => {
             wordsDisappear();
+            modelImg(); // 3D模型动画
+            memberImg(); // 3D模型动画
         });
         // 功能大纲
         function wordsDisappear() {
@@ -210,6 +232,29 @@
                     outlineText.style.transition = 'none';
                     outlineText.classList.remove('outline_text_animation');
                 }
+            }
+        }
+
+        // 3D图片动画
+        function modelImg() {
+            // 下
+            let labelTop3 = zah3Dimg3.getBoundingClientRect().top;
+            if (labelTop3 <= winHeight * 0.8) {
+                zah3Dimg3.style.transform = 'translate(0,0)';
+                zah3Dimg3.style.opacity = 1;
+            } else {
+                zah3Dimg3.style.transform = 'translate(0,50px)';
+                zah3Dimg3.style.opacity = 0;
+            }
+        }
+
+        // 成员
+        function memberImg() {
+            let imgTop1 = zahMemberimg1.getBoundingClientRect().top;
+            if (imgTop1 <= winHeight * 0.8) {
+                zahMemberimg1.style.transform = 'scale(1)';
+            } else {
+                zahMemberimg1.style.transform = 'scale(0)';
             }
         }
     </script>
