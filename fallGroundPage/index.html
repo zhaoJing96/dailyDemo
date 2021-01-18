@@ -27,7 +27,7 @@
 				<span class="dec">出色，必定与众不同</span>
 			</div>
 			<img src="./img/cat1.png" class="helmet_img" />
-			<video src="./video/cat.mp4" muted="muted" class="helmet_video"></video>
+			<video src="./video/cat.mp4" class="helmet_video" muted></video>
 		</div>
 	</div>
 	<!-- 自动开机，高明至极 -->
@@ -38,8 +38,8 @@
 				<div class="title">自动开机，高明至极</div>
 				<div class="des">怎样唤醒这顶安全帽？戴上它，感受强有力的新生科技</div>
 				<div class="auto_start_img_box">
-					<img src="./img/kaiji_04@2x.png" alt="" class="auto_start_img_under">
-					<img src="./img/kaiji_04@2x.png" alt="" class="auto_start_img">
+					<img src="./img/kaiji_05@2x.png" alt="" class="auto_start_img_under">
+					<img src="./img/kaiji_05@2x.png" alt="" class="auto_start_img">
 				</div>
 			</div>
 		</div>
@@ -110,9 +110,9 @@
 		<img src="./img/earImg.png" alt="">
 	</div>
 	<!-- 视频 -->
-	<div class="common_video_box">
+	<div class="common_video_box" data-type="0.4">
 		<div class="common_video_content">
-			<video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
+			<video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
 			<div class="common_video_model"></div>
 		</div>
 	</div>
@@ -222,11 +222,14 @@
 			<h1 class="title">3D可视化模型，展示数据的实力派</h1>
 			<p class="txt">
 				智安汇是以智能安全帽为入口的SaaS智慧工程管理平台。它用先进的人工智能+机器学习算法+大数据采集等，<br>
-				轻松盯紧施工动态。3D和2D的多维数据展示，地图支持无线放大，每一个细节都清楚
+				轻松盯紧施工动态。3D和2D的多维数据展示，地图支持无限放大，每一个细节都清楚
 			</p>
 		</div>
 		<div class="ui_3DVideo_box">
-			<img src="./img/img_3dmap.png">
+			<img src="./img/img_3dmap@2x.png" class="img_1">
+			<img src="./img/img_3dmap_right@2x.png" class="img_2">
+			<img src="./img/img_3dmap_left@2x.png" class="img_3">
+			<img src="./img/img_3dmap_down@2x.png" class="img_4">
 		</div>
 	</div>
 	<!-- 后台式管家，掌控顷刻发生 -->
@@ -367,6 +370,7 @@
 	<script type="text/javascript" src="./js/animation.js"></script>
 	<script type="text/javascript" src="./js/common.js" defer="defer"></script>
 	<script type="text/javascript" defer="defer">
+
 		let intoOpa = 0; // 进入可视区域文案透明度初始值
 		//页面加载完成
 		$(() => {
@@ -380,14 +384,15 @@
 		//页面滚动
 		window.addEventListener('scroll', (e) => {
 
-			helmetAnimation(); //出色，必定与众不同
-			autoStartAnimation(); //自动开机，高明至极
-			reduceDownAnimation(); //极减主义，让一切降下来
-			softwarePlatformAnimation(); //两大软件平台，抓住智能风口
-			systemManager(); //后台式管家，掌控顷刻发生
+			helmetAnimation();//出色，必定与众不同
+			autoStartAnimation();//自动开机，高明至极
+			reduceDownAnimation();//极减主义，让一切降下来
+			softwarePlatformAnimation();//两大软件平台，抓住智能风口
+			systemManager();//后台式管家，掌控顷刻发生
 
 
 			productAnimation(); // 产品上下阴影动效
+			visibleModel();//3D可视化模型，展示数据的实力派
 			bannerAnimation(); // 智安汇小程序动效 - 手机轮播
 			bgMove(consultboxDOM); // 咨询背景移动
 			videoPlay(); // 产品视频播放控制
@@ -403,6 +408,12 @@
 		let shadowBoxBottom = $('.shadowBox_bottom')[0]; // 获取底部阴影Box
 		shadowBoxTop.style.height = winHeight / 4 + 'px';
 		shadowBoxBottom.style.height = winHeight / 4 + 'px';
+
+		//3D可视化模型，展示数据的实力派
+		let visibleModleImg1 = $(".ui_3D_box .img_1");
+		let visibleModleImg2 = $(".ui_3D_box .img_2");
+		let visibleModleImg3 = $(".ui_3D_box .img_3");
+		let visibleModleImg4 = $(".ui_3D_box .img_4");
 
 		// 小空间容纳大世界（微信小程序介绍）
 		let wechatContent = $('.ui_wechat_content')[0]; // 获取小程序内容DOM
@@ -431,7 +442,7 @@
 						} else {
 							itemDom.pause();
 						}
-					} else if (videoDomTopHei >= winHeight) {
+					} else if(videoDomTopHei >= winHeight){
 						itemDom.setAttribute('isplay', 'false');
 					}
 					// 播放结束监听
@@ -449,6 +460,48 @@
 				let content = productBox.getElementsByClassName('ui_content_box')[0];
 				content.style.opacity = Math.abs(intoOpa);
 			}
+		}
+		//3D可视化模型，展示数据的实力派
+		function visibleModel(){
+			let labelTop1 = visibleModleImg1[0].getBoundingClientRect().top;
+            if (labelTop1 <= visibleHeight * 0.9) {
+                visibleModleImg1[0].style.transform = 'scale(1)';
+                visibleModleImg1[0].style.opacity = 1;
+            }
+            else {
+                visibleModleImg1[0].style.transform = 'scale(.9)';
+                visibleModleImg1[0].style.opacity = 0;
+			}
+
+			let labelTop2 = visibleModleImg2[0].getBoundingClientRect().top;
+            if (labelTop2 <= visibleHeight * 0.8) {
+                visibleModleImg2[0].style.transform = 'translate(0,0)';
+                visibleModleImg2[0].style.opacity = 1;
+            }
+            else {
+                visibleModleImg2[0].style.transform = 'translate(100px,0)';
+                visibleModleImg2[0].style.opacity = 0;
+			}
+			
+			let labelTop3 = visibleModleImg3[0].getBoundingClientRect().top;
+            if (labelTop3 <= visibleHeight * 0.8) {
+                visibleModleImg3[0].style.transform = 'translate(0,0)';
+                visibleModleImg3[0].style.opacity = 1;
+            }
+            else {
+                visibleModleImg3[0].style.transform = 'translate(-100px,0)';
+                visibleModleImg3[0].style.opacity = 0;
+			}
+			
+			let labelTop4 = visibleModleImg4[0].getBoundingClientRect().top;
+            if (labelTop4 <= visibleHeight * 1) {
+                visibleModleImg4[0].style.transform = 'translate(0,0)';
+                visibleModleImg4[0].style.opacity = 1;
+            }
+            else {
+                visibleModleImg4[0].style.transform = 'translate(0,50px)';
+                visibleModleImg4[0].style.opacity = 0;
+            }
 		}
 		// 手机翻页动画
 		function bannerAnimation() {
@@ -509,11 +562,12 @@
 		let autoStartWordsDom = $('.auto_start_words'); //最开始的‘HELLO’文字
 		let autoStartTitleDom = $('.auto_start_content .title'); //初始动画结束后的文字标题
 		let autoStartDesDom = $('.auto_start_content .des'); //初始动画结束后的文字描述
-		let autoStartImgBoxDom = $(".auto_start_img_box"); //开机样式的图片盒子
+		let autoStartImgBoxDom = $(".auto_start_img_box");//开机样式的图片盒子
 		let autoStartImgDom = $('.auto_start_img'); //开机样式的图片
 		let autoStartStatusOne = true; //HELLO文字的阴影效果
 		let autoStartStatusTwo = true; //HELLO文字的颜色渐变效果
 		let autoStartWordsTop; //HELLO文字距离浏览器可视区域顶部的距离
+		let autoStartInterval,autostartTimeOutOne,autostartTimeOutTwo,autostartTimeOutThree;
 
 		//极减主义，让一切降下来
 		let reduceDownBgClearDom = $(".reduce_down_bg_clear"); //清晰的背景图片
@@ -543,26 +597,28 @@
 		function helmetAnimation() {
 			helmetBoxTop = helmetBoxDom[0].getBoundingClientRect().top;
 			//安全帽缩放效果
+			
+			// helmetVideoDom[0].style.transition = 'all 1s linear';
 			if (helmetBoxTop <= 64 && helmetBoxTop / visibleHeight > -1) {
-				if (!helmetStatus) {
-					return;
-				}
+				helmetStatus = true;
+				helmetVideoDom[0].style.opacity = 0;
+
 				helmetImgDom[0].style.transform = 'translate(-50%,-' + (5 - 42.1428 * (helmetBoxTop / visibleHeight)) +
 					'%) scale(' + (10 + 9 * (helmetBoxTop / visibleHeight)) + ')';
 				helmetWordsDom[0].style.transform = 'translate(-50%,-' + (10 - 25 * (helmetBoxTop / visibleHeight)) + 'vh)';
 				helmetWordsDom[0].style.color = 'rgb(' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 +
-						182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) +
+					182.1428 * (helmetBoxTop / visibleHeight)) + ',' + (255 + 182.1428 * (helmetBoxTop / visibleHeight)) +
 					')';
 			}
 			//播放安全帽视频
 			else {
+				helmetImgDom[0].style.transform = 'translate(-50%,-50%) scale(1)';
+				helmetWordsDom[0].style.transform = 'translate(-50%,-39vh)';
+				helmetWordsDom[0].style.color = 'rgb(0,0,0)';
 				if (!helmetStatus) {
 					return;
 				}
 				helmetStatus = false;
-				helmetImgDom[0].style.transform = 'translate(-50%,-50%) scale(1)';
-				helmetWordsDom[0].style.transform = 'translate(-50%,-39vh)';
-				helmetWordsDom[0].style.color = 'rgb(0,0,0)';
 				setTimeout(() => {
 					helmetVideoDom[0].style.opacity = 1;
 					helmetVideoDom[0].play();
@@ -573,6 +629,35 @@
 		//自动开机，高明至极
 		function autoStartAnimation() {
 			autoStartWordsTop = autoStartWordsDom[0].getBoundingClientRect().top;
+			autoStartTitleTop = autoStartTitleDom[0].getBoundingClientRect().top;
+			//还原
+			if(autoStartTitleTop>=visibleHeight){
+
+				autoStartWordsDom[0].style.opacity = 1;
+				autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) 100%, rgb(255,255,255) 0%)';
+				autoStartWordsDom[0].style.transition = 'none';
+
+				autoStartInterval?clearInterval(autoStartInterval):null;
+				autostartTimeOutOne?clearTimeout(autostartTimeOutOne):null;
+				autostartTimeOutTwo?clearTimeout(autostartTimeOutTwo):null;
+				autostartTimeOutThree?clearTimeout(autostartTimeOutThree):null;
+
+				autoStartTitleDom[0].style.opacity = 0;
+				autoStartTitleDom[0].style.transform = "translateY(90px)";
+				autoStartTitleDom[0].style.transition = 'none';
+				autoStartDesDom[0].style.opacity = 0;
+				autoStartDesDom[0].style.transform = "translateY(90px)";
+				autoStartDesDom[0].style.transition = 'none';
+
+				autoStartImgBoxDom[0].style.opacity = 0;
+				autoStartImgBoxDom[0].style.transition = 'none';
+
+				autoStartImgDom.remove('openHelmet');
+
+				autoStartStatusOne = true;
+				autoStartStatusTwo = true;
+
+			}
 
 			if (autoStartWordsTop >= 0 && autoStartWordsTop <= visibleHeight) {
 
@@ -583,7 +668,7 @@
 					}
 					autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(-45deg, rgb(0, 0, 0) ' + (100 - (600 -
 						6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%, rgb(255, 255, 255) ' + (200 - (600 -
-						6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%)';
+							6.66 * (autoStartWordsTop / visibleHeight * 100))) + '%)';
 				}
 
 				//文字颜色渐变效果
@@ -594,8 +679,8 @@
 					autoStartStatusOne = false;
 					autoStartStatusTwo = false;
 					let num = 0;
-					let interval = null;
-					interval = setInterval(() => {
+					autoStartInterval?clearInterval(autoStartInterval):null;
+					autoStartInterval = setInterval(() => {
 						num += 3;
 						if (num < 300) {
 							autoStartWordsDom[0].style.backgroundImage =
@@ -603,31 +688,35 @@
 									num) + '%, #F7B500 ' + (300 - num) + '%)';
 						} else if (num >= 300 && num <= 700) {
 							autoStartWordsDom[0].style.backgroundImage = 'linear-gradient(150deg, #F7B500 ' + (400 -
-									num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' +
+								num) + '%, #0E6FFF ' + (500 - num) + '%, #C200F7 ' + (600 - num) + '%, #ffffff ' +
 								(700 - num) + '%)';
 						} else {
-							clearInterval(interval);
+							clearInterval(autoStartInterval);
 							//文字一
 							autoStartWordsDom[0].style.opacity = 0;
 							autoStartWordsDom[0].style.transition = 'all 1s linear';
-							setTimeout(() => {
+							autostartTimeOutOne?clearTimeout(autostartTimeOutOne):null;
+							autostartTimeOutOne = setTimeout(() => {
 								//文字二
-								setTextTransFormY(autoStartTitleDom[0]);
+								autoStartTitleDom[0].style.opacity = 1;
+								autoStartTitleDom[0].style.transform = "translateY(0px)";
+								autoStartTitleDom[0].style.transition = 'all 1s ease';
+								// setTextTransFormY(autoStartTitleDom[0]);
 								//文字三
-								setTimeout(() => {
-									setTextTransFormY(autoStartDesDom[0]);
+								autostartTimeOutTwo?clearTimeout(autostartTimeOutTwo):null;
+								autostartTimeOutTwo = setTimeout(() => {
+									// setTextTransFormY(autoStartDesDom[0]);
+									autoStartDesDom[0].style.opacity = 1;
+									autoStartDesDom[0].style.transform = "translateY(0px)";
+									autoStartDesDom[0].style.transition = 'all 1s ease';
 								}, 50)
 
-								window.addEventListener('scroll', (e) => {
-									textAnimationDomData([
-										autoStartTitleDom[0],
-										autoStartDesDom[0]
-									]);
-								});
+								
 								//图片
 								autoStartImgBoxDom[0].style.opacity = 1;
 								autoStartImgBoxDom[0].style.transition = 'all 1s linear';
-								setTimeout(() => {
+								autostartTimeOutThree?clearTimeout(autostartTimeOutThree):null;
+								autostartTimeOutThree = setTimeout(() => {
 									autoStartImgDom.addClass('openHelmet');
 								}, 1000);
 							}, 1000);
@@ -734,6 +823,8 @@
 			wordsGradient(animationSixItemDOM[5], 'rgb(255,255,255)', '#FF926F', '#FF2121', 'rgb(255,255,255)');
 			wordsGradient(animationSixItemDOM[6], 'rgb(255,255,255)', '#98D60D', '#44D7B6', 'rgb(255,255,255)');
 		}
+
+
 	</script>
 </body>
 

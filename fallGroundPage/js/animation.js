@@ -105,8 +105,9 @@ function zoomMove(dom) {
 
 //视频缩放
 function videoZoom(box, model) {
+    let distance = box.dataset.type?Number(box.dataset.type):-0.2;
     let top = box.getBoundingClientRect().top;
-    if (top / visibleHeight <= -0.2) {
+    if (top / visibleHeight <= distance) {
         model.style.clipPath = 'polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%)';
     }
     else {
