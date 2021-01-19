@@ -69,6 +69,8 @@ body {
         .outline_text {
             opacity: 0;
             transform: translateY(50px);
+            position: relative;
+            z-index: 2;
 
             .title {
                 font-size: 48px;
@@ -106,6 +108,7 @@ body {
 
         // 正方形
         .ui_square_box {
+            pointer-events: none;
             position: absolute;
             top: 0;
             left: 0;
@@ -145,27 +148,27 @@ body {
                     .posi_box {
 
                         &:nth-child(1) {
-                            top: 0;
+                            top: 40;
                             left: 0;
                         }
 
                         &:nth-child(2) {
-                            top: 120px;
+                            top: 160px;
                             left: 108px;
                         }
 
                         &:nth-child(3) {
-                            top: 81px;
+                            top: 121px;
                             left: 281px;
                         }
 
                         &:nth-child(4) {
-                            top: 213px;
+                            top: 253px;
                             left: -58px;
                         }
 
                         &:nth-child(5) {
-                            top: 310px;
+                            top: 350px;
                             left: 214px;
                         }
 
@@ -180,27 +183,27 @@ body {
                 &.right_box {
                     .posi_box {
                         &:nth-child(1) {
-                            top: 0;
+                            top: 40;
                             right: 0;
                         }
 
                         &:nth-child(2) {
-                            top: 120px;
+                            top: 160px;
                             right: 108px;
                         }
 
                         &:nth-child(3) {
-                            top: 81px;
+                            top: 121px;
                             right: 281px;
                         }
 
                         &:nth-child(4) {
-                            top: 213px;
+                            top: 253px;
                             right: -58px;
                         }
 
                         &:nth-child(5) {
-                            top: 310px;
+                            top: 350px;
                             right: 214px;
                         }
 
