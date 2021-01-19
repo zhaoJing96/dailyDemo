@@ -105,9 +105,13 @@
                     <img class="ui_zah_3Dimg ui_zah_3Dimg3" src="./img/zahWechat/3D/img_1-4.png">
                 </div>
             </div>
-            <div class="list">
-                <div class="other_box">
-
+            <div class="list project">
+                <div class="img_intro">
+                    <img src="./img/zahWechat/project/img_2-1@2x.png" alt="" class="img_1 common_fade_inout">
+                    <img src="./img/zahWechat/project/img_2-2@2x.png" alt="" class="img_2">
+                    <span class="laberl_1 common_slide_move">安全管理</span>
+                    <span class="laberl_2 common_slide_move">项目管理</span>
+                    <span class="laberl_3 common_slide_move">人员权限</span>
                 </div>
                 <div class="zah_introduce ui_common_word">
                     <p class="title">多项目配置，简约而不简单</p>
@@ -131,9 +135,13 @@
                     </div>
                 </div>
             </div>
-            <div class="list">
-                <div class="other_box">
-
+            <div class="list danger">
+                <div class="img_intro">
+                    <img src="./img/zahWechat/danger/img_4-1@2x.png" alt="" class="img_1 common_fade_inout">
+                    <img src="./img/zahWechat/danger/img_4-2@2x.png" alt="" class="img_2 ui_common_scale_inout">
+                    <span class="laberl_1 common_slide_move">危险区域设置</span>
+                    <span class="laberl_2 common_slide_move">IV类</span>
+                    <span class="laberl_3 common_slide_move">II类</span>
                 </div>
                 <div class="zah_introduce ui_common_word">
                     <p class="title">这样的危险区域管理，才是安全<br>的及时雨</p>
@@ -200,9 +208,7 @@
                     </div>
                     <div class="route">
                         <img src="./img/zahWechat/inspect/img_7-3.png" alt="" class="img_3">
-                        <div class="img_4_box">
-                            <img src="./img/zahWechat/inspect/img_7-5.png" alt="" class="img_4">
-                        </div>
+                        <img src="./img/zahWechat/inspect/img_7-5.png" alt="" class="img_4">
                         <img src="./img/zahWechat/inspect/img_7-4@2x.png" alt="" class="img_5">
                     </div>
                 </div>
@@ -239,6 +245,9 @@
             wordsDisappear();
             modelImg(); // 3D模型动画
 
+            
+            //多项目配置，简约而不简单
+            projectAnimation();
             //智能巡检，隐患无所遁形
             inspestAnimation();
         });
@@ -289,6 +298,10 @@
 
 
         //周鑫
+        //多项目配置，简约而不简单
+        let projectImg2 = $(".project .img_2");
+
+
         //智能巡检，隐患无所遁形
         //百分比圆环
         let inspestProcess = $(".inspect .process");
@@ -300,9 +313,20 @@
         //坐标路线
         let inspectRoute = $(".inspect .route");
         let inspectRouteImg3 = $(".inspect .route .img_3");
-        let inspectRouteImg4Box = $(".inspect .route .img_4_box");
+        let inspectRouteImg4 = $(".inspect .route .img_4");
         let inspectRouteImg5 = $(".inspect .route .img_5");
 
+
+        //多项目配置，简约而不简单
+        function projectAnimation(){
+            let top = projectImg2[0].getBoundingClientRect().top;
+            if(top <= visibleHeight * 0.8){
+                projectImg2[0].style.clipPath = ' inset(0 0 0 0)';
+            } 
+            else {
+                projectImg2[0].style.clipPath = ' inset(0 100% 0 0)';
+            }
+        }
         //智能巡检，隐患无所遁形
         function inspestAnimation() {
 
@@ -311,15 +335,15 @@
             if (topRoute <= visibleHeight * 0.8) {
                 inspectRouteImg3[0].style.transform = 'scale(1)';
                 inspectRouteImg3[0].style.transition = 'transform .5s linear';
-                inspectRouteImg4Box[0].style.height = '173px';
-                inspectRouteImg4Box[0].style.transition = 'height .7s ease .5s';
+                inspectRouteImg4[0].style.clipPath = ' inset(0 0 0 0)';
+                inspectRouteImg4[0].style.transition = 'clip-path .7s ease .5s';
                 inspectRouteImg5[0].style.transform = 'scale(1)';
                 inspectRouteImg5[0].style.transition = 'transform .5s linear 1.2s';
             } else {
                 inspectRouteImg3[0].style.transform = 'scale(0)';
                 inspectRouteImg3[0].style.transition = 'transform .5s linear';
-                inspectRouteImg4Box[0].style.height = '0';
-                inspectRouteImg4Box[0].style.transition = 'height .5s ease';
+                inspectRouteImg4[0].style.clipPath = ' inset(100% 0 0 0)';
+                inspectRouteImg4[0].style.transition = 'clip-path .5s ease';
                 inspectRouteImg5[0].style.transform = 'scale(0)';
                 inspectRouteImg5[0].style.transition = 'transform .5s linear';
             }

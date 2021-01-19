@@ -69,7 +69,6 @@ function fadeInOut(dom) {
     if (top < visibleHeight * 0.8) {
         dom.style.opacity = "1";
         dom.style.transform = 'translateY(0)';
-
     }
     else {
         dom.style.opacity = "0";
