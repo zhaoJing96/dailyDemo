@@ -122,7 +122,7 @@
                 </div>
                 <div class="ui_zah_memberBox">
                     <img class="ui_zah_memberimg common_fade_inout" src="./img/zahWechat/member/img_3-1.png">
-                    <img class="ui_zah_memberimg ui_zah_memberimg1" src="./img/zahWechat/member/img_3-2.png">
+                    <img class="ui_zah_memberimg ui_common_scale_inout" src="./img/zahWechat/member/img_3-2.png">
                     <div class="qrcodeBox ui_common_opacity_inout">
                         <div class="ui_qrcode_box">
                             <div class="scan_quare"></div>
@@ -164,10 +164,10 @@
                     <img src="./img/zahWechat/sideStand/img_6-5.png" alt="" class="img_3 common_zoom_move">
                     <img src="./img/zahWechat/sideStand/img_6-3.png" alt="" class="img_4 common_zoom_move">
                     <img src="./img/zahWechat/sideStand/img_6-4.png" alt="" class="img_5 common_zoom_move">
-                    <img src="./img/zahWechat/sideStand/img_6-8.png" alt="" class="img_6 common">
-                    <img src="./img/zahWechat/sideStand/img_6-9.png" alt="" class="img_7 common">
-                    <img src="./img/zahWechat/sideStand/img_6-6.png" alt="" class="img_8 common">
-                    <img src="./img/zahWechat/sideStand/img_6-7.png" alt="" class="img_9 common">
+                    <img src="./img/zahWechat/sideStand/img_6-8.png" alt="" class="img_6 ui_common_scale_inout">
+                    <img src="./img/zahWechat/sideStand/img_6-9.png" alt="" class="img_7 ui_common_scale_inout">
+                    <img src="./img/zahWechat/sideStand/img_6-6.png" alt="" class="img_8 ui_common_scale_inout">
+                    <img src="./img/zahWechat/sideStand/img_6-7.png" alt="" class="img_9 ui_common_scale_inout">
                 </div>
                 <div class="zah_introduce ui_common_word">
                     <p class="title">每多一次按规旁站，就多一份安<br>心</p>
@@ -210,7 +210,7 @@
             <div class="list statistics">
                 <div class="img_intro">
                     <img src="./img/zahWechat/statistics/img_8-1.png" alt="" class="img_1 common_fade_inout">
-                    <img src="./img/zahWechat/statistics/img_8-6.png" alt="" class="img_2">
+                    <img src="./img/zahWechat/statistics/img_8-6.png" alt="" class="img_2 ui_common_scale_inout">
                     <img src="./img/zahWechat/statistics/img_8-5.png" alt="" class="img_3 common_slide_move">
                     <span class="laberl_1 common_slide_move">脱帽次数</span>
                     <span class="laberl_2 common_slide_move">工作时长</span>
@@ -234,20 +234,13 @@
         let outlineText = $('.outline_text')[0];
         // 3D图片
         let zah3Dimg3 = $('.ui_zah_3Dimg3')[0];
-        // 成员管理
-        let zahMemberimg1 = $('.ui_zah_memberimg1')[0];
+
         window.addEventListener('scroll', () => {
             wordsDisappear();
             modelImg(); // 3D模型动画
-            memberImg(); // 3D模型动画
 
-
-            //每多一次按规旁站，就多一份安心
-            constructionSiteAnimation();
             //智能巡检，隐患无所遁形
             inspestAnimation();
-            //考勤等多维度统计，大师级数据管理
-            statisticsAnimation();
         });
         // 功能大纲
         function wordsDisappear() {
@@ -285,32 +278,17 @@
         function modelImg() {
             // 下
             let labelTop3 = zah3Dimg3.getBoundingClientRect().top;
-            if (labelTop3 <= winHeight * 0.8) {
-                zah3Dimg3.style.transform = 'translate(0,0)';
+            if (labelTop3 <= winHeight * 0.9) {
+                zah3Dimg3.style.transform = 'translate(0, 0)';
                 zah3Dimg3.style.opacity = 1;
             } else {
-                zah3Dimg3.style.transform = 'translate(0,50px)';
+                zah3Dimg3.style.transform = 'translate(0, 50px)';
                 zah3Dimg3.style.opacity = 0;
             }
         }
 
-        // 成员
-        function memberImg() {
-            let imgTop1 = zahMemberimg1.getBoundingClientRect().top;
-            if (imgTop1 <= winHeight * 0.8) {
-                zahMemberimg1.style.transform = 'scale(1)';
-            } else {
-                zahMemberimg1.style.transform = 'scale(0)';
-            }
-        }
-
-
 
         //周鑫
-        //每多一次按规旁站，就多一份安心
-        let constructionSiteCommon = $(".construction_site .common");
-        let constructionSiteCommonLen = constructionSiteCommon.length;
-
         //智能巡检，隐患无所遁形
         //百分比圆环
         let inspestProcess = $(".inspect .process");
@@ -325,37 +303,19 @@
         let inspectRouteImg4Box = $(".inspect .route .img_4_box");
         let inspectRouteImg5 = $(".inspect .route .img_5");
 
-        //考勤等多维度统计，大师级数据管理
-        let statisticsImg2 = $(".statistics .img_2");
-
-
-        //每多一次按规旁站，就多一份安心
-        function constructionSiteAnimation() {
-            for (let i = 0; i < constructionSiteCommonLen; i++) {
-                let top = constructionSiteCommon[i].getBoundingClientRect().top;
-                if (top <= visibleHeight * 0.8) {
-                    constructionSiteCommon[i].style.transform = 'scale(1)';
-                }
-                else {
-                    constructionSiteCommon[i].style.transform = 'scale(0)';
-                }
-            }
-        }
-
         //智能巡检，隐患无所遁形
         function inspestAnimation() {
 
             //坐标路线
             let topRoute = inspectRoute[0].getBoundingClientRect().top;
-            if(topRoute <= visibleHeight * 0.8){
+            if (topRoute <= visibleHeight * 0.8) {
                 inspectRouteImg3[0].style.transform = 'scale(1)';
                 inspectRouteImg3[0].style.transition = 'transform .5s linear';
                 inspectRouteImg4Box[0].style.height = '173px';
                 inspectRouteImg4Box[0].style.transition = 'height .7s ease .5s';
                 inspectRouteImg5[0].style.transform = 'scale(1)';
                 inspectRouteImg5[0].style.transition = 'transform .5s linear 1.2s';
-            }
-            else {
+            } else {
                 inspectRouteImg3[0].style.transform = 'scale(0)';
                 inspectRouteImg3[0].style.transition = 'transform .5s linear';
                 inspectRouteImg4Box[0].style.height = '0';
@@ -388,24 +348,12 @@
 
                     }
                 }, 30);
-            }
-            else {
+            } else {
                 rightContent.setAttribute('style', 'transform: rotate(0deg)');
                 leftContent.setAttribute('style', 'transform: rotate(0deg)');
                 textCircleNum.innerHTML = '0%';
                 inspestProcessStatus = true;
                 inspestProcessInterval ? clearInterval(inspestProcessInterval) : null;
-            }
-        }
-
-        //考勤等多维度统计，大师级数据管理
-        function statisticsAnimation(){
-            let top = statisticsImg2[0].getBoundingClientRect().top;
-            if(top <= visibleHeight * 0.8){
-                statisticsImg2[0].style.transform = 'scale(1)';
-            }
-            else {
-                statisticsImg2[0].style.transform = 'scale(0)';
             }
         }
     </script>

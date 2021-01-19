@@ -6,13 +6,15 @@ let commonLeftInout = $('.ui_common_left_inout'); // 左侧出现公共方法
 let commonRightInout = $('.ui_common_right_inout'); // 左侧出现公共方法
 
 let commonOpacityInout = $('.ui_common_opacity_inout'); // 淡入公共方法
+let commonScaleInout = $('.ui_common_scale_inout'); // 缩放公共方法
 // 滚动事件监听
 window.addEventListener('scroll', () => {
     textAnimationDomData(commonWordTitle);
     textAnimationDomData(commonWordTxt);
     leftInoutDomData(commonLeftInout); // 左侧进入动效
     rightInoutDomData(commonRightInout); // 右侧进入动效
-    opacityInoutDomData(commonOpacityInout); // 右侧进入动效
+    opacityInoutDomData(commonOpacityInout); // 淡入动效
+    scaleInoutDomData(commonScaleInout); // 缩放进入动效
 });
 /**
  *  文字动效数据处理
@@ -92,6 +94,7 @@ function rightInOut(dom) {
         dom.style.transform = 'translate(100px,0)';
     }
 }
+
 /**
  * 同类型淡入淡出动效
  * @param {*} commonOpacityInoutDom dom List 相同类名数据
@@ -112,5 +115,28 @@ function opacityInOut(dom) {
         dom.style.opacity = 1;
     } else {
         dom.style.opacity = 0;
+    }
+}
+
+/**
+ * 同类型放大缩小动效
+ * @param {*} commonScaleInoutDom dom List 相同类名数据
+ */
+function scaleInoutDomData(commonScaleInoutDom) {
+    for (let j = 0; j < commonScaleInoutDom.length; j++) {
+        const item = commonScaleInoutDom[j];
+        scaleInOut(item);
+    }
+}
+/**
+ * 放大缩小效果
+ * @param {*} dom 节点
+ */
+function scaleInOut(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top < winheight * 0.8) {
+        dom.style.transform = 'scale(1)';
+    } else {
+        dom.style.transform = 'scale(0)';
     }
 }
