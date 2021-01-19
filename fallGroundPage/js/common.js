@@ -4,12 +4,15 @@ let commonWordTxt = $('.ui_common_word .txt'); // 介绍文字txt
 
 let commonLeftInout = $('.ui_common_left_inout'); // 左侧出现公共方法
 let commonRightInout = $('.ui_common_right_inout'); // 左侧出现公共方法
+
+let commonOpacityInout = $('.ui_common_opacity_inout'); // 淡入公共方法
 // 滚动事件监听
 window.addEventListener('scroll', () => {
     textAnimationDomData(commonWordTitle);
     textAnimationDomData(commonWordTxt);
     leftInoutDomData(commonLeftInout); // 左侧进入动效
     rightInoutDomData(commonRightInout); // 右侧进入动效
+    rightInoutDomData(commonOpacityInout); // 右侧进入动效
 });
 /**
  *  文字动效数据处理
@@ -58,7 +61,6 @@ function leftInOut(dom) {
     if (top < winheight * 0.8) {
         dom.style.opacity = 1;
         dom.style.transform = 'translate(0,0)';
-
     } else {
         dom.style.opacity = 0;
         dom.style.transform = 'translate(-100px,0)';
@@ -75,6 +77,7 @@ function rightInoutDomData(commonRightInoutDom) {
         rightInOut(item);
     }
 }
+
 /**
  * 右侧移入移除动效
  * @param {*} dom 节点
@@ -84,9 +87,30 @@ function rightInOut(dom) {
     if (top < winheight * 0.8) {
         dom.style.opacity = 1;
         dom.style.transform = 'translate(0,0)';
-
     } else {
         dom.style.opacity = 0;
         dom.style.transform = 'translate(100px,0)';
+    }
+}
+/**
+ * 同类型淡入淡出动效
+ * @param {*} commonOpacityInoutDom dom List 相同类名数据
+ */
+function opacityInoutDomData(commonOpacityInoutDom) {
+    for (let j = 0; j < commonOpacityInoutDom.length; j++) {
+        const item = commonOpacityInoutDom[j];
+        rightInOut(item);
+    }
+}
+/**
+ * 淡入淡出效果
+ * @param {*} dom 节点
+ */
+function rightInOut(dom) {
+    let top = dom.getBoundingClientRect().top;
+    if (top < winheight * 0.8) {
+        dom.style.opacity = 1;
+    } else {
+        dom.style.opacity = 0;
     }
 }
