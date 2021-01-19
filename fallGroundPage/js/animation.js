@@ -66,7 +66,7 @@ function commonAnimationAll() {
 //渐渐出现/退出动画效果
 function fadeInOut(dom) {
     let top = dom.getBoundingClientRect().top;
-    if (top < visibleHeight * 0.9) {
+    if (top < visibleHeight * 0.8) {
         dom.style.opacity = "1";
         dom.style.transform = 'translateY(0)';
 
@@ -78,8 +78,8 @@ function fadeInOut(dom) {
 }
 
 //滑动移动
-function slideMove(dom, speed) {
-    speed ? speed = speed : speed = 20;
+function slideMove(dom) {
+    let speed = dom.dataset.speed?Number(dom.dataset.speed):30;
     let top = dom.getBoundingClientRect().top;
     if (top <= visibleHeight * 0.8) {
         dom.style.opacity = "1";
@@ -93,9 +93,10 @@ function slideMove(dom, speed) {
 
 //缩放移动
 function zoomMove(dom) {
+    let speed = dom.dataset.speed?Number(dom.dataset.speed):30;
     let top = dom.getBoundingClientRect().top;
     if (top <= visibleHeight * 0.8) {
-        dom.style.transform = 'scale(1) translate(0,' + (-Math.abs(top - visibleHeight) / 20) + 'px)';
+        dom.style.transform = 'scale(1) translate(0,' + (-Math.abs(top - visibleHeight) / speed) + 'px)';
     }
     else {
         dom.style.transform = 'scale(0) translate(0,0)';

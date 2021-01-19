@@ -24,18 +24,18 @@
     <!-- 中间部分描述 -->
     <div class="middle_des_box">
         <div class="bubbles_left">
-            <div class="bubbles bubble_green" data-type="green"></div>
-            <div class="bubbles bubble_yellow" data-type="yellow"></div>
-            <div class="bubbles bubble_indigo" data-type="indigo"></div>
-            <div class="bubbles bubble_orange" data-type="orange"></div>
-            <div class="bubbles bubble_blue" data-type="blue"></div>
+            <div class="bubbles bubble_green" data-speed="9"></div>
+            <div class="bubbles bubble_yellow" data-speed="9"></div>
+            <div class="bubbles bubble_indigo" data-speed="12"></div>
+            <div class="bubbles bubble_orange" data-speed="12"></div>
+            <div class="bubbles bubble_blue" data-speed="9"></div>
         </div>
         <div class="bubbles_right">
-            <div class="bubbles bubble_green" data-type="green"></div>
-            <div class="bubbles bubble_yellow" data-type="yellow"></div>
-            <div class="bubbles bubble_indigo" data-type="indigo"></div>
-            <div class="bubbles bubble_orange" data-type="orange"></div>
-            <div class="bubbles bubble_blue" data-type="blue"></div>
+            <div class="bubbles bubble_green" data-speed="9"></div>
+            <div class="bubbles bubble_yellow" data-speed="9"></div>
+            <div class="bubbles bubble_indigo" data-speed="12"></div>
+            <div class="bubbles bubble_orange" data-speed="12"></div>
+            <div class="bubbles bubble_blue" data-speed="9"></div>
         </div>
         <div class="content common_fade_inout">互联网时代，科技悄然改变了我们看待和沟通世界的方式。<br>建筑行业，也在被颠覆着…</div>
     </div>
@@ -252,26 +252,7 @@
         function bubblesMove() {
             for (let i = 0; i < bubblesLen; i++) {
                 bubbles[i].style.transition = 'transform .5s linear,opacity .5s linear';
-                switch (bubbles[i].dataset.type) {
-                    case 'green':
-                        slideMove(bubbles[i], 9);
-                        break;
-                    case 'yellow':
-                        slideMove(bubbles[i], 9);
-                        break;
-                    case 'indigo':
-                        slideMove(bubbles[i], 12);
-                        break;
-                    case 'blue':
-                        slideMove(bubbles[i], 12);
-                        break;
-                    case 'orange':
-                        slideMove(bubbles[i], 9);
-                        break;
-                    default:
-                        slideMove(bubbles[i], 12);
-                        break;
-                }
+                slideMove(bubbles[i]);
             }
         }
 
