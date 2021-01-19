@@ -12,7 +12,7 @@ window.addEventListener('scroll', () => {
     textAnimationDomData(commonWordTxt);
     leftInoutDomData(commonLeftInout); // 左侧进入动效
     rightInoutDomData(commonRightInout); // 右侧进入动效
-    rightInoutDomData(commonOpacityInout); // 右侧进入动效
+    opacityInoutDomData(commonOpacityInout); // 右侧进入动效
 });
 /**
  *  文字动效数据处理
@@ -99,14 +99,14 @@ function rightInOut(dom) {
 function opacityInoutDomData(commonOpacityInoutDom) {
     for (let j = 0; j < commonOpacityInoutDom.length; j++) {
         const item = commonOpacityInoutDom[j];
-        rightInOut(item);
+        opacityInOut(item);
     }
 }
 /**
  * 淡入淡出效果
  * @param {*} dom 节点
  */
-function rightInOut(dom) {
+function opacityInOut(dom) {
     let top = dom.getBoundingClientRect().top;
     if (top < winheight * 0.8) {
         dom.style.opacity = 1;
