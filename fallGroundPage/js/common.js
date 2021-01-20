@@ -1,4 +1,4 @@
-let winheight = window.innerHeight; // 获取屏幕可视区域高度
+let winheight; // 获取屏幕可视区域高度
 let commonWordTitle = $('.ui_common_word .title'); // 介绍文字title
 let commonWordTxt = $('.ui_common_word .txt'); // 介绍文字txt
 
@@ -7,14 +7,24 @@ let commonRightInout = $('.ui_common_right_inout'); // 左侧出现公共方法
 
 let commonOpacityInout = $('.ui_common_opacity_inout'); // 淡入公共方法
 let commonScaleInout = $('.ui_common_scale_inout'); // 缩放公共方法
-// 滚动事件监听
-window.addEventListener('scroll', () => {
+
+function animationAllEvent() {
     textAnimationDomData(commonWordTitle);
     textAnimationDomData(commonWordTxt);
     leftInoutDomData(commonLeftInout); // 左侧进入动效
     rightInoutDomData(commonRightInout); // 右侧进入动效
     opacityInoutDomData(commonOpacityInout); // 淡入动效
     scaleInoutDomData(commonScaleInout); // 缩放进入动效
+}
+// 滚动事件监听
+window.addEventListener('scroll', () => {
+    winheight = window.innerHeight; // 获取屏幕可视区域高度
+    animationAllEvent();
+});
+// 监听窗体变化、重新执行动画、获取高度
+window.addEventListener('resize', () => {
+    winheight = window.innerHeight; // 获取屏幕可视区域高度
+    animationAllEvent();
 });
 /**
  *  文字动效数据处理
