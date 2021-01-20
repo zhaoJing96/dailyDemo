@@ -23,7 +23,6 @@ let commonVideoModel = $(".common_video_model");//视频上面的蒙版
 
 //浏览器大小变化时重新获取宽高
 window.addEventListener('resize', () => {
-
     visibleWidth = document.documentElement.clientWidth;
     visibleHeight = document.documentElement.clientHeight;
 

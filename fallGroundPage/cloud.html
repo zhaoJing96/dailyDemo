@@ -17,8 +17,10 @@
     <!-- 头部视频 -->
     <div class="common_video_box header_box">
         <div class="common_video_content">
-            <video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
-            <div class="common_video_model"></div>
+            <div class="main">
+                <video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
+                <div class="common_video_model"></div>
+            </div>
         </div>
     </div>
     <!-- 中间部分描述 -->
@@ -163,6 +165,17 @@
         let introListBoxStoreSearchWordsStatus = true;
         let introListBoxStoreSearchWordsInterval = null;
         let introListBoxStoreSearchWordsTimeout = null;
+
+        window.addEventListener('resize', () => {
+            //左右泡泡
+            bubblesMove();
+
+            //介绍列表动画
+            introListCreateAnimation();
+            introLIstCooperateAnimtaion();
+            introListStoreAnimation();
+
+        });
 
         //页面滚动
         window.addEventListener('scroll', (e) => {
