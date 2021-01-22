@@ -424,6 +424,7 @@
 		let wechatBox = $('.ui_wechat_box')[0]; // 获取小程序内容DOM
 
 		let wechat_phone_banner = $('.wechat_phone_banner'); // 获取手机轮播节点
+		let wechat_banner_box = $('.banner_box'); // 获取手机轮播节点
 		let tipsImg = $('.tipsImg'); // 获取tipsDOM
 
 		let consultboxDOM = $('.ui_consult_box')[0]; // 咨询
@@ -488,12 +489,14 @@
 		// 手机翻页动画
 		function bannerAnimation() {
 			let wechatBoxTop = wechatBox.getBoundingClientRect().top; // 动态获取DOM距离顶部的距离
+			let bannerBoxHei = wechat_banner_box.innerHeight();
 			let winHeightHalf = winHeight / 2; // 开始滚动高度 屏幕的一半
 			let winHeightPoint1 = winHeight + (winHeight / 2); // 第一个滚动节点
 			let winHeightPoint2 = (winHeight * 2) + (winHeight / 2); // 第二个滚动节点
 			tipsImg[0].style.opacity = 1;
 			if (wechatBoxTop <= -winHeightHalf && wechatBoxTop > -winHeightPoint1) {
-				let topYOne = 667.43 * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
+				let topYOne = (bannerBoxHei + 20) * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
+				// let topYOne = 667.43 * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
 				let translateYOne = 'translateY(' + topYOne + 'px)'; // 第一张图滚动高度
 				wechat_phone_banner[0].style.transform = translateYOne;
 				wechat_phone_banner[1].style.transform = 'translateY(0)';
@@ -502,7 +505,8 @@
 				tipsImg[0].style.opacity = 1;
 				tipsImg[0].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf) / 5 + 'px)';
 			} else if (wechatBoxTop <= -winHeightPoint1 && wechatBoxTop > -winHeightPoint2) {
-				let topYTwo = 667.43 * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
+				let topYTwo = (bannerBoxHei + 20) * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
+				// let topYTwo = 667.43 * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
 				let translateYTwo = 'translateY(' + topYTwo + 'px)'; // 第二张图滚动高度
 				wechat_phone_banner[1].style.transform = translateYTwo;
 				wechat_phone_banner[0].style.transform = 'translateY(-657.43px)'; // 第一张图移动高度固定为图片高度，解决滚动误差导致图片未完全隐藏问题

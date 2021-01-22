@@ -96,6 +96,7 @@
     // 按它，接听世界的声音
     .ui_ear_box {
         height: 50vh;
+        overflow: hidden;
 
         img {
             right: -65px;
@@ -280,111 +281,49 @@
 
     // 小空间容纳大世界
     .ui_wechat_box {
-        width: 100%;
-        height: 400vh;
-        background-color: #ffffff;
-        position: relative;
-
         .ui_wechat_content {
-            width: 1200px;
-            margin: 0 auto;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-
+            width: 90%;
             .introduce {
-                width: 50%;
-                color: #000000 !important;
-
                 h1 {
-                    font-size: 40px;
-                    margin-bottom: 40px;
+                    font-size: 28px;
+                    margin-bottom: 24px;
                 }
 
                 p {
-                    font-size: 20px;
-                    line-height: 32px;
+                    font-size: 18px;
+                    line-height: 24px;
                 }
             }
 
             // 手机轮播
             .ui_banner_box {
-                width: 50%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-
                 .phone_box {
-                    width: 332.86px;
-                    height: 679.23px;
-                    position: sticky;
+                    width: 199.71px;
+                    height: 407.53px;
 
                     // 手机框框
                     .phone_border {
-                        width: 332.86px;
-                        height: 679.23px;
-                        background-image: url(../img/iphone.png);
-                        background-size: 100% 100%;
-                        position: relative;
-                        margin: 0 auto;
-                        z-index: 2;
+                        width: 199.71px;
+                        height: 407.53px;
                     }
 
                     // 图片限制框
                     .banner_box {
-                        width: 298.57px;
-                        height: 647.43px;
-                        position: absolute;
-                        z-index: 1;
-                        right: calc(50% - 298.57px / 2);
-                        top: calc(50% - 647.43px / 2);
-                        overflow: hidden;
-
-                        img {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            margin-bottom: 10px;
-                            transform: translateY(0px);
-                            transition: .3s all linear;
-
-                            &:nth-child(1) {
-                                z-index: 3;
-                            }
-
-                            &:nth-child(2) {
-                                z-index: 2;
-                            }
-
-                            &:nth-child(3) {
-                                z-index: 1;
-                            }
-                        }
+                        width: 179.14px;
+                        height: 388.45px;
+                        right: calc(50% - 179.14px / 2);
+                        top: calc(50% - 388.45px / 2);
                     }
                 }
 
                 .tipsBox {
-                    width: 130px;
-                    height: 148px;
-                    margin-left: 35px;
-                    position: relative;
+                    width: 78px;
+                    height: 89px;
+                    margin-left: 21px;
 
                     .tipsImg {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 130px;
-                        height: 148px;
-                        opacity: 0;
-                        transform: translateY(0);
-                        transition: 0.1s all;
+                        width: 78px;
+                        height: 89px;
                     }
                 }
 
@@ -801,25 +740,10 @@
 
     // 小空间容纳大世界
     .ui_wechat_box {
-        width: 100%;
-        height: 400vh;
-        background-color: #ffffff;
-        position: relative;
 
         .ui_wechat_content {
             width: 1200px;
-            margin: 0 auto;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-
             .introduce {
-                width: 50%;
-                color: #000000 !important;
-
                 h1 {
                     font-size: 40px;
                     margin-bottom: 40px;
@@ -833,61 +757,22 @@
 
             // 手机轮播
             .ui_banner_box {
-                width: 50%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-
                 .phone_box {
                     width: 332.86px;
                     height: 679.23px;
-                    position: sticky;
 
                     // 手机框框
                     .phone_border {
                         width: 332.86px;
                         height: 679.23px;
-                        background-image: url(../img/iphone.png);
-                        background-size: 100% 100%;
-                        position: relative;
-                        margin: 0 auto;
-                        z-index: 2;
                     }
 
                     // 图片限制框
                     .banner_box {
                         width: 298.57px;
                         height: 647.43px;
-                        position: absolute;
-                        z-index: 1;
                         right: calc(50% - 298.57px / 2);
                         top: calc(50% - 647.43px / 2);
-                        overflow: hidden;
-
-                        img {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            margin-bottom: 10px;
-                            transform: translateY(0px);
-                            transition: .3s all linear;
-
-                            &:nth-child(1) {
-                                z-index: 3;
-                            }
-
-                            &:nth-child(2) {
-                                z-index: 2;
-                            }
-
-                            &:nth-child(3) {
-                                z-index: 1;
-                            }
-                        }
                     }
                 }
 
@@ -895,17 +780,10 @@
                     width: 130px;
                     height: 148px;
                     margin-left: 35px;
-                    position: relative;
 
                     .tipsImg {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
                         width: 130px;
                         height: 148px;
-                        opacity: 0;
-                        transform: translateY(0);
-                        transition: 0.1s all;
                     }
                 }
 
@@ -1373,7 +1251,6 @@
     position: relative;
 
     .ui_wechat_content {
-        width: 1200px;
         margin: 0 auto;
         height: 100vh;
         position: sticky;
@@ -1385,16 +1262,6 @@
         .introduce {
             width: 50%;
             color: #000000 !important;
-
-            h1 {
-                font-size: 40px;
-                margin-bottom: 40px;
-            }
-
-            p {
-                font-size: 20px;
-                line-height: 32px;
-            }
         }
 
         // 手机轮播
@@ -1407,14 +1274,10 @@
 
 
             .phone_box {
-                width: 332.86px;
-                height: 679.23px;
                 position: sticky;
 
                 // 手机框框
                 .phone_border {
-                    width: 332.86px;
-                    height: 679.23px;
                     background-image: url(../img/iphone.png);
                     background-size: 100% 100%;
                     position: relative;
@@ -1424,12 +1287,8 @@
 
                 // 图片限制框
                 .banner_box {
-                    width: 298.57px;
-                    height: 647.43px;
                     position: absolute;
                     z-index: 1;
-                    right: calc(50% - 298.57px / 2);
-                    top: calc(50% - 647.43px / 2);
                     overflow: hidden;
 
                     img {
@@ -1458,17 +1317,12 @@
             }
 
             .tipsBox {
-                width: 130px;
-                height: 148px;
-                margin-left: 35px;
                 position: relative;
 
                 .tipsImg {
                     position: absolute;
                     left: 0;
                     top: 0;
-                    width: 130px;
-                    height: 148px;
                     opacity: 0;
                     transform: translateY(0);
                     transition: 0.1s all;
