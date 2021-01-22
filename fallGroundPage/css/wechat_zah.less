@@ -18,7 +18,7 @@ body {
             height: 300px;
             font-size: 48px;
             line-height: 48px;
-
+            overflow: hidden;
 
             .outline_text {
                 width: 500px;
@@ -67,7 +67,7 @@ body {
 
                             &:nth-child(4) {
                                 top: 152px;
-                                left: 0px;
+                                left: -35px;
                             }
 
                             &:nth-child(5) {
@@ -82,27 +82,27 @@ body {
                         .posi_box {
                             &:nth-child(1) {
                                 top: 24px;
-                                right: 52px;
+                                right: 0;
                             }
 
                             &:nth-child(2) {
                                 top: 96px;
-                                right: 130px;
+                                right: 65px;
                             }
 
                             &:nth-child(3) {
                                 top: 77px;
-                                right: 194px;
+                                right: 167px;
                             }
 
                             &:nth-child(4) {
                                 top: 152px;
-                                right: 45px;
+                                right: -35px;
                             }
 
                             &:nth-child(5) {
                                 top: 210px;
-                                right: 170px;
+                                right: 128px;
                             }
                         }
                     }
@@ -828,26 +828,6 @@ body {
                 .item_box {
                     width: 360px;
 
-                    @keyframes rotate3dLeft {
-                        0% {
-                            transform: rotateZ(0) rotateY(0) rotateX(0);
-                        }
-
-                        100% {
-                            transform: rotateZ(0deg) rotateY(360deg) rotateX(360deg);
-                        }
-                    }
-
-                    @keyframes rotate3dRight {
-                        0% {
-                            transform: rotateZ(0) rotateY(0) rotateX(0);
-                        }
-
-                        100% {
-                            transform: rotateZ(0deg) rotateY(-360deg) rotateX(360deg);
-                        }
-                    }
-
                     // 左边正方形定位
                     &.left_box {
                         .posi_box {
@@ -874,11 +854,6 @@ body {
                             &:nth-child(5) {
                                 top: 350px;
                                 left: 214px;
-                            }
-
-                            .square {
-                                transform-style: preserve-3d;
-                                animation: rotate3dLeft 50s infinite ease;
                             }
                         }
                     }
@@ -909,11 +884,6 @@ body {
                             &:nth-child(5) {
                                 top: 350px;
                                 right: 214px;
-                            }
-
-                            .square {
-                                transform-style: preserve-3d;
-                                animation: rotate3dRight 50s infinite ease;
                             }
                         }
                     }
@@ -1667,6 +1637,46 @@ body {
             .item_box {
                 height: 100%;
                 position: relative;
+
+                @keyframes rotate3dLeft {
+                    0% {
+                        transform: rotateZ(0) rotateY(0) rotateX(0);
+                    }
+
+                    100% {
+                        transform: rotateZ(0deg) rotateY(360deg) rotateX(360deg);
+                    }
+                }
+
+                @keyframes rotate3dRight {
+                    0% {
+                        transform: rotateZ(0) rotateY(0) rotateX(0);
+                    }
+
+                    100% {
+                        transform: rotateZ(0deg) rotateY(-360deg) rotateX(360deg);
+                    }
+                }
+
+                // 左边正方形定位
+                &.left_box {
+                    .posi_box {
+                        .square {
+                            transform-style: preserve-3d;
+                            animation: rotate3dLeft 50s infinite ease;
+                        }
+                    }
+                }
+
+                // 左边正方形定位
+                &.right_box {
+                    .posi_box {
+                        .square {
+                            transform-style: preserve-3d;
+                            animation: rotate3dRight 50s infinite ease;
+                        }
+                    }
+                }
 
                 .posi_box {
                     position: absolute;
