@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
     <title>天天云志</title>
     <link rel="stylesheet/less" type="text/css" href="./css/animation.less" />
     <link rel="stylesheet/less" type="text/css" href="./css/cloud.less" />
@@ -15,31 +16,43 @@
         <nav></nav>
     </header>
     <!-- 头部视频 -->
-    <div class="common_video_box header_box">
+    <div class="common_video_box">
         <div class="common_video_content">
             <div class="main">
-                <video src="https://oss.dhwork.cn/static/media/v-cloudlog.mp4" loop autoplay muted></video>
+                <video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
                 <div class="common_video_model"></div>
             </div>
         </div>
     </div>
+    <!-- <div class="header_box">
+        <div class="container">
+            <div class="main">
+                <video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
+                <div class="quare_content">
+                    <div class="quare_top"></div>
+                    <div class="quare_left"></div>
+                    <div class="quare_right"></div>
+                    <div class="quare_bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <!-- 中间部分描述 -->
     <div class="middle_des_box">
-        <div class="bubbles_left">
-            <div class="bubbles bubble_green" data-speed="9"></div>
-            <div class="bubbles bubble_yellow" data-speed="9"></div>
-            <div class="bubbles bubble_indigo" data-speed="12"></div>
-            <div class="bubbles bubble_orange" data-speed="12"></div>
-            <div class="bubbles bubble_blue" data-speed="9"></div>
+        <div class="bubbles_box">
+            <div class="bubbles bubble_blue_left bubble_blue" data-speed="9"></div>
+            <div class="bubbles bubble_green_left bubble_green" data-speed="9"></div>
+            <div class="bubbles bubble_yellow_left bubble_yellow" data-speed="9"></div>
+            <div class="bubbles bubble_indigo_left bubble_indigo" data-speed="12"></div>
+            <div class="bubbles bubble_orange_left bubble_orange" data-speed="12"></div>
+
+            <div class="bubbles bubble_blue_right bubble_blue" data-speed="9"></div>
+            <div class="bubbles bubble_green_right bubble_green" data-speed="9"></div>
+            <div class="bubbles bubble_yellow_right bubble_yellow" data-speed="9"></div>
+            <div class="bubbles bubble_indigo_right bubble_indigo" data-speed="12"></div>
+            <div class="bubbles bubble_orange_right bubble_orange" data-speed="12"></div>
         </div>
-        <div class="bubbles_right">
-            <div class="bubbles bubble_green" data-speed="9"></div>
-            <div class="bubbles bubble_yellow" data-speed="9"></div>
-            <div class="bubbles bubble_indigo" data-speed="12"></div>
-            <div class="bubbles bubble_orange" data-speed="12"></div>
-            <div class="bubbles bubble_blue" data-speed="9"></div>
-        </div>
-        <div class="content common_fade_inout">互联网时代，科技悄然改变了我们看待和沟通世界的方式。<br>建筑行业，也在被颠覆着…</div>
+        <div class="content common_fade_inout">互联网时代，科技悄然改变了我们看待和沟通<br>世界的方式。建筑行业，也在被颠覆着…</div>
     </div>
     <!-- 介绍列表 -->
     <div class="intro_list_box">
@@ -109,8 +122,7 @@
     <div class="wx_place_box">
         <div class="content max_width">
             <div class="title common_fade_inout">有微信就能用，简单还免费</div>
-            <div class="intro common_fade_inout">
-                在这个注重及时高效的时代，我们的目标是最大限度地降低任何任务和应用的时间成本。天天云志小程序依托于微信<br>生态，零使用门槛，下拉微信顶部菜单，即可获取。</div>
+            <div class="intro common_fade_inout">在这个注重及时高效的时代，我们的目标是最大限度地降低任何任务和应用的时间成本。天天云志小程序依托于微信生态，零使用门槛，下拉微信顶部菜单，即可获取。</div>
             <div class="place_list">
                 <div class="list">
                     <div class="name">方式一</div>
@@ -180,6 +192,8 @@
         //页面滚动
         window.addEventListener('scroll', (e) => {
 
+            // videoExtend();
+
             //左右泡泡
             bubblesMove();
 
@@ -203,10 +217,10 @@
                 // headerBoxModelContentDom[0].style.backgroundColor = 'rgba(0,0,0,.5)';
             }
             else {
-                headerBoxQuareTopDom[0].style.height = 'calc((100vh - 75vh) / 2)';
-                headerBoxQuareLeftDom[0].style.width = 'calc((100% - 75%) / 2)';
-                headerBoxQuareRightDom[0].style.width = 'calc((100% - 75%) / 2)';
-                headerBoxQuareBottomDom[0].style.height = 'calc((100vh - 75vh) / 2)';
+                headerBoxQuareTopDom[0].style.height = '7vw';
+                headerBoxQuareLeftDom[0].style.width = 'calc((100% - 85%) / 2)';
+                headerBoxQuareRightDom[0].style.width = 'calc((100% - 85%) / 2)';
+                headerBoxQuareBottomDom[0].style.height = '7vw';
 
                 // headerBoxModelContentDom[0].style.transition = 'all 0s ease';
                 // headerBoxModelContentDom[0].style.backgroundColor = 'rgba(0,0,0,0)';
