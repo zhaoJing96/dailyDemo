@@ -496,7 +496,6 @@
 			tipsImg[0].style.opacity = 1;
 			if (wechatBoxTop <= -winHeightHalf && wechatBoxTop > -winHeightPoint1) {
 				let topYOne = (bannerBoxHei + 20) * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
-				// let topYOne = 667.43 * ((wechatBoxTop + winHeightHalf) / winHeight); // 滚动高度
 				let translateYOne = 'translateY(' + topYOne + 'px)'; // 第一张图滚动高度
 				wechat_phone_banner[0].style.transform = translateYOne;
 				wechat_phone_banner[1].style.transform = 'translateY(0)';
@@ -506,7 +505,6 @@
 				tipsImg[0].style.transform = 'translateY(' + (wechatBoxTop + winHeightHalf) / 5 + 'px)';
 			} else if (wechatBoxTop <= -winHeightPoint1 && wechatBoxTop > -winHeightPoint2) {
 				let topYTwo = (bannerBoxHei + 20) * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
-				// let topYTwo = 667.43 * ((wechatBoxTop + winHeightHalf + winHeight) / winHeight); // 滚动高度
 				let translateYTwo = 'translateY(' + topYTwo + 'px)'; // 第二张图滚动高度
 				wechat_phone_banner[1].style.transform = translateYTwo;
 				wechat_phone_banner[0].style.transform = 'translateY(-657.43px)'; // 第一张图移动高度固定为图片高度，解决滚动误差导致图片未完全隐藏问题
