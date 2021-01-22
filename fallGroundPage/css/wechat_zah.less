@@ -15,9 +15,10 @@ body {
 
         // 功能概略
         .ui_outline_box {
+            height: 300px;
             font-size: 48px;
             line-height: 48px;
-            overflow: hidden;
+
 
             .outline_text {
                 width: 500px;
@@ -44,10 +45,158 @@ body {
             // 正方形
             .ui_square_box {
                 .item_box {
-                    width: 200px;
+                    width: 216px;
+
+                    // 左边正方形定位
+                    &.left_box {
+                        .posi_box {
+                            &:nth-child(1) {
+                                top: 24px;
+                                left: 0;
+                            }
+
+                            &:nth-child(2) {
+                                top: 96px;
+                                left: 65px;
+                            }
+
+                            &:nth-child(3) {
+                                top: 77px;
+                                left: 167px;
+                            }
+
+                            &:nth-child(4) {
+                                top: 152px;
+                                left: 0px;
+                            }
+
+                            &:nth-child(5) {
+                                top: 210px;
+                                left: 128px;
+                            }
+                        }
+                    }
+
+                    // 左边正方形定位
+                    &.right_box {
+                        .posi_box {
+                            &:nth-child(1) {
+                                top: 24px;
+                                right: 52px;
+                            }
+
+                            &:nth-child(2) {
+                                top: 96px;
+                                right: 130px;
+                            }
+
+                            &:nth-child(3) {
+                                top: 77px;
+                                right: 194px;
+                            }
+
+                            &:nth-child(4) {
+                                top: 152px;
+                                right: 45px;
+                            }
+
+                            &:nth-child(5) {
+                                top: 210px;
+                                right: 170px;
+                            }
+                        }
+                    }
 
                     .posi_box {
                         &:nth-child(1) {
+                            .square {
+                                width: 54px;
+                                height: 54px;
+
+                                i {
+                                    &:nth-child(1) {
+                                        transform: translateZ(-54px);
+                                    }
+
+                                    &:nth-child(3) {
+                                        transform: rotateY(-90deg) translateX(-27px) translateZ(27px);
+                                    }
+
+                                    &:nth-child(4) {
+                                        transform: rotateY(-90deg) translateX(-27px) translateZ(-27px);
+                                    }
+
+                                    &:nth-child(5) {
+                                        transform: rotateX(90deg) translateZ(54px);
+                                    }
+
+                                    &:nth-child(6) {
+                                        transform: rotateX(-90deg) translateY(54px);
+                                    }
+                                }
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            .square {
+                                width: 64px;
+                                height: 64px;
+
+                                i {
+                                    &:nth-child(1) {
+                                        transform: translateZ(-64px);
+                                    }
+
+                                    &:nth-child(3) {
+                                        transform: rotateY(-90deg) translateX(-32px) translateZ(32px);
+                                    }
+
+                                    &:nth-child(4) {
+                                        transform: rotateY(-90deg) translateX(-32px) translateZ(-32px);
+                                    }
+
+                                    &:nth-child(5) {
+                                        transform: rotateX(90deg) translateZ(64px);
+                                    }
+
+                                    &:nth-child(6) {
+                                        transform: rotateX(-90deg) translateY(64px);
+                                    }
+                                }
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            .square {
+                                width: 26px;
+                                height: 26px;
+
+                                i {
+                                    &:nth-child(1) {
+                                        transform: translateZ(-26px);
+                                    }
+
+                                    &:nth-child(3) {
+                                        transform: rotateY(-90deg) translateX(-13px) translateZ(13px);
+                                    }
+
+                                    &:nth-child(4) {
+                                        transform: rotateY(-90deg) translateX(-13px) translateZ(-13px);
+                                    }
+
+                                    &:nth-child(5) {
+                                        transform: rotateX(90deg) translateZ(26px);
+                                    }
+
+                                    &:nth-child(6) {
+                                        transform: rotateX(-90deg) translateY(26px);
+                                    }
+                                }
+                            }
+
+                        }
+
+                        &:nth-child(4) {
                             .square {
                                 width: 90px;
                                 height: 90px;
@@ -76,118 +225,30 @@ body {
                             }
                         }
 
-                        &:nth-child(2) {
-                            .square {
-                                width: 108px;
-                                height: 108px;
-
-                                i {
-                                    &:nth-child(1) {
-                                        transform: translateZ(-108px);
-                                    }
-
-                                    &:nth-child(3) {
-                                        transform: rotateY(-90deg) translateX(-54px) translateZ(54px);
-                                    }
-
-                                    &:nth-child(4) {
-                                        transform: rotateY(-90deg) translateX(-54px) translateZ(-54px);
-                                    }
-
-                                    &:nth-child(5) {
-                                        transform: rotateX(90deg) translateZ(108px);
-                                    }
-
-                                    &:nth-child(6) {
-                                        transform: rotateX(-90deg) translateY(108px);
-                                    }
-                                }
-                            }
-                        }
-
-                        &:nth-child(3) {
-                            .square {
-                                width: 44px;
-                                height: 44px;
-
-                                i {
-                                    &:nth-child(1) {
-                                        transform: translateZ(-44px);
-                                    }
-
-                                    &:nth-child(3) {
-                                        transform: rotateY(-90deg) translateX(-22px) translateZ(22px);
-                                    }
-
-                                    &:nth-child(4) {
-                                        transform: rotateY(-90deg) translateX(-22px) translateZ(-22px);
-                                    }
-
-                                    &:nth-child(5) {
-                                        transform: rotateX(90deg) translateZ(44px);
-                                    }
-
-                                    &:nth-child(6) {
-                                        transform: rotateX(-90deg) translateY(44px);
-                                    }
-                                }
-                            }
-
-                        }
-
-                        &:nth-child(4) {
-                            .square {
-                                width: 148px;
-                                height: 148px;
-
-                                i {
-                                    &:nth-child(1) {
-                                        transform: translateZ(-148px);
-                                    }
-
-                                    &:nth-child(3) {
-                                        transform: rotateY(-90deg) translateX(-74px) translateZ(74px);
-                                    }
-
-                                    &:nth-child(4) {
-                                        transform: rotateY(-90deg) translateX(-74px) translateZ(-74px);
-                                    }
-
-                                    &:nth-child(5) {
-                                        transform: rotateX(90deg) translateZ(148px);
-                                    }
-
-                                    &:nth-child(6) {
-                                        transform: rotateX(-90deg) translateY(148px);
-                                    }
-                                }
-                            }
-                        }
-
                         &:nth-child(5) {
                             .square {
-                                width: 68px;
-                                height: 68px;
+                                width: 40px;
+                                height: 40px;
 
                                 i {
                                     &:nth-child(1) {
-                                        transform: translateZ(-68px);
+                                        transform: translateZ(-40px);
                                     }
 
                                     &:nth-child(3) {
-                                        transform: rotateY(-90deg) translateX(-34px) translateZ(34px);
+                                        transform: rotateY(-90deg) translateX(-20px) translateZ(20px);
                                     }
 
                                     &:nth-child(4) {
-                                        transform: rotateY(-90deg) translateX(-34px) translateZ(-34px);
+                                        transform: rotateY(-90deg) translateX(-20px) translateZ(-20px);
                                     }
 
                                     &:nth-child(5) {
-                                        transform: rotateX(90deg) translateZ(68px);
+                                        transform: rotateX(90deg) translateZ(40px);
                                     }
 
                                     &:nth-child(6) {
-                                        transform: rotateX(-90deg) translateY(68px);
+                                        transform: rotateX(-90deg) translateY(40px);
                                     }
                                 }
                             }
@@ -735,6 +796,7 @@ body {
 
         // 功能概略
         .ui_outline_box {
+            height: 500px;
             font-size: 64px;
             line-height: 64px;
 
@@ -765,6 +827,96 @@ body {
 
                 .item_box {
                     width: 360px;
+
+                    @keyframes rotate3dLeft {
+                        0% {
+                            transform: rotateZ(0) rotateY(0) rotateX(0);
+                        }
+
+                        100% {
+                            transform: rotateZ(0deg) rotateY(360deg) rotateX(360deg);
+                        }
+                    }
+
+                    @keyframes rotate3dRight {
+                        0% {
+                            transform: rotateZ(0) rotateY(0) rotateX(0);
+                        }
+
+                        100% {
+                            transform: rotateZ(0deg) rotateY(-360deg) rotateX(360deg);
+                        }
+                    }
+
+                    // 左边正方形定位
+                    &.left_box {
+                        .posi_box {
+                            &:nth-child(1) {
+                                top: 40px;
+                                left: 0;
+                            }
+
+                            &:nth-child(2) {
+                                top: 160px;
+                                left: 108px;
+                            }
+
+                            &:nth-child(3) {
+                                top: 121px;
+                                left: 281px;
+                            }
+
+                            &:nth-child(4) {
+                                top: 253px;
+                                left: -58px;
+                            }
+
+                            &:nth-child(5) {
+                                top: 350px;
+                                left: 214px;
+                            }
+
+                            .square {
+                                transform-style: preserve-3d;
+                                animation: rotate3dLeft 50s infinite ease;
+                            }
+                        }
+                    }
+
+                    // 左边正方形定位
+                    &.right_box {
+                        .posi_box {
+                            &:nth-child(1) {
+                                top: 40px;
+                                right: 0;
+                            }
+
+                            &:nth-child(2) {
+                                top: 160px;
+                                right: 108px;
+                            }
+
+                            &:nth-child(3) {
+                                top: 121px;
+                                right: 281px;
+                            }
+
+                            &:nth-child(4) {
+                                top: 253px;
+                                right: -58px;
+                            }
+
+                            &:nth-child(5) {
+                                top: 350px;
+                                right: 214px;
+                            }
+
+                            .square {
+                                transform-style: preserve-3d;
+                                animation: rotate3dRight 50s infinite ease;
+                            }
+                        }
+                    }
 
                     .posi_box {
                         &:nth-child(1) {
@@ -1450,17 +1602,17 @@ body {
     background-color: #ffffff;
 
     .nav {
-        position: fixed;
+        position: sticky;
         width: 100%;
         height: 64px;
         background-color: #31363A;
         z-index: 10;
+        top: 0;
     }
 
     // 功能概略
     .ui_outline_box {
         width: 100%;
-        height: 500px;
         position: relative;
         display: flex;
         align-items: center;
@@ -1515,96 +1667,6 @@ body {
             .item_box {
                 height: 100%;
                 position: relative;
-
-                @keyframes rotate3dLeft {
-                    0% {
-                        transform: rotateZ(0) rotateY(0) rotateX(0);
-                    }
-
-                    100% {
-                        transform: rotateZ(0deg) rotateY(360deg) rotateX(360deg);
-                    }
-                }
-
-                @keyframes rotate3dRight {
-                    0% {
-                        transform: rotateZ(0) rotateY(0) rotateX(0);
-                    }
-
-                    100% {
-                        transform: rotateZ(0deg) rotateY(-360deg) rotateX(360deg);
-                    }
-                }
-
-                // 左边正方形定位
-                &.left_box {
-                    .posi_box {
-                        &:nth-child(1) {
-                            top: 40px;
-                            left: 0;
-                        }
-
-                        &:nth-child(2) {
-                            top: 160px;
-                            left: 108px;
-                        }
-
-                        &:nth-child(3) {
-                            top: 121px;
-                            left: 281px;
-                        }
-
-                        &:nth-child(4) {
-                            top: 253px;
-                            left: -58px;
-                        }
-
-                        &:nth-child(5) {
-                            top: 350px;
-                            left: 214px;
-                        }
-
-                        .square {
-                            transform-style: preserve-3d;
-                            animation: rotate3dLeft 50s infinite ease;
-                        }
-                    }
-                }
-
-                // 左边正方形定位
-                &.right_box {
-                    .posi_box {
-                        &:nth-child(1) {
-                            top: 40px;
-                            right: 0;
-                        }
-
-                        &:nth-child(2) {
-                            top: 160px;
-                            right: 108px;
-                        }
-
-                        &:nth-child(3) {
-                            top: 121px;
-                            right: 281px;
-                        }
-
-                        &:nth-child(4) {
-                            top: 253px;
-                            right: -58px;
-                        }
-
-                        &:nth-child(5) {
-                            top: 350px;
-                            right: 214px;
-                        }
-
-                        .square {
-                            transform-style: preserve-3d;
-                            animation: rotate3dRight 50s infinite ease;
-                        }
-                    }
-                }
 
                 .posi_box {
                     position: absolute;
@@ -1671,6 +1733,7 @@ body {
     // 功能介绍
     .ui_function_box {
         width: 100%;
+        overflow: hidden;
 
         .list {
             display: flex;
