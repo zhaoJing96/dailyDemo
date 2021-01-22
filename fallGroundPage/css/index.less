@@ -1,15 +1,108 @@
 // 横屏
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+    // 耳机
     .ui_ear_box {
         height: 80vh;
     }
+
+    // 3D可视化
+    .ui_3D_box {
+        min-height: 100vh;
+    }
+
+    // 小空间容纳大世界
+    .ui_wechat_box {
+        .ui_wechat_content {
+
+            // 手机轮播
+            .ui_banner_box {
+                .phone_box {
+                    width: 199.71px;
+                    height: 407.53px;
+
+                    // 手机框框
+                    .phone_border {
+                        width: 199.71px;
+                        height: 407.53px;
+                    }
+
+                    // 图片限制框
+                    .banner_box {
+                        width: 179.14px;
+                        height: 388.45px;
+                        right: calc(50% - 179.14px / 2);
+                        top: calc(50% - 388.45px / 2);
+                    }
+                }
+
+                .tipsBox {
+                    width: 78px;
+                    height: 89px;
+                    margin-left: 21px;
+
+                    .tipsImg {
+                        width: 78px;
+                        height: 89px;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 // 竖屏
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+    // 耳机
     .ui_ear_box {
         height: 50vh;
     }
+
+    // 3D可视化
+    .ui_3D_box {
+        min-height: 60vh;
+    }
+
+    // 小空间容纳大世界
+    .ui_wechat_box {
+        .ui_wechat_content {
+            // 手机轮播
+            .ui_banner_box {
+                .phone_box {
+                    width: 266.28px;
+                    height: 543.38px;
+
+                    // 手机框框
+                    .phone_border {
+                        width: 266.28px;
+                        height: 543.38px;
+                    }
+
+                    // 图片限制框
+                    .banner_box {
+                        width: 238.85px;
+                        height: 517.94px;
+                        right: calc(50% - 238.85px / 2);
+                        top: calc(50% - 517.94px / 2);
+                    }
+                }
+
+                .tipsBox {
+                    width: 104px;
+                    height: 118px;
+                    margin-left: 28px;
+
+                    .tipsImg {
+                        width: 104px;
+                        height: 118px;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 
@@ -164,7 +257,6 @@
 
     // 3D可视化区域
     .ui_3D_box {
-        min-height: 60vh;
         padding: 72px 0;
 
         .introduce {
@@ -308,40 +400,6 @@
                     font-size: 18px;
                     line-height: 24px;
                 }
-            }
-
-            // 手机轮播
-            .ui_banner_box {
-                .phone_box {
-                    width: 199.71px;
-                    height: 407.53px;
-
-                    // 手机框框
-                    .phone_border {
-                        width: 199.71px;
-                        height: 407.53px;
-                    }
-
-                    // 图片限制框
-                    .banner_box {
-                        width: 179.14px;
-                        height: 388.45px;
-                        right: calc(50% - 179.14px / 2);
-                        top: calc(50% - 388.45px / 2);
-                    }
-                }
-
-                .tipsBox {
-                    width: 78px;
-                    height: 89px;
-                    margin-left: 21px;
-
-                    .tipsImg {
-                        width: 78px;
-                        height: 89px;
-                    }
-                }
-
             }
         }
     }
@@ -803,7 +861,6 @@
                         height: 148px;
                     }
                 }
-
             }
         }
     }
