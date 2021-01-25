@@ -1,6 +1,6 @@
 			body{
 				font-size: 0;
-				background-color: #FFFFFF;
+				background-color: #ffffff;
 			}
 			*{
 				margin: 0;
@@ -35,10 +35,10 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					height: calc(100vh - 64px);
+					height: calc(100vh - 0px);
 					overflow: hidden;
 					position: sticky;
-					top: 64px;
+					top: 0;
 				}
 				.helmet_words{
 					position: absolute;
@@ -75,7 +75,7 @@
 				.helmet_video{
 					position: absolute;
 					top: 50%;
-					left: calc(50% - 21px);
+					left: calc(50% - 0px);//21
 					// width: 39%;
 					transform: translate(-50%,-50%);
 					opacity: 0;
@@ -107,6 +107,7 @@
 					-webkit-background-clip: text;
 					line-height: 200px;
 					z-index: 3;
+					border: 1px solid black;
 				}
 				.auto_start_content{
 					position: absolute;
@@ -262,9 +263,7 @@
 					.title{
 						transform: translateY(30vh);
 						color: #FFFFFF;
-						font-size: 64px;
 						font-weight: 600;
-						line-height: 72px;
 						white-space: nowrap;
 						z-index: 5;
 					}
@@ -282,6 +281,7 @@
 							transform: translateY(150%);
 							margin-bottom: 60px;
 							.list{
+								width: 48%;
 								display: flex;
 								align-items: flex-start;
 								
@@ -300,7 +300,7 @@
 										margin-bottom: 16px;
 									}
 									.des{
-										max-width: 430px;
+										// max-width: 430px;
 										font-size: 18px;
 										line-height: 28px;
 										opacity: .8;
@@ -331,9 +331,7 @@
 					padding-top: 25.5vh;
 					.title{
 						color: #000000;
-						font-size: 64px;
 						font-weight: 600;
-						line-height: 64px;
 						transform: translateY(90px);
 						opacity: 0;
 						transition: all .8s ease;
@@ -400,25 +398,47 @@
 						margin-top: 104px;
 					}
 				}
-				.reduce_down_bg_clear{
-
-				}
-				.reduce_down_bg_fuzzy{
-
-				}
 				.reduce_down_box{
-
+					.reduce_down_container{
+						.title{
+							font-size: 64px;
+							line-height: 72px;
+						}
+						.content{
+							margin-top: 120px;
+							.listContent{
+								.list{
+									.words{
+										.name{
+											font-size: 20px;
+											line-height: 20px;
+										}
+										.des{
+											font-size: 18px;
+											line-height: 28px;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 				.software_platform_box{
-					.content{
-						width: 400px;
-						height: 800px;
-						top: 135px;
-						.name_zah{
-							right: calc(350px + 100%);
+					.software_platform_container{
+						.title{
+							font-size: 64px;
+							line-height: 64px;
 						}
-						.name_ttyz{
-							left: calc(350px + 100%);
+						.content{
+							width: 400px;
+							height: 800px;
+							top: 135px;
+							.name_zah{
+								right: calc(350px + 100%);
+							}
+							.name_ttyz{
+								left: calc(350px + 100%);
+							}
 						}
 					}
 				}
@@ -443,18 +463,50 @@
 						margin-top: 30px;
 					}
 				}
-				.software_platform_box{
-					.content{
-						width: 250px;
-						height: 500px;
-						top: 80px;
-						.name_zah{
-							right: calc(200px + 100%);
+				.reduce_down_box{
+					.reduce_down_container{
+						.title{
+							font-size: 64px;
+							line-height: 72px;
 						}
-						.name_ttyz{
-							left: calc(200px + 100%);
+						.content{
+							margin-top: 120px;
+							.listContent{
+								.list{
+									.words{
+										.name{
+											font-size: 20px;
+											line-height: 20px;
+										}
+										.des{
+											font-size: 18px;
+											line-height: 28px;
+										}
+									}
+								}
+							}
 						}
 					}
+				}
+				.software_platform_box{
+					.software_platform_container{
+						.title{
+							font-size: 64px;
+							line-height: 64px;
+						}
+						.content{
+							width: 250px;
+							height: 500px;
+							top: 80px;
+							.name_zah{
+								right: calc(200px + 100%);
+							}
+							.name_ttyz{
+								left: calc(200px + 100%);
+							}
+						}
+					}
+					
 				}
 			}
 			@media screen and (max-width:1366px){
@@ -479,27 +531,134 @@
 				}
 				.reduce_down_box{
 					.reduce_down_container{
+						.title{
+							font-size: 48px;
+							line-height: 48px;
+						}
 						.content{
-
+							.listContent{
+								.list{
+									.words{
+										.name{
+											font-size: 18px;
+											line-height: 18px;
+										}
+										.des{
+											font-size: 16px;
+											line-height: 22px;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
 				.software_platform_box{
-					.content{
-						width: 250px;
-						height: 500px;
-						top: 80px;
-						.name_zah{
-							right: calc(200px + 100%);
+					.software_platform_container{
+						.title{
+							font-size: 48px;
+							line-height: 48px;
 						}
-						.name_ttyz{
-							left: calc(200px + 100%);
+						.content{
+							width: 250px;
+							height: 500px;
+							top: 80px;
+							.name_zah{
+								right: calc(200px + 100%);
+							}
+							.name_ttyz{
+								left: calc(200px + 100%);
+							}
+							div{
+								font-size: 16px;
+							}
 						}
+					}
+					
+				}
+
+
+				.ui_product_box{
+					margin-top: -5px;
+				}
+			}
+
+			// 横屏
+			@media only screen and (min-device-width : 768px) and (max-device-width : 1366px) and (orientation : landscape) {
+				.helmet_box{
+					.helmet_img{
+						width: 536px;
+						height: 402px;
+						margin-top: 100px;
+					}
+					.helmet_video{
+						width: 536px;
+						height: 402px;
+						margin-top: 100px;
 					}
 				}
 
+				.reduce_down_box{
+					.reduce_down_container{
+						.content{
+							margin-top: 70px;
+							.listContent{
+								margin-bottom: 40px;
+							}
+						}	
+					}
+				}
+
+				.software_platform_box{
+					.software_platform_container{
+						.content{
+							width: 230px;
+							height: 480px;
+							top: 100px;
+						}
+					}
+				}
 			}
 
+			// 竖屏
+			@media only screen and (min-device-width : 768px) and (max-device-width : 1366px) and (orientation : portrait) {
+				.helmet_box{
+					.helmet_img{
+						width: 576px;
+						height: 432px;
+						margin-top: 100px;
+					}
+					.helmet_video{
+						width: 576px;
+						height: 432px;
+						margin-top: 100px;
+					}
+				}
+
+				.reduce_down_box{
+					.reduce_down_container{
+						.content{
+							margin-top: 120px;
+							.listContent{
+								margin-bottom: 60px;
+							}
+						}	
+					}
+				}
+
+				.software_platform_box{
+					.software_platform_container{
+						.content{
+							width: 350px;
+							height: 700px;
+							top: 100px;
+							div{
+								display: none;
+							}
+						}
+					}
+				}
+			}
 
 			
 			.ui_container {

@@ -14,6 +14,9 @@ body{
 @media screen and (min-width:1367px){
     .middle_des_box{
         height: 500px;
+        .bubbles_box{
+            height: 600px;
+        }
         .content{
             font-size: 40px;
         }
@@ -39,44 +42,44 @@ body{
         }
         
         .bubble_green_left{
-            top: 100px;
+            top: 160px;
             left: 0;
         }
         .bubble_yellow_left{
-            top: 180px;
+            top: 240px;
             left:280px;
         }
         .bubble_indigo_left{
-            top: 220px;
+            top: 280px;
             left:108px;
         }
         .bubble_blue_left{
             left: -60px;
-            top: 270px;
+            top: 330px;
         }
         .bubble_orange_left{
             left: 214px;
-            top: 370px;
+            top: 430px;
         }
         
         .bubble_green_right{
-            top: 100px;
+            top: 160px;
             right: 0;
         }
         .bubble_yellow_right{
-            top: 180px;
+            top: 240px;
             right:280px;
         }
         .bubble_indigo_right{
-            top: 220px;
+            top: 280px;
             right:108px;
         }
         .bubble_blue_right{
-            top: 270px;
+            top: 330px;
             right: -60px;
         }
         .bubble_orange_right{
-            top: 370px;
+            top: 430px;
             right: 214px;
         }
        
@@ -129,6 +132,9 @@ body{
 @media screen and (min-width:750px) and (max-width:1366px){
     .middle_des_box{
         height: 370px;
+        .bubbles_box{
+            height: 700px;
+        }
         .content{
             font-size: 28px;
         }
@@ -153,45 +159,45 @@ body{
             height: 52px;
         }
         .bubble_green_left{
-            top: 100px;
+            top: 240px;
             left: 0;
         }
         .bubble_yellow_left{
-            top: 148px;
+            top: 290px;
             left:148px;
         }
         .bubble_indigo_left{
-            top: 172px;
-            left:64px;
+            top: 315px;
+            left:54px;
         }
         .bubble_blue_left{
-            left: 0px;
-            top: 260px;
+            top: 380px;
+            left: -30px;
         }
         .bubble_orange_left{
-            left: 138px;
-            top: 282px;
+            top: 405px;
+            left: 120px;
         }
         
         .bubble_green_right{
-            top: 100px;
+            top: 240px;
             right: 0;
         }
         .bubble_yellow_right{
-            top: 148px;
+            top: 290px;
             right:148px;
         }
         .bubble_indigo_right{
-            top: 172px;
-            right:64px;
+            top: 315px;
+            right:54px;
         }
         .bubble_blue_right{
-            right: 0px;
-            top: 260px;
+            top: 380px;
+            right: -30px;
         }
         .bubble_orange_right{
-            right: 138px;
-            top: 282px;
+            top: 405px;
+            right: 120px;
         }
     }
     .intro_list_box{
@@ -359,19 +365,24 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: relative; 
     .content{
         font-weight: 600;
         color: #333333;
         line-height: 64px;
         text-align: center;
+        position: absolute;
+        // top: calc(50% - 64px);
+        // left: calc(50% - 64px);
+
     }
     .bubbles_box{
         width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
+        overflow: hidden;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
         // overflow: hidden;
     }
     .bubbles{

@@ -101,14 +101,6 @@
 		</div>
 
 	</div>
-	<!-- 耳机介绍 -->
-	<div class="ui_ear_box">
-		<div class="introduce ui_common_word ear_introduce">
-			<h1 class="title">按它，接听世界的声音</h1>
-			<p class="txt">一键群组对话和全新留言回听，不错过重要语音，外置<br>可调节软胶耳机，透气安全又适耳，清晰分辨环境音，<br>防患于未然</p>
-		</div>
-		<img src="./img/earImg.png" alt="">
-	</div>
 	<!-- 视频 -->
 	<div class="common_video_box" data-type="0.4">
 		<div class="common_video_content">
@@ -117,6 +109,14 @@
 				<div class="common_video_model" style="margin-top: -1px;"></div>
 			</div>
 		</div>
+	</div>
+	<!-- 耳机介绍 -->
+	<div class="ui_ear_box">
+		<div class="introduce ui_common_word ear_introduce">
+			<h1 class="title">按它，接听世界的声音</h1>
+			<p class="txt">一键群组对话和全新留言回听，不错过重要语音，外置<br>可调节软胶耳机，透气安全又适耳，清晰分辨环境音，<br>防患于未然</p>
+		</div>
+		<img src="./img/earImg.png" alt="">
 	</div>
 	<!-- 极减主义，让一切降下来 -->
 	<div class="reduce_down_bg_clear"></div>
@@ -597,6 +597,7 @@
 					return;
 				}
 				helmetStatus = false;
+				helmetVideoDom[0].load();
 				setTimeout(() => {
 					helmetVideoDom[0].style.opacity = 1;
 					helmetVideoDom[0].play();
