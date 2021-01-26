@@ -10,7 +10,7 @@
     background-color: #ffffff
 }
 
-header{
+header {
     width: 100%;
     height: 44px;
     position: sticky;
@@ -18,6 +18,7 @@ header{
     z-index: 10;
     background-color: #31363A;
 }
+
 // 帽子
 .ui_helmet_box {
     color: #333333;
@@ -170,7 +171,7 @@ header{
 
     img {
         width: 265px;
-        // height: 375px;
+        height: 375px;
         margin-top: 40px;
     }
 }
@@ -249,6 +250,7 @@ header{
             }
 
             span {
+                display: inline-block;
                 font-size: 16px;
                 line-height: 16px;
             }
@@ -423,113 +425,45 @@ header{
 // 小空间容纳大世界
 .ui_wechat_box {
     width: 100%;
-    height: 400vh;
+    padding: 100px 17.5px 70px;
     background-color: #ffffff;
-    position: relative;
 
     .ui_wechat_content {
-        width: 1200px;
-        margin: 0 auto;
-        height: 100vh;
-        position: sticky;
-        top: 0;
+        width: 100%;
         overflow: hidden;
-        display: flex;
-        align-items: center;
 
         .introduce {
-            width: 50%;
-            color: #000000 !important;
-
-            h1 {
-                font-size: 40px;
-                margin-bottom: 40px;
-            }
-
-            p {
-                font-size: 20px;
-                line-height: 32px;
-            }
+            text-align: center;
+            color: #000000;
+            margin-bottom: 40px;
         }
 
         // 手机轮播
         .ui_banner_box {
-            width: 50%;
-            height: 100%;
+            width: 100%;
+            overflow-x: scroll;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            padding-bottom: 20px;
 
-
-            .phone_box {
-                width: 332.86px;
-                height: 679.23px;
-                position: sticky;
-
-                // 手机框框
-                .phone_border {
-                    width: 332.86px;
-                    height: 679.23px;
-                    background-image: url(../img/iphone.png);
-                    background-size: 100% 100%;
-                    position: relative;
-                    margin: 0 auto;
-                    z-index: 2;
-                }
-
-                // 图片限制框
-                .banner_box {
-                    width: 298.57px;
-                    height: 647.43px;
-                    position: absolute;
-                    z-index: 1;
-                    right: calc(50% - 298.57px / 2);
-                    top: calc(50% - 647.43px / 2);
-                    overflow: hidden;
-
-                    img {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        margin-bottom: 10px;
-                        transform: translateY(0px);
-                        transition: .3s all linear;
-
-                        &:nth-child(1) {
-                            z-index: 3;
-                        }
-
-                        &:nth-child(2) {
-                            z-index: 2;
-                        }
-
-                        &:nth-child(3) {
-                            z-index: 1;
-                        }
-                    }
-                }
+            img {
+                width: 340px;
+                height: 283px;
+                font-size: 0;
             }
 
-            .tipsBox {
-                width: 130px;
-                height: 148px;
-                margin-left: 35px;
-                position: relative;
-
-                .tipsImg {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 130px;
-                    height: 148px;
-                    opacity: 0;
-                    transform: translateY(0);
-                    transition: 0.1s all;
-                }
+            &::-webkit-scrollbar {
+                width: 3px;
+                height: 3px;
+                border-radius: 3px;
             }
 
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, 0.2);
+                background-clip: padding-box;
+                border-radius: 3px;
+                min-height: 3px;
+            }
         }
     }
 }
