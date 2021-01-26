@@ -114,6 +114,22 @@ header{
     }
 
 }
+.bottom_img_box{
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+    background-image: url('../img/cloud/img_zhianhui.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+        font-weight: 600;
+        color: #FFFFFF;
+        line-height: 40px;
+        font-size: 40px;
+    }
+}
 // .img_intro{ 
 //     width: 100%;
 //     height: 100vh;
@@ -215,8 +231,15 @@ header{
             }
         }
     }
+    .bottom_img_box{
+        height: 500px;
+        span{
+            font-size: 40px;
+            line-height: 40px;
+        }
+    }
 }
-@media screen and (min-width:750px) and (max-width:1366px){
+@media screen and (min-width:768px) and (max-width:1366px){
     .content_box {
         .list{
             // position: sticky;
@@ -244,6 +267,13 @@ header{
             }
             .img_intro{
             }
+        }
+    }
+    .bottom_img_box{
+        height: 300px;
+        span{
+            font-size: 32px;
+            line-height: 32px;
         }
     }
 }
