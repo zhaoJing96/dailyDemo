@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	
+	<script src="./js/less.min.js"></script>
+	<style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .test{
+            width: 100%;
+            height: 150vh;
+            background-color: bisque;
+        }
+       
+       .list-1 {
+            background-color: #ef342a;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 4;
+        }
+
+        .list-2 {
+            background-color: #f68f26;
+            /* grid-column-start: 1;
+            grid-column-end: 3;  */
+        }
+
+        .list-3 {
+            background-color: #4ba946;
+        }
+
+        .list-4 {
+            background-color: #0376c2;
+        }
+
+        .list-5 {
+            background-color: #c077af;
+        }
+
+        .list-6 {
+            background-color: #f8d29d;
+        }
+
+        .list-7 {
+            background-color: #b5a87f;
+        }
+
+        .list-8 {
+            background-color: #d0e4a9;
+        }
+
+        .list-9 {
+            background-color: #4dc7ec;
+        }
+
+        .container{
+            display: grid;
+
+            /* grid-auto-flow:row;
+            grid-template-columns: repeat(13,100px);
+            grid-template-rows: repeat(7,100px); */
+
+            grid-auto-flow: column;
+            grid-template-columns: repeat(7,100px);
+            grid-template-rows: repeat(13,100px);
+
+            column-gap: 20px;
+            row-gap: 20px;
+            /* grid-auto-rows: 100px; */
+            /* grid-auto-columns: 100px; */
+
+            justify-content: center;
+       }
+       .item{
+            background-color: aquamarine;
+            /* width: 100px;
+            height: 100px;
+            border-radius: 50%; */
+       }
+       .row-1{
+           /* grid-column-start: 1; */
+           grid-row-start: 1;
+       }
+       .row-2{
+           /* grid-column-start: 2; */
+           grid-row-start: 2;
+       }
+       .row-3{
+           /* grid-column-start: 3; */
+           grid-row-start: 3;
+       }
+       .row-4{
+           /* grid-column-start: 4; */
+           grid-row-start: 4;
+       }
+       .row-5{
+           /* grid-column-start: 5; */
+           grid-row-start: 5;
+       }
+       .row-6{
+           /* grid-column-start: 6; */
+           grid-row-start: 6;
+       }
+       .row-7{
+           /* grid-column-start: 7; */
+           grid-row-start: 7;
+       }
+	</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item row-1"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        
+        <div class="item row-2"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+
+        <div class="item row-3"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+
+        <div class="item row-4"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+
+        <div class="item row-5"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+       
+
+        <div class="item row-6"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        
+
+        <div class="item row-7"></div>
+        
+
+    </div>
+    <div class="test"></div>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" defer="defer">
+
+	</script>
+</body>
+
+</html>

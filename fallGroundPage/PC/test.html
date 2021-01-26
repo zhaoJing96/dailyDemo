@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body{
+				font-size: 0;
+				/* overflow: hidden; */
+				background-color: white;
+			}
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: content-box;
+			}
+			#animationOne{
+				width: 100%;
+				height: 150vh;
+				z-index: 9;
+				position: relative;
+				background-color: #FFFFFF;
+			}
+			#containerOne{
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				overflow: hidden;
+				position: sticky;
+				top: 0;
+			}
+			#words{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				z-index: 10;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				transition: all .3s linear;
+			}
+			.wordsOne{
+				transform: translate(-50%,-50%) !important;
+				color: #FFFFFF;
+			}
+			.wordsTwo{
+				transform: translate(-50%,-11vh) !important;
+				color: #c8c8c8;
+			}
+			.wordsThree{
+				transform: translate(-50%,-18vh) !important;
+				color: #969696;
+			}
+			.wordsFour{
+				transform: translate(-50%,-25vh) !important;
+				color: #646464;
+			}
+			.wordsFive{
+				transform: translate(-50%,-32vh) !important;
+				color: #323232;
+			}
+			.wordsSix{
+				transform: translate(-50%,-39vh) !important;
+				color: #000000;
+			}
+			.title{
+				font-size: 26px;
+				margin-bottom: 10px;
+			}
+			.dec{
+				font-size: 46px;
+			}
+			#imgDOM{
+				/* width: 100%; */
+				/* transform-origin:50% 40% ; */
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: 3vh;
+				/* margin-left: -135px; */
+				width: 720px;
+				height: 540px;
+				transform: translate(-50%,-50%) scale(10);
+				transition: transform .3s linear;
+			}
+			video{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 720px;
+				height: 540px;
+				margin-top: 3vh;
+				transform: translate(-50%,-50%);
+				/* margin-left: -135px; */
+				opacity: 0;
+				transition: transform .3s linear;
+			}
+			.imgOne{
+				transform: scale(2);
+			}
+			.imgTwo{
+				transform: scale(1.5);
+			}
+			.imgThree{
+				transform: scale(1);
+			}
+			.imgFour{
+				transform: scale(.7);
+			}
+			.imgFive{
+				transform: scale(.45);
+			}
+			.imgSix{
+				transform: scale(.25);
+			}
+			
+			.animationTwo{
+				width: 100%;
+				height: 450vh;
+				margin-top: -150vh;
+				position: relative;
+			}
+			.containerTwo{
+				position: sticky;
+				top: 0;
+				height: 100vh;
+				background-color: goldenrod;
+				font-size: 40px;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#pad1{
+				width: 500px;
+				height: 650px;
+				padding: 24px;
+				background-size: 100% 100%;
+				background-image: url(img/pad1.png);
+				transition: all .3s linear;
+			}
+			#pad2_container{
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+				overflow: hidden;
+				position: relative;
+			}
+			#pad2{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				background-size: 100% 100%;
+				background-image: url(img/pad2.jpg);
+				background-color: #FFFFFF;
+				transition: all .2s linear;
+			}
+			#pad3{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 11;
+				background-size: 100% 100%;
+				background-image: url(img/pad3.jpg);
+				transition: all .2s linear;
+			}
+			#pad4{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 9;
+				background-size: 100% 100%;
+				background-image: url(img/pad4.jpg);
+			}
+			.test{
+				height: 20000px;
+				background: gainsboro;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="animationOne">
+			<div id="containerOne">
+				<div id="words">
+					<span class="title">建造者智能安全帽</span>
+					<span class="dec">出色，必定与众不同</span>
+				</div>
+				<img src="./img/cat.png" id="imgDOM" />
+				<video src="./video/cat.mp4" id="videoDOM" muted="muted"></video>
+			</div>
+		</div>
+		<div class="animationTwo">
+			<div class="containerTwo">
+				<div id="pad1">
+					<div id="pad2_container">
+						<div id="pad2"></div>
+						<div id="pad3"></div>
+						<div id="pad4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="test"></div>
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" defer="defer">
+			let scrollTop = null;
+			$(()=>{
+				// document.documentElement.scrollTop = 0;
+				scrollTop = getScrollTop();
+				animationOne();
+				animationTwo();
+				animationThree();
+			});
+			
+			let visibleWidth = $('#containerOne')[0].clientWidth;
+			let visibleHeight = $('#containerOne')[0].clientHeight;
+			
+			
+			
+			
+			//动画一
+			let imgDOM = $("#imgDOM");
+			let wordsDOM = $("#words");
+			let videoDOM = $('#videoDOM');
+			let animationOneStatus = true;
+			let animationOneHeight = $('#animationOne')[0].clientHeight;
+			let heightDistanceOne = animationOneHeight - visibleHeight;
+			
+			//动画二
+			let pad1DOM = $('#pad1');
+			let heightDistanceTwo = visibleHeight;
+			
+			//动画三
+			let pad2DOM = $('#pad2');
+			let pad3DOM = $('#pad3');
+			let heightDistanceThree = visibleHeight;
+			
+			window.addEventListener('scroll', (e) => {
+				scrollTop = getScrollTop();
+				animationOne();
+				animationTwo();
+				animationThree();
+			});
+			//动画一
+			function animationOne() {
+				if(scrollTop>=0&&scrollTop<=heightDistanceOne*0.7){
+					if(!animationOneStatus){
+						return;
+					}
+					imgDOM[0].style.transform = 'translate(-50%,-50%) scale('+(10-0.1285*scrollTop/heightDistanceOne*100)+')';
+					// imgDOM[0].style.marginLeft = -135+1.9285*scrollTop/heightDistanceOne*100+'px';
+					wordsDOM[0].style.transform = 'translate(-50%,'+(-(4+0.5*scrollTop/heightDistanceOne*100))+'vh)';
+					wordsDOM[0].style.color = 'rgb('+(255-3.6428*scrollTop/heightDistanceOne*100)+','+(255-3.6428*scrollTop/heightDistanceOne*100)+','+(255-3.6428*scrollTop/heightDistanceOne*100)+')';
+				}
+				else {
+					if(!animationOneStatus){
+						return;
+					}
+					animationOneStatus = false;
+					imgDOM[0].style.transform = 'translate(-50%,-50%) scale(1)';
+					wordsDOM[0].style.transform = 'translate(-50%,-39vh)';
+					wordsDOM[0].style.color = 'rgb(0,0,0)';
+					setTimeout(()=>{
+						videoDOM[0].style.opacity = 1;
+						videoDOM[0].play();
+					},500);
+				}
+				
+				// console.log(scrollTop)
+				// console.log(scrollTop)
+				// if (scrollTop >=visibleHeight*0.37*0/6&&scrollTop<=visibleHeight*0.37*1/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgOne');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsOne');
+				// } else if (scrollTop > visibleHeight*0.37*1/6 && scrollTop <=visibleHeight*0.37*2/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgTwo');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsTwo');
+				// } else if (scrollTop > visibleHeight*0.37*2/6 && scrollTop <=visibleHeight*0.37*3/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgThree');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsThree');
+				// } else if (scrollTop > visibleHeight*0.37*3/6 && scrollTop <= visibleHeight*0.37*4/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgFour');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsFour');
+				// } else if (scrollTop > visibleHeight*0.37*4/6 && scrollTop <= visibleHeight*0.37*5/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgFive');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsFive');
+				// } else if (scrollTop > visibleHeight*0.37*5/6 && scrollTop <= visibleHeight*0.37*6/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgSix');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsSix');
+				// } else if (scrollTop > visibleHeight*0.37*6/6) {
+				// 	imgDOM.removeClass();
+				// 	imgDOM.addClass('imgSix');
+				// 	wordsDOM.removeClass();
+				// 	wordsDOM.addClass('wordsSix');
+				// 	clearInterval(intervalOne);
+				// 	intervalOne = null;
+				// }
+				
+				
+			}
+			
+			//动画二
+			function animationTwo(){
+				if(animationOneHeight>=scrollTop){
+					pad1DOM[0].style.transform = 'scale(5.5)';
+				}
+				else if(animationOneHeight<scrollTop&&scrollTop<=(animationOneHeight+heightDistanceTwo*0.7)){
+					pad1DOM[0].style.transform = 'scale('+(5.5-0.0642*((scrollTop-animationOneHeight)/heightDistanceTwo*100))+')';
+				}
+				else if(scrollTop>(animationOneHeight+heightDistanceTwo*0.7)){
+					pad1DOM[0].style.transform = 'scale(1)';
+				}
+				
+				// if (scrollTop >=(visibleHeight*1.5+visibleHeight*0.2*0)&&scrollTop<(visibleHeight*1.5+visibleHeight*0.2*1)) {
+				// 	pad1DOM[0].style.transform = 'scale(5.5)';
+				// }
+				// else if (scrollTop >=(visibleHeight*1.5+visibleHeight*0.2*1)&&scrollTop<(visibleHeight*1.5+visibleHeight*0.2*2)) {
+				// 	pad1DOM[0].style.transform = 'scale(4)';
+				// }
+				// else if (scrollTop >=(visibleHeight*1.5+visibleHeight*0.2*2)&&scrollTop<(visibleHeight*1.5+visibleHeight*0.2*3)) {
+				// 	pad1DOM[0].style.transform = 'scale(3)';
+				// }
+				// else if (scrollTop >=(visibleHeight*1.5+visibleHeight*0.2*3)&&scrollTop<(visibleHeight*1.5+visibleHeight*0.2*4)) {
+				// 	pad1DOM[0].style.transform = 'scale(2)';
+				// }
+				// else if (scrollTop >=(visibleHeight*1.5+visibleHeight*0.2*4)&&scrollTop<(visibleHeight*1.5+visibleHeight*0.2*5)) {
+				// 	pad1DOM[0].style.transform = 'scale(1)';
+				// }
+			}
+			
+			//动画三
+			function animationThree(){
+				if((animationOneHeight+heightDistanceTwo)>=scrollTop){
+					pad2DOM[0].style.transform = 'translateY(0px)';
+					pad3DOM[0].style.transform = 'translateY(0px)';
+					pad3DOM[0].style.opacity = 0;
+				}
+				else if((animationOneHeight+heightDistanceTwo)<scrollTop&&scrollTop<=(animationOneHeight+heightDistanceTwo+heightDistanceThree*0.7)){
+					pad2DOM[0].style.transform = 'translateY('+(-9.2857*((scrollTop-animationOneHeight-heightDistanceTwo)/heightDistanceThree*100))+'px)';
+					pad3DOM[0].style.transform = 'translateY('+(-9.2857*((scrollTop-animationOneHeight-heightDistanceTwo)/heightDistanceThree*100))+'px)';
+					pad3DOM[0].style.opacity = 0.0542*((scrollTop-animationOneHeight-heightDistanceTwo)/heightDistanceThree*100);
+				}
+				else if(scrollTop>(animationOneHeight+heightDistanceTwo+heightDistanceThree*0.7)){
+					pad2DOM[0].style.transform = 'translateY(-650px)';
+					pad3DOM[0].style.transform = 'translateY(-650px)';
+					pad3DOM[0].style.opacity = 1;
+				}
+			}
+			
+			//获取滚动条高度
+			function getScrollTop() {
+				let scrollTop = 0;
+				if (document.documentElement && document.documentElement.scrollTop) {
+					scrollTop = document.documentElement.scrollTop;
+				} else if (document.body) {
+					scrollTop = document.body.scrollTop;
+				}
+				return scrollTop;
+			}
+		</script>
+	</body>
+</html>
