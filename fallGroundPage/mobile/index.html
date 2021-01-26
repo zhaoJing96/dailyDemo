@@ -34,8 +34,8 @@
 		<h1>自动开机，高明至极</h1>
 		<p>怎样唤醒这顶安全帽？戴上它，感受强有力的新生科技</p>
 		<div class="ui_auto_start_img_box">
-			<img src="./img/kaiji_05@2x.png" alt="" class="auto_start_img_under">
-			<img src="./img/kaiji_05@2x.png" alt="" class="auto_start_img">
+			<img src="./img/kaiji_05@2x.png" class="auto_start_img_under">
+			<img src="./img/kaiji_05@2x.png" class="auto_start_img">
 		</div>
 	</div>
 	<!-- 产品介绍 -->
@@ -89,8 +89,10 @@
 		</div>
 	</div>
 	<!-- 视频 -->
-	<div class="ui_video_box" data-type="0.4">
-		<video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
+	<div class="ui_video_box">
+		<video muted controls loop poster="./video/video01.jpg">
+			<source src="https://oss.dhwork.cn/static/media/index.mp4"></source>
+		</video>
 	</div>
 	<!-- 耳机介绍 -->
 	<div class="ui_ear_box">
@@ -98,56 +100,56 @@
 			<h1>按它，接听世界的声音</h1>
 			<p>一键群组对话和全新留言回听，不错过重要语音，外置可调节软胶耳机，透气安全又适耳，清晰分辨环境音，防患于未然</p>
 		</div>
-		<img src="./img/earImg.png" alt="">
+		<img src="./img/earImg.png">
 	</div>
 	<!-- 极减主义，让一切降下来 -->
 	<div class="ui_reduce_down_container">
 		<div class="title">极减主义，让一切降下来</div>
 		<div class="listContent">
 			<div class="list">
-				<img src="./img/icon_01@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_01@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">更轻量</div>
 					<div class="des">负重尤其影响工作效率，安全帽仅重495g，比同类产品轻1/4，缓解头颈部压力</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_02@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_02@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">降辐射</div>
 					<div class="des">定制的网络通信协议压缩了通信时间，高效射频调制的专用基站降低了功耗，省时+低功耗，比同类产品的辐射低20%</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_03@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_03@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">低价格</div>
 					<div class="des">不到同类产品价格的1/3，物超所值，追求高性价比</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_04@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_04@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">大提速</div>
 					<div class="des">配套基站信号稳定覆盖300-400米半径，G网、专用网智能切换，疾速网络深山也能飙</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_05@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_05@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">减负</div>
 					<div class="des">人体工学设计，接触部位柔软，贴合头型不勒紧，提升工作幸福感</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_06@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_06@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">减震</div>
 					<div class="des">高强度抗压ABS帽壳，帽壳与帽衬间设多个受力点分散冲击力，耐用又好用，5000次撞击测试经得住考验</div>
 				</div>
 			</div>
 			<div class="list">
-				<img src="./img/icon_07@2x.png" alt="" class="icon_logo">
+				<img src="./img/icon_07@2x.png" class="icon_logo">
 				<div class="words">
 					<div class="name">至简外形</div>
 					<div class="des">极富科技感和艺术感的出众设计，外观流畅如水，更无畏雨水，建造潮流前线</div>
@@ -321,12 +323,6 @@
 	</div>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/animation.js"></script>
-	<script>
-		window.onload = function () {
-			let video = document.getElementsByClassName('ui_helmet_video')[0];
-			video.play();
-		}
-	</script>
 </body>
 
 </html>
