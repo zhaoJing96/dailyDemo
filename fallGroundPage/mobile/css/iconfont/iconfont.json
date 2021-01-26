@@ -6,11 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "15796329",
-      "name": "开机",
-      "font_class": "kaiji",
-      "unicode": "e626",
-      "unicode_decimal": 58918
+      "icon_id": "9645688",
+      "name": "向下",
+      "font_class": "xiangxia",
+      "unicode": "e634",
+      "unicode_decimal": 58932
     }
   ]
 }

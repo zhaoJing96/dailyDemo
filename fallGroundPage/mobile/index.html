@@ -5,6 +5,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>落地页</title>
+    <link rel="stylesheet/less" type="text/css" href="./css/iconfont/iconfont.css" />
+    <link rel="stylesheet/less" type="text/css" href="./css/animation.less" />
 	<link rel="stylesheet/less" type="text/css" href="./css/index.less" />
 	<script src="./js/less.min.js"></script>
 	<style>
@@ -261,6 +263,54 @@
 			<span>扫一扫，立即与客服微信沟通</span>
 		</div>
 	</div>
+	<!-- 底部导航 -->
+    <div class="footer">
+        <div class="nav_list_box">
+            <div class="nav_title" onClick="footerClick(this)">
+                <span class="title">产品</span>
+                <span class="icon iconfont icon-xiangxia"></span>
+            </div>
+            <div class="nav_content">
+                <a class="list">建筑内参</a>
+                <a class="list">天天云志</a>
+                <a class="list">智能安全帽</a>
+                <a class="list">智安汇</a>
+            </div>
+        </div>
+        <div class="nav_list_box">
+            <div class="nav_title" onClick="footerClick(this)">
+                <span class="title">技术支持</span>
+                <span class="icon iconfont icon-xiangxia"></span>
+            </div>
+            <div class="nav_content">
+                <a class="list">常见问题</a>
+                <a class="list">问题反馈</a>
+                <a class="list">联系我们</a>
+            </div>
+        </div>
+        <div class="nav_list_box">
+            <div class="nav_title" onClick="footerClick(this)">
+                <span class="title">关于我们</span>
+                <span class="icon iconfont icon-xiangxia"></span>
+            </div>
+            <div class="nav_content">
+                <a class="list">在招职位</a>
+                <a class="list">合作渠道</a>
+            </div>
+        </div>
+        <div class="nav_list_box">
+            <a class="nav_title">应用场景</a>
+            <div class="nav_content"></div>
+        </div>
+        <div class="nav_list_box">
+            <a class="nav_title">建造者</a>
+            <div class="nav_content"></div>
+        </div>
+        <div class="factory_intro">
+            成都大汇智安科技有限公司<br>
+            ©2019-2024 蜀ICP备19018089号-1
+        </div>
+    </div>
 	<!-- <div class="ui_footer_box">
 		<div class="ui_footer_centent">
 			<ul>
@@ -296,6 +346,9 @@
 			<div class="copyright">成都大汇智安科技有限公司 ©2019-2024 蜀ICP备19018089号-1</div>
 		</div>
 	</div> -->
+	
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/animation.js"></script>
 </body>
 
 </html>

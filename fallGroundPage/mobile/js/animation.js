@@ -160,6 +160,23 @@ function bgMove(dom) {
     }
 }
 
+//底部导航点击事件
+function footerClick(e){
+    let jqDom = $(e);
+    if(jqDom.hasClass('red')){
+        jqDom.removeClass('red');
+        jqDom.find('.icon').removeClass('rotate');
+        jqDom.parent()[0].style.height = '44px';
+    }
+    else {
+        jqDom.addClass('red');
+        jqDom.find('.icon').addClass('rotate');
+        jqDom.parent()[0].style.height = 44+jqDom.parent().find('.nav_content').children().length*44+'px';
+    }
+   
+   
+}
+
 //获取滚动条高度
 function getScrollTop() {
     let scrollTop = 0;
