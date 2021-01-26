@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>天天云志</title>
     <link rel="stylesheet/less" type="text/css" href="./css/animation.less" />
     <link rel="stylesheet/less" type="text/css" href="./css/cloud.less" />
@@ -16,27 +16,9 @@
         <nav></nav>
     </header>
     <!-- 头部视频 -->
-    <div class="common_video_box">
-        <div class="common_video_content">
-            <div class="main">
-                <video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
-                <div class="common_video_model"></div>
-            </div>
-        </div>
+    <div class="header_video_box">
+        <video src="https://oss.dhwork.cn/static/media/index.mp4" controls></video>
     </div>
-    <!-- <div class="header_box">
-        <div class="container">
-            <div class="main">
-                <video src="https://oss.dhwork.cn/static/media/index.mp4" loop autoplay muted></video>
-                <div class="quare_content">
-                    <div class="quare_top"></div>
-                    <div class="quare_left"></div>
-                    <div class="quare_right"></div>
-                    <div class="quare_bottom"></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <!-- 中间部分描述 -->
     <div class="middle_des_box">
         <div class="bubbles_box">
@@ -52,7 +34,7 @@
             <div class="bubbles bubble_indigo_right bubble_indigo" data-speed="12"></div>
             <div class="bubbles bubble_orange_right bubble_orange" data-speed="12"></div>
         </div>
-        <div class="content common_fade_inout">互联网时代，科技悄然改变了我们看待和沟通<br>世界的方式。建筑行业，也在被颠覆着…</div>
+        <div class="content common_fade_inout">互联网时代，科技悄然改变了我们看待和沟通世界的方式。建筑行业，也在被颠覆着…</div>
     </div>
     <!-- 介绍列表 -->
     <div class="intro_list_box">
@@ -69,9 +51,14 @@
                 <img src="./img/cloud/img_yunzhi_model@2x.png" alt="" class="img_3">
                 <img src="./img/cloud/xiaochengxu@2x.png" alt="" class="img_4 common_slide_move">
             </div>
-            <!-- <img src="./img/pad2.jpg" alt="" class="img_intro common_fade_inout"> -->
         </div>
         <div class="list max_width hold">
+            <div class="words_intro">
+                <div class="title common_fade_inout">科技管控，打破协同壁垒</div>
+                <div class="des common_fade_inout">
+                    传统化的工业生产模式，不同公司、工种、人员间协同不及时，执行监管困难。天天云志小程序不仅完美支持团队内部的协作，还将外部参与人员纳入到统一平台，便于人员进行高效有序的管理和协同工作。
+                </div>
+            </div>
             <div class="img_intro">
                 <img src="./img/cloud/img_yunzhi_02@2x.png" alt="" class="img_1 common_fade_inout">
                 <img src="./img/cloud/yunzhi_avatar_02@2x.png" alt="" class="img_2 common_zoom_move">
@@ -79,12 +66,6 @@
                 <img src="./img/cloud/yunzhi_avatar_01@2x.png" alt="" class="img_4 common_zoom_move">
                 <img src="./img/cloud/yunzhi_avatar_04@2x (1).png" alt="" class="img_5 common_zoom_move">
                 <img src="./img/cloud/yunzhi_avatar_04@2x.png" alt="" class="img_6 common_zoom_move">
-            </div>
-            <div class="words_intro">
-                <div class="title common_fade_inout">科技管控，打破协同壁垒</div>
-                <div class="des common_fade_inout">
-                    传统化的工业生产模式，不同公司、工种、人员间协同不及时，执行监管困难。天天云志小程序不仅完美支持团队内部的协作，还将外部参与人员纳入到统一平台，便于人员进行高效有序的管理和协同工作。
-                </div>
             </div>
         </div>
         <div class="list max_width cooperate">
@@ -101,6 +82,12 @@
             </div>
         </div>
         <div class="list max_width store">
+            <div class="words_intro">
+                <div class="title common_fade_inout">云端储存，信息也有“身份证”</div>
+                <div class="des common_fade_inout">
+                    高效精准的时代，信息整合是一种能力。以往的项目信息，过于碎片化且无法存档，人员进行总结复盘等耗时耗力。天天云志可以一键汇总、云端储存，自动生成数据报告。云端海量的空间，标签式的管理，一切数据都有迹可循，让搜索便捷高效。
+                </div>
+            </div>
             <div class="img_intro">
                 <div class="img_1 common_fade_inout"></div>
                 <img src="./img/cloud/yunzhi_word@2x.png" alt="" class="img_2 common_slide_move">
@@ -108,12 +95,6 @@
                 <img src="./img/cloud/yunzhi_rar@2x.png" alt="" class="img_4 common_slide_move">
                 <div class="search common_fade_inout">
                     <div class="words">赵东君</div>
-                </div>
-            </div>
-            <div class="words_intro">
-                <div class="title common_fade_inout">云端储存，信息也有“身份证”</div>
-                <div class="des common_fade_inout">
-                    高效精准的时代，信息整合是一种能力。以往的项目信息，过于碎片化且无法存档，人员进行总结复盘等耗时耗力。天天云志可以一键汇总、云端储存，自动生成数据报告。云端海量的空间，标签式的管理，一切数据都有迹可循，让搜索便捷高效。
                 </div>
             </div>
         </div>
@@ -129,7 +110,7 @@
                     <div class="des">直接扫码进入“天天云志”小程序</div>
                     <div class="qrcode_box">
                         <img src="./img/cloud/cloudM.jpg" alt="" class="qrcode">
-                        <div class="tips">扫码进入“天天云志”小程序</div>
+                        <div class="tips">扫码进入<b>“天天云志”</b>小程序</div>
                     </div>
                 </div>
                 <div class="list">
@@ -137,7 +118,7 @@
                     <div class="des">关注公众号，点击菜单栏“用云志”可进入天天云志小程序</div>
                     <div class="qrcode_box">
                         <img src="./img/cloud/cloudG.jpg" alt="" class="qrcode">
-                        <div class="tips">扫码关注“天天云志”公众号</div>
+                        <div class="tips">扫码关注<b>“天天云志”</b>公众号</div>
                     </div>
                 </div>
             </div>
@@ -177,6 +158,17 @@
         let introListBoxStoreSearchWordsStatus = true;
         let introListBoxStoreSearchWordsInterval = null;
         let introListBoxStoreSearchWordsTimeout = null;
+
+        $(()=>{
+            //左右泡泡
+            bubblesMove();
+
+            //介绍列表动画
+            introListCreateAnimation();
+            introLIstCooperateAnimtaion();
+            introListStoreAnimation();
+        });
+
 
         window.addEventListener('resize', () => {
             //左右泡泡

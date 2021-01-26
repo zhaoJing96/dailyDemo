@@ -21,6 +21,11 @@ let commonVideoBox = $(".common_video_box");//存放视频的盒子
 let commonVideoBoxLen = commonVideoBox.length;
 let commonVideoModel = $(".common_video_model");//视频上面的蒙版
 
+$(()=>{
+     //绑定公共动画
+     commonAnimationAll();
+});
+
 //浏览器大小变化时重新获取宽高
 window.addEventListener('resize', () => {
     visibleWidth = document.documentElement.clientWidth;
@@ -65,7 +70,7 @@ function commonAnimationAll() {
 //渐渐出现/退出动画效果
 function fadeInOut(dom) {
     let top = dom.getBoundingClientRect().top;
-    if (top < visibleHeight * 0.8) {
+    if (top < visibleHeight * 0.9) {
         dom.style.opacity = "1";
         dom.style.transform = 'translateY(0)';
     }
@@ -79,7 +84,7 @@ function fadeInOut(dom) {
 function slideMove(dom) {
     let speed = dom.dataset.speed?Number(dom.dataset.speed):30;
     let top = dom.getBoundingClientRect().top;
-    if (top <= visibleHeight * 0.8) {
+    if (top <= visibleHeight * 0.9) {
         dom.style.opacity = "1";
         dom.style.transform = 'translate(0,' + (-Math.abs(top - visibleHeight) / speed) + 'px)';
     }
@@ -93,7 +98,7 @@ function slideMove(dom) {
 function zoomMove(dom) {
     let speed = dom.dataset.speed?Number(dom.dataset.speed):30;
     let top = dom.getBoundingClientRect().top;
-    if (top <= visibleHeight * 0.8) {
+    if (top <= visibleHeight * 0.9) {
         dom.style.transform = 'scale(1) translate(0,' + (-Math.abs(top - visibleHeight) / speed) + 'px)';
     }
     else {
