@@ -367,22 +367,22 @@ header {
 
             &:nth-child(1),
             &:nth-child(9) {
-                width: 124px;
+                width: calc(((100% - 6px) / 5) * 2);
                 height: 150px;
             }
 
             &:nth-child(3),
             &:nth-child(11),
             &:nth-child(5) {
-                width: 185px;
+                width: calc(((100% - 6px) / 5) * 3);
                 height: 150px;
-                padding-left: 24px;
+                padding-left: 20px;
             }
 
             &:nth-child(7) {
-                width: 124px;
+                width: calc(((100% - 6px) / 5) * 2);
                 height: 150px;
-                padding-left: 24px;
+                padding-left: 20px;
             }
 
             &:nth-child(13) {
@@ -456,6 +456,7 @@ header {
                 height: 283px;
                 font-size: 0;
             }
+
             &::-webkit-scrollbar {
                 width: 3px;
                 height: 3px;

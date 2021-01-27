@@ -65,7 +65,8 @@ function commonAnimationAll() {
 //渐渐出现/退出动画效果
 function fadeInOut(dom) {
     let top = dom.getBoundingClientRect().top;
-    if (top < visibleHeight * 0.8) {
+    let rank = dom.dataset.rank?Number(dom.dataset.rank):0.8;
+    if (top < visibleHeight * rank) {
         dom.style.opacity = "1";
         dom.style.transform = 'translateY(0)';
     }
