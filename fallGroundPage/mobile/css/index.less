@@ -446,10 +446,14 @@ header {
         // 手机轮播
         .ui_banner_box {
             width: 100%;
+            display: -webkit-box;
             overflow-x: scroll;
-            display: flex;
-            justify-content: flex-start;
-            padding-bottom: 20px;
+
+            .box {
+                display: flex;
+                justify-content: flex-start;
+                padding-bottom: 20px;
+            }
 
             img {
                 width: 340px;
