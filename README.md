@@ -3,6 +3,7 @@
 2、各种动画效果；
 3、文字跑马灯效果；
 4、常见js demo;
+
 animationEffect:常见动画效果；
 arrToTree:数组转Tree;
 textScroll:文字滚动"跑马灯"效果;
