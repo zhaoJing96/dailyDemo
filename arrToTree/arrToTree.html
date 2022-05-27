@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组转树形数据</title>
+</head>
+
+<body>
+    <div>
+        <p>数组转tree数据常规思路是遍历，递归。此案例主要思路：先把数据转成 <b>Map</b> 去存储，之后遍历的同时借助 <b>对象的引用</b>，直接从 <b>Map</b>找对应的数据做存储。不同于递归的是在遍历的时候做Map存储，找对应关系。性能会更好。</p>
+        <b>输入代码：</b>
+        <p>
+            let arr = [<br>
+            { id: 1, name: '部门1', pid: 0 }, <br>
+            { id: 2, name: '部门2', pid: 1 }, <br>
+            { id: 3, name: '部门3', pid: 1 }, <br>
+            { id: 4, name: '部门4', pid: 3}, <br>
+            { id: 5, name: '部门5', pid: 4}<br>
+            ];
+        </p>
+
+        <b>输出代码：</b>
+        <p>
+            [{<br>
+            &nbsp; &nbsp; id: 1, name: '部门1', pid: 0,<br>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; children: [{ id: 2, name: '部门2', pid: 1, children: []<br>
+            &nbsp; &nbsp; &nbsp; &nbsp; }, { id: 3, name: '部门3', pid: 1, <br>
+            &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; children: [{ id: 4, name: '部门4', pid: 3,<br>
+            &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; children: [{ id: 5, name: '部门5', pid: 4, children: [] <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }]<br>
+            &nbsp; &nbsp; &nbsp; &nbsp; }]<br>
+            &nbsp; &nbsp; }]<br>
+            }]<br>
+        </p>
+    </div>
+    <script>
+        let arr = [{
+            id: 1,
+            name: '部门1',
+            pid: 0
+        }, {
+            id: 2,
+            name: '部门2',
+            pid: 1
+        }, {
+            id: 3,
+            name: '部门3',
+            pid: 1
+        }, {
+            id: 4,
+            name: '部门4',
+            pid: 3
+        }, {
+            id: 5,
+            name: '部门5',
+            pid: 4
+        }];
+
+        // 数据处理
+        function arrToTree(items) {
+            const result = [];
+            const itemMap = {};
+            for (const item of items) {
+                const id = item.id;
+                const pid = item.pid;
+                if (!itemMap[id]) {
+                    itemMap[id] = {
+                        children: []
+                    }
+                }
+                itemMap[id] = {
+                    ...item,
+                    children: itemMap[id]['children']
+                }
+                const treeItem = itemMap[id];
+                if (pid === 0) {
+                    result.push(treeItem);
+                } else {
+                    if (!itemMap[pid]) {
+                        itemMap[pid] = {
+                            children: []
+                        }
+                    }
+                    itemMap[pid].children.push(treeItem);
+                }
+            }
+            return result;
+        }
+        let newArr = arrToTree(arr);
+        console.log(newArr);
+    </script>
+</body>
+
+</html>
