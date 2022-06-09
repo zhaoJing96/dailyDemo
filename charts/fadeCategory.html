@@ -83,6 +83,7 @@
                     bottom: "8%",
                     start: 0,
                     end: 80,
+                    moveHandleSize: 0, // 移动手柄的高度
                     handleSize: "110%",
                     handleStyle: {
                         // 手柄样式
@@ -104,7 +105,7 @@
             series: [{
                     name: "1",
                     type: "bar",
-                    barWidth: "15%",
+                    barWidth: 24,
                     itemStyle: {
                         normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -124,7 +125,7 @@
                 {
                     name: "2",
                     type: "bar",
-                    barWidth: "15%",
+                    barWidth: 24,
                     itemStyle: {
                         normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -144,7 +145,7 @@
                 {
                     name: "3",
                     type: "bar",
-                    barWidth: "15%",
+                    barWidth: 24,
                     itemStyle: {
                         normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
