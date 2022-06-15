@@ -152,6 +152,7 @@
         myEchart.setOption(option, true);
         // 点击事件
         // getZr()扩大柱状图可点范围
+        myEchart.getZr().off('click'); // 防止点击调用多次
         myEchart.getZr().on('click', function (params) {
             let pointInPixel = [params.offsetX, params.offsetY];
             if (myEchart.containPixel('grid', pointInPixel)) {
@@ -166,13 +167,10 @@
         });
         myEchart.getZr().on('mousemove', function (params) {
             let pointInPixel = [params.offsetX, params.offsetY];
+             // 若鼠标经过区域位置在当前图表范围内，鼠标设置为手型
             if (myEchart.containPixel('grid', pointInPixel)) {
                 myEchart.getZr().setCursorStyle('pointer');
-            }
-        });
-        myEchart.on('mouseout', function (params) {
-            let pointInPixel = [params.offsetX, params.offsetY];
-            if (!myEchart.containPixel('grid', pointInPixel)) {
+            }else{
                 myEchart.getZr().setCursorStyle('default');
             }
         });
