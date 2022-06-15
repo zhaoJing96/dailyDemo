@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柱状图点击，增加图表点击范围</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 100%;
+        height: 800px;
+        border: 1px solid #e5e5e5;
+    }
+</style>
+
+<body>
+    <div>
+        开发过程中，我们常遇到需求：在柱状图上，点击某一条柱形，调用相应的方法或者跳转相应页面、切换图表等；<br>
+        myChart.on('click', function (params) {
+            console.log(params)
+        })；<br>
+        当我们想点击柱子触发click事件，此方法虽然实现了点击，有些数据太小了无法轻易找到点击处，且只限于点击柱形中有数据的部分，而对于没有数据的区域，点击无效；<br>
+        简单的点击事件存在触发条件：<br>
+        1、只有点击到柱子上才能触发；<br>
+        2、只有鼠标指示为手型时才能触发。<br>
+        3、只有柱形图有数据才能触发。<br>
+        根据现象找到问题原因：<br>
+        1、扩大点击范围，点击整条阴影部分可触发点击事件；<br>
+        2、鼠标指示到阴影部门（可触发事件部分）显示手型预示可点击；<br>
+        解决方法：
+        getZr()方法可以监听到整个画布的点击事件，xIndex是被点击的柱形的index，再通过index拿到对应的数据对象。
+    </div>
+    <div class="box" id='myChart'></div>
+    <script src="echarts.js">
+        window.echarts = echarts;
+    </script>
+    <script>
+        let myEchart = window.echarts.init(document.getElementById('myChart'));
+        const option = {
+            backgroundColor: 'rgba(35, 40, 77, 0.9)',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                right: 24,
+                top: 24,
+                itemWidth: 10,
+                itemHeight: 8,
+                itemGap: 24, // 图例间距
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize: 14,
+                    lineHeight: 14
+                },
+                data: ['总人数', '已绑设备人数', '上线人数', '未上线人数']
+            },
+            grid: {
+                top:'15%',
+                left: '5%',
+                right: '2%',
+                bottom: '6.5%'
+            },
+            xAxis: [{
+                type: 'category',
+                axisLabel: {
+                    show: true,
+                    color: '#ffffff',
+                    interval: 0,
+                    fontSize: 14,
+                    lineHeight: 14,
+                    width: 120,
+                    overflow: 'truncate'
+                },
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }],
+            yAxis: {
+                type: 'value',
+                minInterval: 1,
+                axisLabel: {
+                    show: true,
+                    color: '#ffffff',
+                    fontSize: 12,
+                    lineHeight: 12
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "rgba(255, 255, 255, 0.2)"
+                    }
+                }
+            },
+            dataZoom: [{
+                show: false,
+                type: 'inside',
+                throttle: 35,
+                maxValueSpan: 4, // 缩放最大显示值，其余拖拽
+                zoomLock: true //不能缩放只能拖拽
+            }],
+            series: [{
+                    name: '总人数',
+                    type: 'bar',
+                    barGap: '35%', // 柱子之间间距
+                    barWidth: 20,
+                    itemStyle: {
+                        color: '#10BDFA', // 柱子颜色
+                        borderRadius: [10, 10, 0, 0] // 设置柱子圆角
+                    },
+                    data: [10, 50, 40, 65, 78, 21, 54]
+                },
+                {
+                    name: '已绑设备人数',
+                    type: 'bar',
+                    barWidth: 20,
+                    itemStyle: {
+                        color: '#FFB000', // 柱子颜色
+                        borderRadius: [10, 10, 0, 0] // 设置柱子圆角
+                    },
+                    data: [45, 79, 90, 34, 56, 21, 43]
+                },
+                {
+                    name: '上线人数',
+                    type: 'bar',
+                    barWidth: 20,
+                    itemStyle: {
+                        color: '#FF6C65', // 柱子颜色
+                        borderRadius: [10, 10, 0, 0] // 设置柱子圆角
+                    },
+                    data: [67, 35, 85, 35, 98, 43, 74]
+                },
+                {
+                    name: '未上线人数',
+                    type: 'bar',
+                    barWidth: 20,
+                    itemStyle: {
+                        color: '#D5D5D5', // 柱子颜色
+                        borderRadius: [10, 10, 0, 0] // 设置柱子圆角
+                    },
+                    data: [63, 85, 34, 23, 123, 58, 89]
+                }
+            ]
+        };
+        myEchart.setOption(option, true);
+        // 点击事件
+        // getZr()扩大柱状图可点范围
+        myEchart.getZr().on('click', function (params) {
+            let pointInPixel = [params.offsetX, params.offsetY];
+            if (myEchart.containPixel('grid', pointInPixel)) {
+                let pointInGrid = myEchart.convertFromPixel({
+                    seriesIndex: 0
+                }, pointInPixel);
+                let xIndex = pointInGrid[0]; // X轴序号
+                let op = myEchart.getOption(); // 获取当前图表的option
+                let value = op.xAxis[0].data[xIndex]; // 获得当前点击值
+                console.log(value);
+            }
+        });
+        myEchart.getZr().on('mousemove', function (params) {
+            let pointInPixel = [params.offsetX, params.offsetY];
+            if (myEchart.containPixel('grid', pointInPixel)) {
+                myEchart.getZr().setCursorStyle('pointer');
+            }
+        });
+        myEchart.on('mouseout', function (params) {
+            let pointInPixel = [params.offsetX, params.offsetY];
+            if (!myEchart.containPixel('grid', pointInPixel)) {
+                myEchart.getZr().setCursorStyle('default');
+            }
+        });
+    </script>
+</body>
+
+</html>
